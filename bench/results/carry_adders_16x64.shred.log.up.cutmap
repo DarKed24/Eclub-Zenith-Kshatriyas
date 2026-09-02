@@ -1,18 +1,16 @@
-21:17:29 [0m[34m[INFO] [0mSimulator args:
+21:17:38 [0m[34m[INFO] [0mSimulator args:
 SimulatorArgs {
     netlist_verilog: "results/carry_adders_16x64.shred.gv",
     top_module: None,
     level_split: [],
-    parts_out: "results/carry_adders_16x64.shred.gemparts",
+    parts_out: "results/carry_adders_16x64.upstream.gemparts",
     max_stage_degrad: 0,
-    no_merge: false,
-    division: 600,
 }
-21:17:29 [0m[34m[INFO] [0minferred clock port clk (posedge)
+21:17:38 [0m[34m[INFO] [0minferred clock port clk (posedge)
 netlist has 39193 pins, 12904 aig pins, 10660 and gates
-21:17:29 [0m[34m[INFO] [0minteractive partitioning stage 0-max
-21:17:29 [0m[34m[INFO] [0mcurrent: 2178 endpoints, try 8 parts
-21:17:29 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 8)
+21:17:38 [0m[34m[INFO] [0minteractive partitioning stage 0-max
+21:17:38 [0m[34m[INFO] [0mcurrent: 2178 endpoints, try 8 parts
+21:17:38 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 8)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -188,15 +186,15 @@ Number of Initial Partitioning Calls = 7
 Average Number of Thread per IP Call = 24 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          4963.76         0.570995        2          28.5714         
-greedy_global_fm               4200.02         0.584982        2          28.5714         
-greedy_sequential_fm           4155.66         0.593297        1          14.2857         
-random                         5091.16         0.0743737       0          0               
-bfs                            5169.54         0.158215        0          0               
-label_propagation              4015.81         0.619746        2          28.5714         
-greedy_round_robin_max_net     5260.89         0.483908        0          0               
-greedy_global_max_net          4085.11         0.499584        0          0               
-greedy_sequential_max_net      4085.65         0.49346         0          0               
+greedy_round_robin_fm          4963.76         0.690676        2          28.5714         
+greedy_global_fm               4200.02         0.74957         2          28.5714         
+greedy_sequential_fm           4155.66         0.701489        1          14.2857         
+random                         5091.16         0.116462        0          0               
+bfs                            5169.54         0.184261        0          0               
+label_propagation              4015.81         0.707775        2          28.5714         
+greedy_round_robin_max_net     5260.89         0.598999        0          0               
+greedy_global_max_net          4085.11         0.565017        0          0               
+greedy_sequential_max_net      4085.65         0.570352        0          0               
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -226,13 +224,13 @@ HE size             HE weight           HN degree           HN weight
 | avg= 34.9542      | avg= 3.28262      | avg= 31.8567      | avg= 6.80533     
 | sd = 28.4768      | sd = 12.6466      | sd = 200.749      | sd = 33.2124     
 -------------------------------------------------------------------------------- 
-21:17:30 [0m[34m[INFO] [0minteractive partition completed: 8 in total. merging started.
-21:17:32 [0m[34m[INFO] [0mmerged partition 0 with 1
-21:17:33 [0m[34m[INFO] [0mmerged partition 0 with 5
-21:17:34 [0m[34m[INFO] [0mmerged partition 0 with 3
-21:17:35 [0m[34m[INFO] [0mmerged partition 0 with 2
-21:17:36 [0m[34m[INFO] [0mmerged partition 0 with 4
-21:17:37 [0m[34m[INFO] [0mmerged partition 0 with 6
-21:17:37 [0m[34m[INFO] [0mpart 0: #stages 14
-21:17:37 [0m[34m[INFO] [0mpart 7: #stages 16
-21:17:37 [0m[34m[INFO] [0mafter merging: 2 parts.
+21:17:40 [0m[34m[INFO] [0minteractive partition completed: 8 in total. merging started.
+21:17:41 [0m[34m[INFO] [0mmerged partition 0 with 1
+21:17:42 [0m[34m[INFO] [0mmerged partition 0 with 5
+21:17:43 [0m[34m[INFO] [0mmerged partition 0 with 3
+21:17:44 [0m[34m[INFO] [0mmerged partition 0 with 2
+21:17:46 [0m[34m[INFO] [0mmerged partition 0 with 4
+21:17:47 [0m[34m[INFO] [0mmerged partition 0 with 6
+21:17:47 [0m[34m[INFO] [0mpart 0: #stages 14
+21:17:47 [0m[34m[INFO] [0mpart 7: #stages 16
+21:17:47 [0m[34m[INFO] [0mafter merging: 2 parts.

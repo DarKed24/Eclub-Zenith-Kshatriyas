@@ -1,18 +1,20 @@
-22:58:42 [0m[34m[INFO] [0mSimulator args:
+21:17:48 [0m[34m[INFO] [0mSimulator args:
 SimulatorArgs {
     netlist_verilog: "results/srl_lines_32.shred.gv",
     top_module: None,
     level_split: [],
     parts_out: "results/srl_lines_32.shred.gemparts",
     max_stage_degrad: 0,
+    no_merge: false,
+    division: 600,
 }
-22:58:42 [0m[33m[WARN] [0m(NL_SV_LIT) X literal unsupported, treating as 0
-22:58:42 [0m[33m[WARN] [0mFurther warn (NL_SV_LIT) will be suppressed.
-22:58:42 [0m[34m[INFO] [0minferred clock port clk (posedge)
+21:17:48 [0m[33m[WARN] [0m(NL_SV_LIT) X literal unsupported, treating as 0
+21:17:48 [0m[33m[WARN] [0mFurther warn (NL_SV_LIT) will be suppressed.
+21:17:48 [0m[34m[INFO] [0minferred clock port clk (posedge)
 netlist has 20667 pins, 6888 aig pins, 5564 and gates
-22:58:42 [0m[34m[INFO] [0minteractive partitioning stage 0-max
-22:58:42 [0m[34m[INFO] [0mcurrent: 1316 endpoints, try 5 parts
-22:58:42 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 5)
+21:17:48 [0m[34m[INFO] [0minteractive partitioning stage 0-max
+21:17:48 [0m[34m[INFO] [0mcurrent: 1316 endpoints, try 5 parts
+21:17:48 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 5)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -182,18 +184,18 @@ Part sizes and weights:
  
 Initial Partitioning Algorithm Summary: 
 Number of Initial Partitioning Calls = 4 
-Average Number of Thread per IP Call = 21 
+Average Number of Thread per IP Call = 24 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          263.113         0.0337881       0          0               
-greedy_global_fm               361.337         0.0457211       0          0               
-greedy_sequential_fm           366.925         0.047376        0          0               
-random                         401.738         0.00657444      0          0               
-bfs                            306.363         0.0122014       0          0               
-label_propagation              303.775         0.0453373       1          25              
-greedy_round_robin_max_net     256.363         0.0265334       2          50              
-greedy_global_max_net          312.15          0.0217983       1          25              
-greedy_sequential_max_net      312.363         0.0211814       0          0               
+greedy_round_robin_fm          263.113         0.0467233       0          0               
+greedy_global_fm               361.337         0.0602109       0          0               
+greedy_sequential_fm           366.925         0.06342         0          0               
+random                         401.738         0.0066396       0          0               
+bfs                            306.363         0.0187539       0          0               
+label_propagation              303.775         0.0666799       1          25              
+greedy_round_robin_max_net     256.363         0.0446497       2          50              
+greedy_global_max_net          312.15          0.0391217       1          25              
+greedy_sequential_max_net      312.363         0.0325522       0          0               
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -228,10 +230,10 @@ HE size             HE weight           HN degree           HN weight
 | avg= 3.93303      | avg= 1            | avg= 3.92705      | avg= 5.39742     
 | sd = 38.9078      | sd = 0            | sd = 14.9929      | sd = 50.2295     
 -------------------------------------------------------------------------------- 
-22:58:43 [0m[34m[INFO] [0minteractive partition completed: 5 in total. merging started.
-22:58:43 [0m[34m[INFO] [0mmerged partition 0 with 2
-22:58:43 [0m[34m[INFO] [0mmerged partition 0 with 3
-22:58:44 [0m[34m[INFO] [0mmerged partition 0 with 4
-22:58:44 [0m[34m[INFO] [0mmerged partition 0 with 1
-22:58:44 [0m[34m[INFO] [0mpart 0: #stages 3
-22:58:44 [0m[34m[INFO] [0mafter merging: 1 parts.
+21:17:48 [0m[34m[INFO] [0minteractive partition completed: 5 in total. merging started.
+21:17:48 [0m[34m[INFO] [0mmerged partition 0 with 2
+21:17:48 [0m[34m[INFO] [0mmerged partition 0 with 3
+21:17:49 [0m[34m[INFO] [0mmerged partition 0 with 4
+21:17:49 [0m[34m[INFO] [0mmerged partition 0 with 1
+21:17:49 [0m[34m[INFO] [0mpart 0: #stages 3
+21:17:49 [0m[34m[INFO] [0mafter merging: 1 parts.

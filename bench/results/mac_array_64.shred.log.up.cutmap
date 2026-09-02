@@ -306,3 +306,76 @@ HE size             HE weight           HN degree           HN weight
 21:15:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 19 due to nstage degradation: 17 > 13
 21:15:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 12 due to nstage degradation: 17 > 13
 21:15:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 17 due to nstage degradation: 17 > 13
+21:15:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 13 due to nstage degradation: 17 > 13
+21:15:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 14 due to nstage degradation: 17 > 13
+21:15:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 9 due to nstage degradation: 17 > 13
+21:15:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 8 due to nstage degradation: 17 > 13
+21:15:29 [0m[34m[INFO] [0mpart 7: #stages 12
+21:15:36 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 8 with 18 due to nstage degradation: 17 > 13
+21:15:36 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 8 with 19 due to nstage degradation: 17 > 13
+21:15:36 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 8 with 12 due to nstage degradation: 17 > 13
+21:15:36 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 8 with 17 due to nstage degradation: 17 > 13
+21:15:42 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 8 with 13 due to nstage degradation: 17 > 13
+21:15:42 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 8 with 14 due to nstage degradation: 17 > 13
+21:15:42 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 8 with 9 due to nstage degradation: 17 > 13
+21:15:42 [0m[34m[INFO] [0mpart 8: #stages 11
+21:15:48 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 9 with 18 due to nstage degradation: 17 > 13
+21:15:48 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 9 with 19 due to nstage degradation: 17 > 13
+21:15:48 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 9 with 12 due to nstage degradation: 17 > 13
+21:15:48 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 9 with 17 due to nstage degradation: 17 > 13
+21:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 9 with 13 due to nstage degradation: 17 > 13
+21:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 9 with 14 due to nstage degradation: 17 > 13
+21:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 9 with 15 due to nstage degradation: 17 > 13
+21:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 9 with 10 due to nstage degradation: 17 > 13
+21:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 9 with 11 due to nstage degradation: 19 > 13
+21:15:57 [0m[34m[INFO] [0mpart 9: #stages 11
+21:16:04 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 10 with 18 due to nstage degradation: 17 > 13
+21:16:04 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 10 with 19 due to nstage degradation: 18 > 13
+21:16:04 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 10 with 12 due to nstage degradation: 18 > 13
+21:16:04 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 10 with 17 due to nstage degradation: 17 > 13
+21:16:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 10 with 13 due to nstage degradation: 17 > 13
+21:16:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 10 with 14 due to nstage degradation: 17 > 13
+21:16:09 [0m[34m[INFO] [0mpart 10: #stages 12
+21:16:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 11 with 18 due to nstage degradation: 18 > 13
+21:16:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 11 with 19 due to nstage degradation: 18 > 13
+21:16:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 11 with 12 due to nstage degradation: 18 > 13
+21:16:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 11 with 17 due to nstage degradation: 18 > 13
+21:16:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 11 with 13 due to nstage degradation: 18 > 13
+21:16:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 11 with 14 due to nstage degradation: 18 > 13
+21:16:21 [0m[34m[INFO] [0mpart 11: #stages 13
+21:16:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 12 with 15 due to nstage degradation: 17 > 13
+21:16:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 12 with 18 due to nstage degradation: 17 > 13
+21:16:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 12 with 19 due to nstage degradation: 17 > 13
+21:16:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 12 with 17 due to nstage degradation: 17 > 13
+21:16:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 12 with 13 due to nstage degradation: 17 > 13
+21:16:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 12 with 14 due to nstage degradation: 17 > 13
+21:16:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 12 with 16 due to nstage degradation: 19 > 13
+21:16:34 [0m[34m[INFO] [0mpart 12: #stages 11
+21:16:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 13 with 15 due to nstage degradation: 17 > 13
+21:16:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 13 with 18 due to nstage degradation: 17 > 13
+21:16:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 13 with 19 due to nstage degradation: 17 > 13
+21:16:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 13 with 17 due to nstage degradation: 17 > 13
+21:16:47 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 13 with 14 due to nstage degradation: 17 > 13
+21:16:47 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 13 with 16 due to nstage degradation: 18 > 13
+21:16:47 [0m[34m[INFO] [0mpart 13: #stages 12
+21:16:55 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 14 with 15 due to nstage degradation: 17 > 13
+21:16:55 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 14 with 18 due to nstage degradation: 17 > 13
+21:16:55 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 14 with 19 due to nstage degradation: 17 > 13
+21:16:55 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 14 with 17 due to nstage degradation: 17 > 13
+21:17:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 14 with 16 due to nstage degradation: 18 > 13
+21:17:01 [0m[34m[INFO] [0mpart 14: #stages 11
+21:17:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 15 with 18 due to nstage degradation: 17 > 13
+21:17:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 15 with 19 due to nstage degradation: 17 > 13
+21:17:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 15 with 17 due to nstage degradation: 17 > 13
+21:17:09 [0m[34m[INFO] [0mpart 15: #stages 12
+21:17:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 16 with 18 due to nstage degradation: 18 > 13
+21:17:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 16 with 19 due to nstage degradation: 18 > 13
+21:17:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 16 with 17 due to nstage degradation: 18 > 13
+21:17:16 [0m[34m[INFO] [0mpart 16: #stages 13
+21:17:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 17 with 18 due to nstage degradation: 17 > 13
+21:17:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 17 with 19 due to nstage degradation: 17 > 13
+21:17:21 [0m[34m[INFO] [0mpart 17: #stages 11
+21:17:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 18 with 19 due to nstage degradation: 17 > 13
+21:17:25 [0m[34m[INFO] [0mpart 18: #stages 11
+21:17:25 [0m[34m[INFO] [0mpart 19: #stages 11
+21:17:25 [0m[34m[INFO] [0mafter merging: 20 parts.

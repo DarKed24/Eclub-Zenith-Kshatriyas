@@ -116,13 +116,13 @@ pub fn cl_cuda() -> Build {
     println!("cargo:rerun-if-env-changed=UCC_CUDA_GENCODE");
     let ptx_arch = match env::var("UCC_CUDA_PTX") {
         Ok(v) => if v.is_empty() { None } else { Some(v.parse().unwrap()) },
-        Err(_) => Some(50)
+        Err(_) => Some(75)  // portable default: PTX 75 JITs on all newer GPUs (CUDA 13 dropped <75)
     };
     let gencode = match env::var("UCC_CUDA_GENCODE") {
         Ok(v) => if v.is_empty() { None } else { Some(
             v.split(',').map(|i| i.parse().unwrap()).collect::<Vec<_>>()
         ) },
-        Err(_) => Some(vec![80, 70])
+        Err(_) => Some(vec![75, 80, 86, 89, 90])  // SASS for Turing..Hopper; others JIT from PTX
     };
     cl_cuda_arch(gencode.as_deref(), ptx_arch)
 }

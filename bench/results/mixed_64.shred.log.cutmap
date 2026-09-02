@@ -1,16 +1,18 @@
-23:03:35 [0m[34m[INFO] [0mSimulator args:
+21:20:27 [0m[34m[INFO] [0mSimulator args:
 SimulatorArgs {
     netlist_verilog: "results/mixed_64.shred.gv",
     top_module: None,
     level_split: [],
     parts_out: "results/mixed_64.shred.gemparts",
     max_stage_degrad: 0,
+    no_merge: false,
+    division: 600,
 }
-23:03:36 [0m[34m[INFO] [0minferred clock port clk (posedge)
+21:20:29 [0m[34m[INFO] [0minferred clock port clk (posedge)
 netlist has 1115633 pins, 360821 aig pins, 348526 and gates
-23:03:36 [0m[34m[INFO] [0minteractive partitioning stage 0-max
-23:03:36 [0m[34m[INFO] [0mcurrent: 12258 endpoints, try 41 parts
-23:03:36 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 41)
+21:20:30 [0m[34m[INFO] [0minteractive partitioning stage 0-max
+21:20:30 [0m[34m[INFO] [0mcurrent: 12258 endpoints, try 41 parts
+21:20:30 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 41)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -178,18 +180,18 @@ Max Block Weight = 10776 <= 10779 (Block 24)
  
 Initial Partitioning Algorithm Summary: 
 Number of Initial Partitioning Calls = 40 
-Average Number of Thread per IP Call = 22.25 
+Average Number of Thread per IP Call = 21.325 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          4105.07         1.26125         6          15              
-greedy_global_fm               6219.41         1.65537         4          10              
-greedy_sequential_fm           6205.31         1.66341         3          7.5             
-random                         9452.18         0.173611        4          10              
-bfs                            9778.2          0.350163        5          12.5            
-label_propagation              5158.6          2.64887         1          2.5             
-greedy_round_robin_max_net     4409.4          1.0473          8          20              
-greedy_global_max_net          3272.46         1.07161         4          10              
-greedy_sequential_max_net      3193.97         1.06591         5          12.5            
+greedy_round_robin_fm          4105.07         2.70316         6          15              
+greedy_global_fm               6219.41         3.54554         4          10              
+greedy_sequential_fm           6205.31         3.52375         3          7.5             
+random                         9452.18         0.363451        4          10              
+bfs                            9778.2          0.706436        5          12.5            
+label_propagation              5158.6          5.81691         1          2.5             
+greedy_round_robin_max_net     4409.4          2.22931         8          20              
+greedy_global_max_net          3272.46         2.25702         4          10              
+greedy_sequential_max_net      3193.97         2.27818         5          12.5            
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -214,8 +216,8 @@ HE size             HE weight           HN degree           HN weight
 | avg= 22.344       | avg= 18.4951      | avg= 31.0972      | avg= 30.0443     
 | sd = 19.227       | sd = 40.9738      | sd = 188.913      | sd = 102.387     
 -------------------------------------------------------------------------------- 
-23:03:44 [0m[34m[INFO] [0mcurrent: 3816 endpoints, try 26 parts
-23:03:44 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 26)
+21:20:43 [0m[34m[INFO] [0mcurrent: 3816 endpoints, try 26 parts
+21:20:43 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 26)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -401,18 +403,18 @@ Part sizes and weights:
  
 Initial Partitioning Algorithm Summary: 
 Number of Initial Partitioning Calls = 25 
-Average Number of Thread per IP Call = 23.64 
+Average Number of Thread per IP Call = 22.96 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          3900.44         0.237604        1          4               
-greedy_global_fm               4016.84         0.288271        0          0               
-greedy_sequential_fm           4015.1          0.285497        0          0               
-random                         4463.06         0.0360287       10         40              
-bfs                            4151.46         0.0997122       0          0               
-label_propagation              4246.96         0.259029        6          24              
-greedy_round_robin_max_net     3765.28         0.201192        1          4               
-greedy_global_max_net          2930.39         0.178156        5          20              
-greedy_sequential_max_net      2930.26         0.177496        2          8               
+greedy_round_robin_fm          3900.44         0.451406        1          4               
+greedy_global_fm               4016.84         0.553263        0          0               
+greedy_sequential_fm           4015.1          0.548625        0          0               
+random                         4463.06         0.0675816       10         40              
+bfs                            4151.46         0.190788        0          0               
+label_propagation              4246.96         0.504176        6          24              
+greedy_round_robin_max_net     3765.28         0.399802        1          4               
+greedy_global_max_net          2930.39         0.335361        5          20              
+greedy_sequential_max_net      2930.26         0.342827        2          8               
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -489,8 +491,8 @@ HE size             HE weight           HN degree           HN weight
 | avg= 8.86657      | avg= 3.03512      | avg= 9.85639      | avg= 2.81368     
 | sd = 15.4496      | sd = 13.8283      | sd = 164.535      | sd = 36.5239     
 -------------------------------------------------------------------------------- 
-23:03:44 [0m[34m[INFO] [0mcurrent: 3302 endpoints, try 45 parts
-23:03:44 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 45)
+21:20:43 [0m[34m[INFO] [0mcurrent: 3302 endpoints, try 45 parts
+21:20:43 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 45)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -678,18 +680,18 @@ Max Block Weight = 805 > 272 (Block 29)
  
 Initial Partitioning Algorithm Summary: 
 Number of Initial Partitioning Calls = 44 
-Average Number of Thread per IP Call = 21.3864 
+Average Number of Thread per IP Call = 21.6818 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          2430.07         0.28887         4          9.09091         
-greedy_global_fm               2266.64         0.333554        1          2.27273         
-greedy_sequential_fm           2289.61         0.333016        0          0               
-random                         2407.37         0.0429551       6          13.6364         
-bfs                            2516.53         0.117671        3          6.81818         
-label_propagation              2464.81         0.290872        10         22.7273         
-greedy_round_robin_max_net     2140.31         0.246505        0          0               
-greedy_global_max_net          2181.31         0.211155        17         38.6364         
-greedy_sequential_max_net      2330.39         0.205457        3          6.81818         
+greedy_round_robin_fm          2430.07         0.528971        4          9.09091         
+greedy_global_fm               2266.64         0.599065        1          2.27273         
+greedy_sequential_fm           2289.61         0.609924        0          0               
+random                         2407.37         0.0711231       6          13.6364         
+bfs                            2516.53         0.209452        3          6.81818         
+label_propagation              2464.81         0.553016        10         22.7273         
+greedy_round_robin_max_net     2140.31         0.456628        0          0               
+greedy_global_max_net          2181.31         0.391903        17         38.6364         
+greedy_sequential_max_net      2330.39         0.389611        3          6.81818         
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -812,8 +814,8 @@ HE size             HE weight           HN degree           HN weight
 | avg= 8.73214      | avg= 3.4426       | avg= 9.8825       | avg= 3.08692     
 | sd = 16.439       | sd = 15.7402      | sd = 152.691      | sd = 39.2572     
 -------------------------------------------------------------------------------- 
-23:03:44 [0m[34m[INFO] [0mcurrent: 3301 endpoints, try 90 parts
-23:03:44 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 90)
+21:20:44 [0m[34m[INFO] [0mcurrent: 3301 endpoints, try 90 parts
+21:20:44 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 90)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -1022,18 +1024,18 @@ Max Block Weight = 805 > 126 (Block 0)
  
 Initial Partitioning Algorithm Summary: 
 Number of Initial Partitioning Calls = 75 
-Average Number of Thread per IP Call = 19.0533 
+Average Number of Thread per IP Call = 19.84 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          1183.59         0.260201        6          8               
-greedy_global_fm               1088.51         0.27319         10         13.3333         
-greedy_sequential_fm           1095.47         0.272804        3          4               
-random                         1269.94         0.0424496       3          4               
-bfs                            1291.53         0.115757        6          8               
-label_propagation              1294.2          0.258133        7          9.33333         
-greedy_round_robin_max_net     1178.09         0.221764        10         13.3333         
-greedy_global_max_net          923.535         0.183284        25         33.3333         
-greedy_sequential_max_net      965.142         0.182904        5          6.66667         
+greedy_round_robin_fm          1183.59         0.492748        6          8               
+greedy_global_fm               1088.51         0.530135        10         13.3333         
+greedy_sequential_fm           1095.47         0.530672        3          4               
+random                         1269.94         0.0785687       3          4               
+bfs                            1291.53         0.218144        6          8               
+label_propagation              1294.2          0.496135        7          9.33333         
+greedy_round_robin_max_net     1178.09         0.417516        10         13.3333         
+greedy_global_max_net          923.535         0.362801        25         33.3333         
+greedy_sequential_max_net      965.142         0.356866        5          6.66667         
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -1246,8 +1248,8 @@ HE size             HE weight           HN degree           HN weight
 | avg= 7.85248      | avg= 3.41835      | avg= 8.73978      | avg= 2.84429     
 | sd = 16.5713      | sd = 15.8724      | sd = 138.375      | sd = 36.7036     
 -------------------------------------------------------------------------------- 
-23:03:45 [0m[34m[INFO] [0mcurrent: 3301 endpoints, try 184 parts
-23:03:45 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 184)
+21:20:44 [0m[34m[INFO] [0mcurrent: 3301 endpoints, try 184 parts
+21:20:44 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 184)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -1495,18 +1497,18 @@ Max Block Weight = 805 > 62 (Block 46)
  
 Initial Partitioning Algorithm Summary: 
 Number of Initial Partitioning Calls = 134 
-Average Number of Thread per IP Call = 19.0672 
+Average Number of Thread per IP Call = 19.2313 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          646.952         0.286821        11         8.20896         
-greedy_global_fm               580.101         0.2733          11         8.20896         
-greedy_sequential_fm           573.577         0.269984        11         8.20896         
-random                         712.226         0.0453379       19         14.1791         
-bfs                            684.79          0.128881        17         12.6866         
-label_propagation              678.097         0.252014        18         13.4328         
-greedy_round_robin_max_net     637.164         0.251161        4          2.98507         
-greedy_global_max_net          481.285         0.177431        35         26.1194         
-greedy_sequential_max_net      480.023         0.17589         8          5.97015         
+greedy_round_robin_fm          646.952         0.704369        11         8.20896         
+greedy_global_fm               580.101         0.684937        11         8.20896         
+greedy_sequential_fm           573.577         0.740416        11         8.20896         
+random                         712.226         0.0986475       19         14.1791         
+bfs                            684.79          0.297443        17         12.6866         
+label_propagation              678.097         0.573673        18         13.4328         
+greedy_round_robin_max_net     637.164         0.590937        4          2.98507         
+greedy_global_max_net          481.285         0.472112        35         26.1194         
+greedy_sequential_max_net      480.023         0.422241        8          5.97015         
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -1847,8 +1849,8 @@ HE size             HE weight           HN degree           HN weight
 | avg= 7.85248      | avg= 3.41835      | avg= 8.73978      | avg= 2.84429     
 | sd = 16.5713      | sd = 15.8724      | sd = 138.375      | sd = 36.7036     
 -------------------------------------------------------------------------------- 
-23:03:45 [0m[34m[INFO] [0mcurrent: 2757 endpoints, try 307 parts
-23:03:45 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 307)
+21:20:45 [0m[34m[INFO] [0mcurrent: 2757 endpoints, try 307 parts
+21:20:45 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 307)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -2149,18 +2151,18 @@ Max Block Weight = 805 > 34 (Block 212)
  
 Initial Partitioning Algorithm Summary: 
 Number of Initial Partitioning Calls = 212 
-Average Number of Thread per IP Call = 17.0566 
+Average Number of Thread per IP Call = 15.283 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          398.307         0.274513        11         5.18868         
-greedy_global_fm               342.908         0.240462        12         5.66038         
-greedy_sequential_fm           333.756         0.239677        15         7.07547         
-random                         424.243         0.0426975       34         16.0377         
-bfs                            415.074         0.119202        30         14.1509         
-label_propagation              408.206         0.213194        36         16.9811         
-greedy_round_robin_max_net     396.793         0.245896        18         8.49057         
-greedy_global_max_net          254.213         0.173175        45         21.2264         
-greedy_sequential_max_net      254.529         0.167139        11         5.18868         
+greedy_round_robin_fm          398.307         0.606875        11         5.18868         
+greedy_global_fm               342.908         0.524073        12         5.66038         
+greedy_sequential_fm           333.756         0.553349        15         7.07547         
+random                         424.243         0.0911758       34         16.0377         
+bfs                            415.074         0.246468        30         14.1509         
+label_propagation              408.206         0.462282        36         16.9811         
+greedy_round_robin_max_net     396.793         0.534883        18         8.49057         
+greedy_global_max_net          254.213         0.40069         45         21.2264         
+greedy_sequential_max_net      254.529         0.393408        11         5.18868         
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -2805,8 +2807,8 @@ HE size             HE weight           HN degree           HN weight
 | avg= 8.0322       | avg= 4.17017      | avg= 8.59449      | avg= 3.12042     
 | sd = 18.375       | sd = 75.445       | sd = 130.487      | sd = 40.15       
 -------------------------------------------------------------------------------- 
-23:03:46 [0m[34m[INFO] [0mcurrent: 1161 endpoints, try 291 parts
-23:03:46 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 291)
+21:20:47 [0m[34m[INFO] [0mcurrent: 1161 endpoints, try 291 parts
+21:20:47 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 291)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -3117,18 +3119,18 @@ Max Block Weight = 805 > 19 (Block 0)
  
 Initial Partitioning Algorithm Summary: 
 Number of Initial Partitioning Calls = 171 
-Average Number of Thread per IP Call = 18.9006 
+Average Number of Thread per IP Call = 14.1228 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          295.983         0.0896976       2          1.16959         
-greedy_global_fm               276.461         0.0826368       4          2.33918         
-greedy_sequential_fm           261.806         0.0856205       15         8.77193         
-random                         311.798         0.0150312       23         13.4503         
-bfs                            294.374         0.0383285       27         15.7895         
-label_propagation              302.813         0.0746776       10         5.84795         
-greedy_round_robin_max_net     283.388         0.0767984       22         12.8655         
-greedy_global_max_net          218.012         0.0571385       43         25.1462         
-greedy_sequential_max_net      217.91          0.0573488       25         14.6199         
+greedy_round_robin_fm          295.983         0.214618        2          1.16959         
+greedy_global_fm               276.461         0.200677        4          2.33918         
+greedy_sequential_fm           261.806         0.198643        15         8.77193         
+random                         311.798         0.0388799       23         13.4503         
+bfs                            294.374         0.0922633       27         15.7895         
+label_propagation              302.813         0.194834        10         5.84795         
+greedy_round_robin_max_net     283.388         0.18662         22         12.8655         
+greedy_global_max_net          218.012         0.14437         43         25.1462         
+greedy_sequential_max_net      217.91          0.128039        25         14.6199         
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -3633,8 +3635,8 @@ HE size             HE weight           HN degree           HN weight
 | avg= 5.74324      | avg= 9.44595      | avg= 6.22308      | avg= 3.94401     
 | sd = 28.0903      | sd = 143.169      | sd = 62.8907      | sd = 46.6405     
 -------------------------------------------------------------------------------- 
-23:03:46 [0m[34m[INFO] [0mcurrent: 844 endpoints, try 422 parts
-23:03:46 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 422)
+21:20:47 [0m[34m[INFO] [0mcurrent: 844 endpoints, try 422 parts
+21:20:47 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 422)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -4057,18 +4059,18 @@ Max Block Weight = 805 > 9 (Block 317)
  
 Initial Partitioning Algorithm Summary: 
 Number of Initial Partitioning Calls = 242 
-Average Number of Thread per IP Call = 13.5331 
+Average Number of Thread per IP Call = 17.8595 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          137.904         0.0581123       21         8.67769         
-greedy_global_fm               139.685         0.0554243       4          1.65289         
-greedy_sequential_fm           139.662         0.0619384       39         16.1157         
-random                         142.727         0.0121415       19         7.85124         
-bfs                            142.767         0.0285844       28         11.5702         
-label_propagation              141.197         0.0495658       67         27.686          
-greedy_round_robin_max_net     143.907         0.0506611       10         4.13223         
-greedy_global_max_net          11.1205         0.0515641       47         19.4215         
-greedy_sequential_max_net      11.1217         0.0418303       7          2.89256         
+greedy_round_robin_fm          137.904         0.192338        21         8.67769         
+greedy_global_fm               139.685         0.159004        4          1.65289         
+greedy_sequential_fm           139.662         0.169257        39         16.1157         
+random                         142.727         0.0348998       19         7.85124         
+bfs                            142.767         0.0898007       28         11.5702         
+label_propagation              141.197         0.164351        67         27.686          
+greedy_round_robin_max_net     143.907         0.157056        10         4.13223         
+greedy_global_max_net          11.1205         0.153388        47         19.4215         
+greedy_sequential_max_net      11.1217         0.139553        7          2.89256         
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -4619,690 +4621,247 @@ HE size             HE weight           HN degree           HN weight
 | avg= 4.72512      | avg= 13.3187      | avg= 4.72512      | avg= 3.82109     
 | sd = 28.9299      | sd = 346.327      | sd = 45.8001      | sd = 47.2667     
 -------------------------------------------------------------------------------- 
-23:03:47 [0m[34m[INFO] [0minteractive partition completed: 1396 in total. merging started.
-23:04:04 [0m[34m[INFO] [0mmerged partition 0 with 49
-23:04:06 [0m[34m[INFO] [0mmerged partition 0 with 209
-23:04:08 [0m[34m[INFO] [0mmerged partition 0 with 237
-23:04:09 [0m[34m[INFO] [0mmerged partition 0 with 315
-23:04:11 [0m[34m[INFO] [0mmerged partition 0 with 325
-23:04:13 [0m[34m[INFO] [0mmerged partition 0 with 326
-23:04:15 [0m[34m[INFO] [0mmerged partition 0 with 746
-23:04:17 [0m[34m[INFO] [0mmerged partition 0 with 796
-23:04:19 [0m[34m[INFO] [0mmerged partition 0 with 798
-23:04:21 [0m[34m[INFO] [0mmerged partition 0 with 807
-23:04:22 [0m[34m[INFO] [0mmerged partition 0 with 825
-23:04:24 [0m[34m[INFO] [0mmerged partition 0 with 974
-23:04:26 [0m[34m[INFO] [0mmerged partition 0 with 976
-23:04:28 [0m[34m[INFO] [0mmerged partition 0 with 981
-23:04:30 [0m[34m[INFO] [0mmerged partition 0 with 983
-23:04:32 [0m[34m[INFO] [0mmerged partition 0 with 1014
-23:04:33 [0m[34m[INFO] [0mmerged partition 0 with 1016
-23:04:35 [0m[34m[INFO] [0mmerged partition 0 with 1238
-23:04:37 [0m[34m[INFO] [0mmerged partition 0 with 1239
-23:04:39 [0m[34m[INFO] [0mmerged partition 0 with 1240
-23:04:41 [0m[34m[INFO] [0mmerged partition 0 with 1241
-23:04:42 [0m[34m[INFO] [0mmerged partition 0 with 1242
-23:04:44 [0m[34m[INFO] [0mmerged partition 0 with 1243
-23:04:46 [0m[34m[INFO] [0mmerged partition 0 with 1245
-23:04:48 [0m[34m[INFO] [0mmerged partition 0 with 1246
-23:04:50 [0m[34m[INFO] [0mmerged partition 0 with 1247
-23:04:51 [0m[34m[INFO] [0mmerged partition 0 with 1248
-23:04:53 [0m[34m[INFO] [0mmerged partition 0 with 1249
-23:04:55 [0m[34m[INFO] [0mmerged partition 0 with 1250
-23:04:57 [0m[34m[INFO] [0mmerged partition 0 with 1252
-23:04:59 [0m[34m[INFO] [0mmerged partition 0 with 1253
-23:05:00 [0m[34m[INFO] [0mmerged partition 0 with 1254
-23:05:02 [0m[34m[INFO] [0mmerged partition 0 with 1255
-23:05:04 [0m[34m[INFO] [0mmerged partition 0 with 1262
-23:05:06 [0m[34m[INFO] [0mmerged partition 0 with 1263
-23:05:08 [0m[34m[INFO] [0mmerged partition 0 with 1265
-23:05:09 [0m[34m[INFO] [0mmerged partition 0 with 1266
-23:05:11 [0m[34m[INFO] [0mmerged partition 0 with 1267
-23:05:13 [0m[34m[INFO] [0mmerged partition 0 with 1268
-23:05:15 [0m[34m[INFO] [0mmerged partition 0 with 1275
-23:05:17 [0m[34m[INFO] [0mmerged partition 0 with 1276
-23:05:18 [0m[34m[INFO] [0mmerged partition 0 with 1278
-23:05:20 [0m[34m[INFO] [0mmerged partition 0 with 1279
-23:05:22 [0m[34m[INFO] [0mmerged partition 0 with 1280
-23:05:24 [0m[34m[INFO] [0mmerged partition 0 with 1281
-23:05:26 [0m[34m[INFO] [0mmerged partition 0 with 1282
-23:05:27 [0m[34m[INFO] [0mmerged partition 0 with 1283
-23:05:29 [0m[34m[INFO] [0mmerged partition 0 with 1288
-23:05:31 [0m[34m[INFO] [0mmerged partition 0 with 1289
-23:05:33 [0m[34m[INFO] [0mmerged partition 0 with 1344
-23:05:35 [0m[34m[INFO] [0mmerged partition 0 with 1346
-23:05:37 [0m[34m[INFO] [0mmerged partition 0 with 1351
-23:05:38 [0m[34m[INFO] [0mmerged partition 0 with 1354
-23:05:40 [0m[34m[INFO] [0mmerged partition 0 with 1357
-23:05:42 [0m[34m[INFO] [0mmerged partition 0 with 1359
-23:05:44 [0m[34m[INFO] [0mmerged partition 0 with 1364
-23:05:46 [0m[34m[INFO] [0mmerged partition 0 with 1367
-23:05:47 [0m[34m[INFO] [0mmerged partition 0 with 1370
-23:05:49 [0m[34m[INFO] [0mmerged partition 0 with 1372
-23:05:51 [0m[34m[INFO] [0mmerged partition 0 with 1377
-23:05:53 [0m[34m[INFO] [0mmerged partition 0 with 1380
-23:05:55 [0m[34m[INFO] [0mmerged partition 0 with 50
-23:05:57 [0m[34m[INFO] [0mmerged partition 0 with 51
-23:05:58 [0m[34m[INFO] [0mmerged partition 0 with 52
-23:06:00 [0m[34m[INFO] [0mmerged partition 0 with 725
-23:06:02 [0m[34m[INFO] [0mmerged partition 0 with 734
-23:06:04 [0m[34m[INFO] [0mmerged partition 0 with 747
-23:06:06 [0m[34m[INFO] [0mmerged partition 0 with 751
-23:06:07 [0m[34m[INFO] [0mmerged partition 0 with 756
-23:06:09 [0m[34m[INFO] [0mmerged partition 0 with 866
-23:06:11 [0m[34m[INFO] [0mmerged partition 0 with 869
-23:06:13 [0m[34m[INFO] [0mmerged partition 0 with 874
-23:06:15 [0m[34m[INFO] [0mmerged partition 0 with 883
-23:06:16 [0m[34m[INFO] [0mmerged partition 0 with 887
-23:06:18 [0m[34m[INFO] [0mmerged partition 0 with 898
-23:06:20 [0m[34m[INFO] [0mmerged partition 0 with 729
-23:06:22 [0m[34m[INFO] [0mmerged partition 0 with 742
-23:06:24 [0m[34m[INFO] [0mmerged partition 0 with 870
-23:06:25 [0m[34m[INFO] [0mmerged partition 0 with 880
-23:06:27 [0m[34m[INFO] [0mmerged partition 0 with 885
-23:06:29 [0m[34m[INFO] [0mmerged partition 0 with 896
-23:06:31 [0m[34m[INFO] [0mmerged partition 0 with 988
-23:06:33 [0m[34m[INFO] [0mmerged partition 0 with 1001
-23:06:35 [0m[34m[INFO] [0mmerged partition 0 with 1256
-23:06:36 [0m[34m[INFO] [0mmerged partition 0 with 1259
-23:06:38 [0m[34m[INFO] [0mmerged partition 0 with 1269
-23:06:40 [0m[34m[INFO] [0mmerged partition 0 with 1272
-23:06:42 [0m[34m[INFO] [0mmerged partition 0 with 1285
-23:06:44 [0m[34m[INFO] [0mmerged partition 0 with 1383
-23:06:46 [0m[34m[INFO] [0mmerged partition 0 with 230
-23:06:47 [0m[34m[INFO] [0mmerged partition 0 with 232
-23:06:49 [0m[34m[INFO] [0mmerged partition 0 with 233
-23:06:51 [0m[34m[INFO] [0mmerged partition 0 with 801
-23:06:53 [0m[34m[INFO] [0mmerged partition 0 with 811
-23:06:55 [0m[34m[INFO] [0mmerged partition 0 with 829
-23:06:56 [0m[34m[INFO] [0mmerged partition 0 with 868
-23:06:58 [0m[34m[INFO] [0mmerged partition 0 with 873
-23:07:00 [0m[34m[INFO] [0mmerged partition 0 with 875
-23:07:02 [0m[34m[INFO] [0mmerged partition 0 with 876
-23:07:04 [0m[34m[INFO] [0mmerged partition 0 with 882
-23:07:06 [0m[34m[INFO] [0mmerged partition 0 with 890
-23:07:08 [0m[34m[INFO] [0mmerged partition 0 with 895
-23:07:09 [0m[34m[INFO] [0mmerged partition 0 with 897
-23:07:11 [0m[34m[INFO] [0mmerged partition 0 with 969
-23:07:13 [0m[34m[INFO] [0mmerged partition 0 with 970
-23:07:15 [0m[34m[INFO] [0mmerged partition 0 with 229
-23:07:17 [0m[34m[INFO] [0mmerged partition 0 with 234
-23:07:18 [0m[34m[INFO] [0mmerged partition 0 with 802
-23:07:20 [0m[34m[INFO] [0mmerged partition 0 with 872
-23:07:22 [0m[34m[INFO] [0mmerged partition 0 with 878
-23:07:24 [0m[34m[INFO] [0mmerged partition 0 with 879
-23:07:26 [0m[34m[INFO] [0mmerged partition 0 with 888
-23:07:28 [0m[34m[INFO] [0mmerged partition 0 with 972
-23:07:29 [0m[34m[INFO] [0mmerged partition 0 with 743
-23:07:31 [0m[34m[INFO] [0mmerged partition 0 with 819
-23:07:33 [0m[34m[INFO] [0mmerged partition 0 with 867
-23:07:35 [0m[34m[INFO] [0mmerged partition 0 with 973
-23:07:36 [0m[34m[INFO] [0mmerged partition 0 with 805
-23:07:38 [0m[34m[INFO] [0mmerged partition 0 with 820
-23:07:40 [0m[34m[INFO] [0mmerged partition 0 with 823
-23:07:42 [0m[34m[INFO] [0mmerged partition 0 with 899
-23:07:44 [0m[34m[INFO] [0mmerged partition 0 with 900
-23:07:46 [0m[34m[INFO] [0mmerged partition 0 with 971
-23:07:48 [0m[34m[INFO] [0mmerged partition 0 with 1080
-23:07:49 [0m[34m[INFO] [0mmerged partition 0 with 1081
-23:07:51 [0m[34m[INFO] [0mmerged partition 0 with 1083
-23:07:53 [0m[34m[INFO] [0mmerged partition 0 with 1086
-23:07:54 [0m[34m[INFO] [0mmerged partition 0 with 1088
-23:07:56 [0m[34m[INFO] [0mmerged partition 0 with 1090
-23:07:58 [0m[34m[INFO] [0mmerged partition 0 with 1091
-23:07:59 [0m[34m[INFO] [0mmerged partition 0 with 1092
-23:08:01 [0m[34m[INFO] [0mmerged partition 0 with 1093
-23:08:03 [0m[34m[INFO] [0mmerged partition 0 with 1094
-23:08:04 [0m[34m[INFO] [0mmerged partition 0 with 1095
-23:08:06 [0m[34m[INFO] [0mmerged partition 0 with 1097
-23:08:07 [0m[34m[INFO] [0mmerged partition 0 with 1100
-23:08:09 [0m[34m[INFO] [0mmerged partition 0 with 1102
-23:08:11 [0m[34m[INFO] [0mmerged partition 0 with 1103
-23:08:12 [0m[34m[INFO] [0mmerged partition 0 with 1104
-23:08:14 [0m[34m[INFO] [0mmerged partition 0 with 1105
-23:08:15 [0m[34m[INFO] [0mmerged partition 0 with 1106
-23:08:17 [0m[34m[INFO] [0mmerged partition 0 with 1107
-23:08:19 [0m[34m[INFO] [0mmerged partition 0 with 1108
-23:08:20 [0m[34m[INFO] [0mmerged partition 0 with 1110
-23:08:22 [0m[34m[INFO] [0mmerged partition 0 with 1113
-23:08:23 [0m[34m[INFO] [0mmerged partition 0 with 1115
-23:08:25 [0m[34m[INFO] [0mmerged partition 0 with 1116
-23:08:26 [0m[34m[INFO] [0mmerged partition 0 with 1117
-23:08:28 [0m[34m[INFO] [0mmerged partition 0 with 1118
-23:08:29 [0m[34m[INFO] [0mmerged partition 0 with 1119
-23:08:31 [0m[34m[INFO] [0mmerged partition 0 with 1120
-23:08:33 [0m[34m[INFO] [0mmerged partition 0 with 1121
-23:08:34 [0m[34m[INFO] [0mmerged partition 0 with 1123
-23:08:36 [0m[34m[INFO] [0mmerged partition 0 with 1126
-23:08:37 [0m[34m[INFO] [0mmerged partition 0 with 1128
-23:08:39 [0m[34m[INFO] [0mmerged partition 0 with 1129
-23:08:41 [0m[34m[INFO] [0mmerged partition 0 with 1130
-23:08:42 [0m[34m[INFO] [0mmerged partition 0 with 1131
-23:08:44 [0m[34m[INFO] [0mmerged partition 0 with 1132
-23:08:46 [0m[34m[INFO] [0mmerged partition 0 with 1133
-23:08:47 [0m[34m[INFO] [0mmerged partition 0 with 1134
-23:08:49 [0m[34m[INFO] [0mmerged partition 0 with 1136
-23:08:50 [0m[34m[INFO] [0mmerged partition 0 with 1139
-23:08:52 [0m[34m[INFO] [0mmerged partition 0 with 1141
-23:08:54 [0m[34m[INFO] [0mmerged partition 0 with 1142
-23:08:55 [0m[34m[INFO] [0mmerged partition 0 with 1143
-23:08:57 [0m[34m[INFO] [0mmerged partition 0 with 1144
-23:08:58 [0m[34m[INFO] [0mmerged partition 0 with 1145
-23:09:00 [0m[34m[INFO] [0mmerged partition 0 with 1146
-23:09:02 [0m[34m[INFO] [0mmerged partition 0 with 1147
-23:09:03 [0m[34m[INFO] [0mmerged partition 0 with 1149
-23:09:05 [0m[34m[INFO] [0mmerged partition 0 with 1152
-23:09:06 [0m[34m[INFO] [0mmerged partition 0 with 1154
-23:09:08 [0m[34m[INFO] [0mmerged partition 0 with 1155
-23:09:10 [0m[34m[INFO] [0mmerged partition 0 with 1156
-23:09:11 [0m[34m[INFO] [0mmerged partition 0 with 1157
-23:09:13 [0m[34m[INFO] [0mmerged partition 0 with 1158
-23:09:15 [0m[34m[INFO] [0mmerged partition 0 with 1159
-23:09:16 [0m[34m[INFO] [0mmerged partition 0 with 1160
-23:09:18 [0m[34m[INFO] [0mmerged partition 0 with 1162
-23:09:19 [0m[34m[INFO] [0mmerged partition 0 with 1165
-23:09:21 [0m[34m[INFO] [0mmerged partition 0 with 1167
-23:09:23 [0m[34m[INFO] [0mmerged partition 0 with 1168
-23:09:24 [0m[34m[INFO] [0mmerged partition 0 with 1169
-23:09:26 [0m[34m[INFO] [0mmerged partition 0 with 1170
-23:09:28 [0m[34m[INFO] [0mmerged partition 0 with 1171
-23:09:29 [0m[34m[INFO] [0mmerged partition 0 with 1173
-23:09:31 [0m[34m[INFO] [0mmerged partition 0 with 1175
-23:09:33 [0m[34m[INFO] [0mmerged partition 0 with 1176
-23:09:34 [0m[34m[INFO] [0mmerged partition 0 with 1177
-23:09:36 [0m[34m[INFO] [0mmerged partition 0 with 1178
-23:09:38 [0m[34m[INFO] [0mmerged partition 0 with 1180
-23:09:39 [0m[34m[INFO] [0mmerged partition 0 with 1181
-23:09:41 [0m[34m[INFO] [0mmerged partition 0 with 1182
-23:09:43 [0m[34m[INFO] [0mmerged partition 0 with 1183
-23:09:44 [0m[34m[INFO] [0mmerged partition 0 with 1184
-23:09:46 [0m[34m[INFO] [0mmerged partition 0 with 752
-23:09:47 [0m[34m[INFO] [0mmerged partition 0 with 884
-23:09:49 [0m[34m[INFO] [0mmerged partition 0 with 894
-23:09:51 [0m[34m[INFO] [0mmerged partition 0 with 1082
-23:09:52 [0m[34m[INFO] [0mmerged partition 0 with 1084
-23:09:54 [0m[34m[INFO] [0mmerged partition 0 with 1085
-23:09:55 [0m[34m[INFO] [0mmerged partition 0 with 1087
-23:09:57 [0m[34m[INFO] [0mmerged partition 0 with 1089
-23:09:59 [0m[34m[INFO] [0mmerged partition 0 with 1096
-23:10:00 [0m[34m[INFO] [0mmerged partition 0 with 1098
-23:10:02 [0m[34m[INFO] [0mmerged partition 0 with 1099
-23:10:04 [0m[34m[INFO] [0mmerged partition 0 with 1101
-23:10:05 [0m[34m[INFO] [0mmerged partition 0 with 1109
-23:10:07 [0m[34m[INFO] [0mmerged partition 0 with 1111
-23:10:08 [0m[34m[INFO] [0mmerged partition 0 with 1112
-23:10:10 [0m[34m[INFO] [0mmerged partition 0 with 1114
-23:10:12 [0m[34m[INFO] [0mmerged partition 0 with 1122
-23:10:13 [0m[34m[INFO] [0mmerged partition 0 with 1124
-23:10:15 [0m[34m[INFO] [0mmerged partition 0 with 1125
-23:10:16 [0m[34m[INFO] [0mmerged partition 0 with 1127
-23:10:18 [0m[34m[INFO] [0mmerged partition 0 with 1135
-23:10:19 [0m[34m[INFO] [0mmerged partition 0 with 1137
-23:10:21 [0m[34m[INFO] [0mmerged partition 0 with 1138
-23:10:23 [0m[34m[INFO] [0mmerged partition 0 with 1140
-23:10:24 [0m[34m[INFO] [0mmerged partition 0 with 1148
-23:10:26 [0m[34m[INFO] [0mmerged partition 0 with 1150
-23:10:27 [0m[34m[INFO] [0mmerged partition 0 with 1151
-23:10:29 [0m[34m[INFO] [0mmerged partition 0 with 1153
-23:10:31 [0m[34m[INFO] [0mmerged partition 0 with 1161
-23:10:32 [0m[34m[INFO] [0mmerged partition 0 with 1163
-23:10:34 [0m[34m[INFO] [0mmerged partition 0 with 1164
-23:10:35 [0m[34m[INFO] [0mmerged partition 0 with 1166
-23:10:36 [0m[34m[INFO] [0mmerged partition 0 with 1172
-23:10:38 [0m[34m[INFO] [0mmerged partition 0 with 1174
-23:10:39 [0m[34m[INFO] [0mmerged partition 0 with 1179
-23:10:41 [0m[34m[INFO] [0mmerged partition 0 with 373
-23:10:43 [0m[34m[INFO] [0mmerged partition 0 with 374
-23:10:44 [0m[34m[INFO] [0mmerged partition 0 with 684
-23:10:46 [0m[34m[INFO] [0mmerged partition 0 with 378
-23:10:47 [0m[34m[INFO] [0mmerged partition 0 with 47
-23:10:49 [0m[34m[INFO] [0mmerged partition 0 with 348
-23:10:50 [0m[34m[INFO] [0mmerged partition 0 with 368
-23:10:52 [0m[34m[INFO] [0mmerged partition 0 with 370
-23:10:54 [0m[34m[INFO] [0mmerged partition 0 with 346
-23:10:55 [0m[34m[INFO] [0mmerged partition 0 with 367
-23:10:57 [0m[34m[INFO] [0mmerged partition 0 with 349
-23:10:59 [0m[34m[INFO] [0mmerged partition 0 with 231
-23:11:01 [0m[34m[INFO] [0mmerged partition 0 with 371
-23:11:03 [0m[34m[INFO] [0mmerged partition 0 with 347
-23:11:05 [0m[34m[INFO] [0mmerged partition 0 with 369
-23:11:06 [0m[34m[INFO] [0mmerged partition 0 with 344
-23:11:08 [0m[34m[INFO] [0mmerged partition 0 with 345
-23:11:09 [0m[34m[INFO] [0mmerged partition 0 with 377
-23:11:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 0 with 376 due to nstage degradation: 13 > 12
-23:11:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 0 with 239 due to nstage degradation: 13 > 12
-23:11:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 0 with 236 due to nstage degradation: 13 > 12
-23:11:11 [0m[34m[INFO] [0mpart 0: #stages 12
-23:11:12 [0m[34m[INFO] [0mmerged partition 1 with 376
-23:11:12 [0m[34m[INFO] [0mmerged partition 1 with 40
-23:11:13 [0m[34m[INFO] [0mmerged partition 1 with 236
-23:11:14 [0m[34m[INFO] [0mmerged partition 1 with 239
-23:11:16 [0m[34m[INFO] [0mmerged partition 1 with 238
-23:11:17 [0m[34m[INFO] [0mmerged partition 1 with 235
-23:11:18 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 1 with 17 due to nstage degradation: 14 > 12
-23:11:18 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 1 with 31 due to nstage degradation: 13 > 12
-23:11:18 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 1 with 35 due to nstage degradation: 13 > 12
-23:11:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 1 with 11 due to nstage degradation: 13 > 12
-23:11:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 1 with 26 due to nstage degradation: 14 > 12
-23:11:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 1 with 6 due to nstage degradation: 14 > 12
-23:11:19 [0m[34m[INFO] [0mpart 1: #stages 11
-23:11:22 [0m[34m[INFO] [0mmerged partition 2 with 455
-23:11:25 [0m[34m[INFO] [0mmerged partition 2 with 17
-23:11:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 2 with 31 due to nstage degradation: 14 > 12
-23:11:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 2 with 35 due to nstage degradation: 14 > 12
-23:11:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 2 with 11 due to nstage degradation: 14 > 12
-23:11:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 2 with 26 due to nstage degradation: 14 > 12
-23:11:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 2 with 6 due to nstage degradation: 14 > 12
-23:11:32 [0m[34m[INFO] [0mpart 2: #stages 12
-23:11:34 [0m[34m[INFO] [0mmerged partition 3 with 31
-23:11:37 [0m[34m[INFO] [0mmerged partition 3 with 35
-23:11:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 11 due to nstage degradation: 14 > 12
-23:11:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 26 due to nstage degradation: 14 > 12
-23:11:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 6 due to nstage degradation: 14 > 12
-23:11:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 30 due to nstage degradation: 16 > 12
-23:11:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 33 due to nstage degradation: 16 > 12
-23:11:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 13 due to nstage degradation: 16 > 12
-23:11:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 32 due to nstage degradation: 16 > 12
-23:11:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 15 due to nstage degradation: 16 > 12
-23:11:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 27 due to nstage degradation: 16 > 12
-23:11:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 8 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 39 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 5 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 29 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 10 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 38 due to nstage degradation: 15 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 12 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 18 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 37 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 16 due to nstage degradation: 15 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 25 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 28 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 20 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 14 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 34 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 36 due to nstage degradation: 16 > 12
-23:11:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 3 with 9 due to nstage degradation: 16 > 12
-23:11:54 [0m[34m[INFO] [0mpart 3: #stages 12
-23:11:58 [0m[34m[INFO] [0mmerged partition 4 with 11
-23:12:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 26 due to nstage degradation: 14 > 12
-23:12:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 6 due to nstage degradation: 13 > 12
-23:12:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 22 due to nstage degradation: 15 > 12
-23:12:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 30 due to nstage degradation: 15 > 12
-23:12:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 33 due to nstage degradation: 15 > 12
-23:12:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 13 due to nstage degradation: 15 > 12
-23:12:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 32 due to nstage degradation: 15 > 12
-23:12:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 15 due to nstage degradation: 15 > 12
-23:12:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 27 due to nstage degradation: 15 > 12
-23:12:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 8 due to nstage degradation: 15 > 12
-23:12:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 39 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 5 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 29 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 10 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 38 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 12 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 18 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 37 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 16 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 25 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 28 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 20 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 14 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 34 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 36 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 9 due to nstage degradation: 15 > 12
-23:12:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 7 due to nstage degradation: 15 > 12
-23:12:20 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 4 with 19 due to nstage degradation: 15 > 12
-23:12:20 [0m[34m[INFO] [0mpart 4: #stages 12
-23:12:22 [0m[34m[INFO] [0mmerged partition 5 with 26
-23:12:26 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 6 due to nstage degradation: 13 > 12
-23:12:26 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 22 due to nstage degradation: 16 > 12
-23:12:26 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 30 due to nstage degradation: 15 > 12
-23:12:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 33 due to nstage degradation: 15 > 12
-23:12:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 13 due to nstage degradation: 15 > 12
-23:12:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 32 due to nstage degradation: 15 > 12
-23:12:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 15 due to nstage degradation: 15 > 12
-23:12:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 27 due to nstage degradation: 15 > 12
-23:12:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 8 due to nstage degradation: 15 > 12
-23:12:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 39 due to nstage degradation: 15 > 12
-23:12:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 29 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 10 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 38 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 12 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 18 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 37 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 16 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 25 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 28 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 20 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 14 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 34 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 36 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 9 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 7 due to nstage degradation: 15 > 12
-23:12:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 5 with 19 due to nstage degradation: 15 > 12
-23:12:41 [0m[34m[INFO] [0mpart 5: #stages 12
-23:12:45 [0m[34m[INFO] [0mmerged partition 6 with 7
-23:12:48 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 22 due to nstage degradation: 15 > 12
-23:12:48 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 30 due to nstage degradation: 15 > 12
-23:12:48 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 33 due to nstage degradation: 15 > 12
-23:12:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 13 due to nstage degradation: 15 > 12
-23:12:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 32 due to nstage degradation: 15 > 12
-23:12:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 15 due to nstage degradation: 15 > 12
-23:12:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 27 due to nstage degradation: 15 > 12
-23:12:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 8 due to nstage degradation: 15 > 12
-23:12:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 39 due to nstage degradation: 15 > 12
-23:12:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 29 due to nstage degradation: 15 > 12
-23:12:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 10 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 38 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 12 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 18 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 37 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 16 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 25 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 28 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 20 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 14 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 34 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 36 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 9 due to nstage degradation: 15 > 12
-23:13:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 6 with 19 due to nstage degradation: 15 > 12
-23:13:01 [0m[34m[INFO] [0mpart 6: #stages 12
-23:13:05 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 22 due to nstage degradation: 13 > 12
-23:13:05 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 19 due to nstage degradation: 14 > 12
-23:13:05 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 30 due to nstage degradation: 13 > 12
-23:13:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 33 due to nstage degradation: 13 > 12
-23:13:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 13 due to nstage degradation: 13 > 12
-23:13:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 32 due to nstage degradation: 13 > 12
-23:13:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 15 due to nstage degradation: 13 > 12
-23:13:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 27 due to nstage degradation: 13 > 12
-23:13:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 39 due to nstage degradation: 13 > 12
-23:13:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 29 due to nstage degradation: 13 > 12
-23:13:10 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 10 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 38 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 12 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 18 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 37 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 16 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 25 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 28 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 20 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 14 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 34 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 36 due to nstage degradation: 13 > 12
-23:13:17 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 9 due to nstage degradation: 13 > 12
-23:13:18 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 8 with 23 due to nstage degradation: 15 > 12
-23:13:18 [0m[34m[INFO] [0mpart 8: #stages 11
-23:13:22 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 22 due to nstage degradation: 13 > 12
-23:13:22 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 30 due to nstage degradation: 13 > 12
-23:13:22 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 33 due to nstage degradation: 13 > 12
-23:13:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 13 due to nstage degradation: 13 > 12
-23:13:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 32 due to nstage degradation: 13 > 12
-23:13:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 15 due to nstage degradation: 13 > 12
-23:13:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 27 due to nstage degradation: 14 > 12
-23:13:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 39 due to nstage degradation: 13 > 12
-23:13:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 29 due to nstage degradation: 13 > 12
-23:13:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 10 due to nstage degradation: 13 > 12
-23:13:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 38 due to nstage degradation: 13 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 12 due to nstage degradation: 14 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 18 due to nstage degradation: 13 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 37 due to nstage degradation: 13 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 19 due to nstage degradation: 14 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 16 due to nstage degradation: 13 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 25 due to nstage degradation: 13 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 28 due to nstage degradation: 13 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 20 due to nstage degradation: 13 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 14 due to nstage degradation: 13 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 34 due to nstage degradation: 13 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 36 due to nstage degradation: 13 > 12
-23:13:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 9 with 23 due to nstage degradation: 15 > 12
-23:13:35 [0m[34m[INFO] [0mpart 9: #stages 11
-23:13:39 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 22 due to nstage degradation: 13 > 12
-23:13:39 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 30 due to nstage degradation: 13 > 12
-23:13:39 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 33 due to nstage degradation: 13 > 12
-23:13:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 13 due to nstage degradation: 13 > 12
-23:13:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 32 due to nstage degradation: 13 > 12
-23:13:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 19 due to nstage degradation: 13 > 12
-23:13:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 15 due to nstage degradation: 13 > 12
-23:13:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 27 due to nstage degradation: 13 > 12
-23:13:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 39 due to nstage degradation: 13 > 12
-23:13:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 29 due to nstage degradation: 13 > 12
-23:13:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 38 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 12 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 18 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 37 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 16 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 25 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 28 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 20 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 14 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 34 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 36 due to nstage degradation: 13 > 12
-23:13:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 10 with 23 due to nstage degradation: 15 > 12
-23:13:53 [0m[34m[INFO] [0mpart 10: #stages 11
-23:13:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 22 due to nstage degradation: 13 > 12
-23:13:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 30 due to nstage degradation: 13 > 12
-23:13:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 33 due to nstage degradation: 13 > 12
-23:14:03 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 13 due to nstage degradation: 13 > 12
-23:14:03 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 32 due to nstage degradation: 13 > 12
-23:14:03 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 15 due to nstage degradation: 13 > 12
-23:14:03 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 27 due to nstage degradation: 13 > 12
-23:14:03 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 19 due to nstage degradation: 13 > 12
-23:14:03 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 39 due to nstage degradation: 13 > 12
-23:14:03 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 29 due to nstage degradation: 13 > 12
-23:14:03 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 38 due to nstage degradation: 13 > 12
-23:14:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 18 due to nstage degradation: 13 > 12
-23:14:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 37 due to nstage degradation: 13 > 12
-23:14:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 16 due to nstage degradation: 14 > 12
-23:14:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 25 due to nstage degradation: 13 > 12
-23:14:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 28 due to nstage degradation: 13 > 12
-23:14:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 20 due to nstage degradation: 14 > 12
-23:14:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 14 due to nstage degradation: 13 > 12
-23:14:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 34 due to nstage degradation: 13 > 12
-23:14:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 36 due to nstage degradation: 13 > 12
-23:14:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 12 with 23 due to nstage degradation: 15 > 12
-23:14:09 [0m[34m[INFO] [0mpart 12: #stages 11
-23:14:13 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 22 due to nstage degradation: 13 > 12
-23:14:13 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 19 due to nstage degradation: 13 > 12
-23:14:13 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 30 due to nstage degradation: 13 > 12
-23:14:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 33 due to nstage degradation: 13 > 12
-23:14:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 32 due to nstage degradation: 13 > 12
-23:14:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 15 due to nstage degradation: 13 > 12
-23:14:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 27 due to nstage degradation: 13 > 12
-23:14:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 39 due to nstage degradation: 13 > 12
-23:14:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 29 due to nstage degradation: 13 > 12
-23:14:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 38 due to nstage degradation: 13 > 12
-23:14:19 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 18 due to nstage degradation: 13 > 12
-23:14:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 37 due to nstage degradation: 13 > 12
-23:14:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 16 due to nstage degradation: 13 > 12
-23:14:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 25 due to nstage degradation: 13 > 12
-23:14:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 28 due to nstage degradation: 13 > 12
-23:14:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 20 due to nstage degradation: 13 > 12
-23:14:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 14 due to nstage degradation: 13 > 12
-23:14:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 34 due to nstage degradation: 13 > 12
-23:14:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 36 due to nstage degradation: 13 > 12
-23:14:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 13 with 23 due to nstage degradation: 15 > 12
-23:14:25 [0m[34m[INFO] [0mpart 13: #stages 11
-23:14:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 22 due to nstage degradation: 13 > 12
-23:14:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 30 due to nstage degradation: 13 > 12
-23:14:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 33 due to nstage degradation: 13 > 12
-23:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 32 due to nstage degradation: 13 > 12
-23:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 15 due to nstage degradation: 13 > 12
-23:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 27 due to nstage degradation: 13 > 12
-23:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 39 due to nstage degradation: 13 > 12
-23:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 29 due to nstage degradation: 13 > 12
-23:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 19 due to nstage degradation: 13 > 12
-23:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 38 due to nstage degradation: 13 > 12
-23:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 18 due to nstage degradation: 13 > 12
-23:14:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 37 due to nstage degradation: 13 > 12
-23:14:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 16 due to nstage degradation: 13 > 12
-23:14:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 25 due to nstage degradation: 13 > 12
-23:14:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 28 due to nstage degradation: 13 > 12
-23:14:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 20 due to nstage degradation: 13 > 12
-23:14:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 34 due to nstage degradation: 13 > 12
-23:14:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 36 due to nstage degradation: 13 > 12
-23:14:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 14 with 23 due to nstage degradation: 15 > 12
-23:14:40 [0m[34m[INFO] [0mpart 14: #stages 11
-23:14:44 [0m[34m[INFO] [0mmerged partition 15 with 22
-23:14:44 [0m[34m[INFO] [0mpart 15: #stages 12
-23:14:49 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 30 due to nstage degradation: 13 > 12
-23:14:49 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 33 due to nstage degradation: 13 > 12
-23:14:49 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 32 due to nstage degradation: 13 > 12
-23:14:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 27 due to nstage degradation: 13 > 12
-23:14:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 39 due to nstage degradation: 13 > 12
-23:14:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 19 due to nstage degradation: 14 > 12
-23:14:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 29 due to nstage degradation: 13 > 12
-23:14:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 38 due to nstage degradation: 13 > 12
-23:14:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 18 due to nstage degradation: 13 > 12
-23:14:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 37 due to nstage degradation: 13 > 12
-23:14:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 25 due to nstage degradation: 13 > 12
-23:14:59 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 28 due to nstage degradation: 13 > 12
-23:14:59 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 20 due to nstage degradation: 13 > 12
-23:14:59 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 34 due to nstage degradation: 13 > 12
-23:14:59 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 36 due to nstage degradation: 13 > 12
-23:14:59 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 16 with 23 due to nstage degradation: 15 > 12
-23:14:59 [0m[34m[INFO] [0mpart 16: #stages 11
-23:15:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 30 due to nstage degradation: 13 > 12
-23:15:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 33 due to nstage degradation: 13 > 12
-23:15:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 32 due to nstage degradation: 13 > 12
-23:15:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 27 due to nstage degradation: 13 > 12
-23:15:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 39 due to nstage degradation: 13 > 12
-23:15:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 19 due to nstage degradation: 14 > 12
-23:15:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 29 due to nstage degradation: 13 > 12
-23:15:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 38 due to nstage degradation: 13 > 12
-23:15:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 37 due to nstage degradation: 13 > 12
-23:15:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 25 due to nstage degradation: 13 > 12
-23:15:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 28 due to nstage degradation: 13 > 12
-23:15:12 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 20 due to nstage degradation: 13 > 12
-23:15:12 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 34 due to nstage degradation: 13 > 12
-23:15:12 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 36 due to nstage degradation: 13 > 12
-23:15:12 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 18 with 23 due to nstage degradation: 15 > 12
-23:15:12 [0m[34m[INFO] [0mpart 18: #stages 11
-23:15:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 30 due to nstage degradation: 13 > 12
-23:15:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 33 due to nstage degradation: 14 > 12
-23:15:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 32 due to nstage degradation: 14 > 12
-23:15:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 27 due to nstage degradation: 13 > 12
-23:15:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 39 due to nstage degradation: 14 > 12
-23:15:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 29 due to nstage degradation: 14 > 12
-23:15:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 38 due to nstage degradation: 14 > 12
-23:15:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 37 due to nstage degradation: 13 > 12
-23:15:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 25 due to nstage degradation: 14 > 12
-23:15:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 28 due to nstage degradation: 14 > 12
-23:15:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 20 due to nstage degradation: 14 > 12
-23:15:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 34 due to nstage degradation: 14 > 12
-23:15:25 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 19 with 36 due to nstage degradation: 14 > 12
-23:15:25 [0m[34m[INFO] [0mpart 19: #stages 11
-23:15:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 30 due to nstage degradation: 13 > 12
-23:15:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 33 due to nstage degradation: 13 > 12
-23:15:29 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 32 due to nstage degradation: 13 > 12
-23:15:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 27 due to nstage degradation: 14 > 12
-23:15:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 39 due to nstage degradation: 13 > 12
-23:15:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 29 due to nstage degradation: 13 > 12
-23:15:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 38 due to nstage degradation: 13 > 12
-23:15:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 37 due to nstage degradation: 13 > 12
-23:15:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 25 due to nstage degradation: 13 > 12
-23:15:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 28 due to nstage degradation: 13 > 12
-23:15:34 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 34 due to nstage degradation: 13 > 12
-23:15:38 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 36 due to nstage degradation: 13 > 12
-23:15:38 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 20 with 23 due to nstage degradation: 15 > 12
-23:15:38 [0m[34m[INFO] [0mpart 20: #stages 11
-23:15:39 [0m[34m[INFO] [0mmerged partition 21 with 1027
-23:15:41 [0m[34m[INFO] [0mmerged partition 21 with 532
-23:15:42 [0m[34m[INFO] [0mmerged partition 21 with 1291
-23:15:42 [0m[34m[INFO] [0mpart 21: #stages 10
-23:15:44 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 30 due to nstage degradation: 15 > 12
-23:15:44 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 33 due to nstage degradation: 15 > 12
-23:15:44 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 32 due to nstage degradation: 15 > 12
-23:15:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 27 due to nstage degradation: 15 > 12
-23:15:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 39 due to nstage degradation: 15 > 12
-23:15:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 29 due to nstage degradation: 15 > 12
-23:15:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 38 due to nstage degradation: 15 > 12
-23:15:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 37 due to nstage degradation: 15 > 12
-23:15:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 25 due to nstage degradation: 15 > 12
-23:15:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 28 due to nstage degradation: 15 > 12
-23:15:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 34 due to nstage degradation: 15 > 12
-23:15:47 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 23 with 36 due to nstage degradation: 15 > 12
-23:15:47 [0m[34m[INFO] [0mpart 23: #stages 7
-23:15:47 [0m[34m[INFO] [0mpart 24: #stages 4
-23:15:52 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 30 due to nstage degradation: 13 > 12
-23:15:52 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 33 due to nstage degradation: 13 > 12
-23:15:52 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 32 due to nstage degradation: 13 > 12
-23:15:52 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 27 due to nstage degradation: 13 > 12
-23:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 39 due to nstage degradation: 14 > 12
-23:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 29 due to nstage degradation: 13 > 12
-23:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 38 due to nstage degradation: 13 > 12
-23:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 37 due to nstage degradation: 13 > 12
-23:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 28 due to nstage degradation: 13 > 12
-23:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 34 due to nstage degradation: 13 > 12
-23:15:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 25 with 36 due to nstage degradation: 13 > 12
-23:15:57 [0m[34m[INFO] [0mpart 25: #stages 11
-23:16:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 27 with 30 due to nstage degradation: 13 > 12
-23:16:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 27 with 33 due to nstage degradation: 13 > 12
-23:16:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 27 with 32 due to nstage degradation: 13 > 12
-23:16:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 27 with 39 due to nstage degradation: 13 > 12
-23:16:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 27 with 29 due to nstage degradation: 13 > 12
-23:16:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 27 with 38 due to nstage degradation: 13 > 12
-23:16:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 27 with 37 due to nstage degradation: 13 > 12
-23:16:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 27 with 28 due to nstage degradation: 13 > 12
-23:16:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 27 with 34 due to nstage degradation: 13 > 12
-23:16:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 27 with 36 due to nstage degradation: 13 > 12
-23:16:07 [0m[34m[INFO] [0mpart 27: #stages 11
-23:16:11 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 28 with 30 due to nstage degradation: 13 > 12
-23:16:11 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 28 with 33 due to nstage degradation: 13 > 12
-23:16:11 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 28 with 32 due to nstage degradation: 13 > 12
-23:16:11 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 28 with 39 due to nstage degradation: 13 > 12
-23:16:15 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 28 with 29 due to nstage degradation: 13 > 12
-23:16:15 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 28 with 38 due to nstage degradation: 13 > 12
-23:16:15 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 28 with 37 due to nstage degradation: 13 > 12
-23:16:15 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 28 with 34 due to nstage degradation: 13 > 12
-23:16:15 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 28 with 36 due to nstage degradation: 13 > 12
-23:16:15 [0m[34m[INFO] [0mpart 28: #stages 11
-23:16:20 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 29 with 30 due to nstage degradation: 13 > 12
-23:16:20 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 29 with 33 due to nstage degradation: 13 > 12
-23:16:20 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 29 with 32 due to nstage degradation: 13 > 12
-23:16:20 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 29 with 39 due to nstage degradation: 13 > 12
-23:16:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 29 with 38 due to nstage degradation: 13 > 12
-23:16:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 29 with 37 due to nstage degradation: 13 > 12
-23:16:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 29 with 34 due to nstage degradation: 13 > 12
-23:16:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 29 with 36 due to nstage degradation: 13 > 12
-23:16:23 [0m[34m[INFO] [0mpart 29: #stages 11
-23:16:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 30 with 33 due to nstage degradation: 13 > 12
-23:16:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 30 with 32 due to nstage degradation: 13 > 12
-23:16:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 30 with 39 due to nstage degradation: 13 > 12
-23:16:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 30 with 38 due to nstage degradation: 13 > 12
-23:16:33 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 30 with 37 due to nstage degradation: 13 > 12
-23:16:33 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 30 with 34 due to nstage degradation: 13 > 12
-23:16:33 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 30 with 36 due to nstage degradation: 13 > 12
-23:16:33 [0m[34m[INFO] [0mpart 30: #stages 11
-23:16:37 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 32 with 33 due to nstage degradation: 13 > 12
-23:16:37 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 32 with 39 due to nstage degradation: 13 > 12
-23:16:37 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 32 with 38 due to nstage degradation: 13 > 12
-23:16:37 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 32 with 37 due to nstage degradation: 13 > 12
-23:16:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 32 with 34 due to nstage degradation: 13 > 12
-23:16:41 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 32 with 36 due to nstage degradation: 13 > 12
-23:16:41 [0m[34m[INFO] [0mpart 32: #stages 11
-23:16:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 33 with 39 due to nstage degradation: 13 > 12
-23:16:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 33 with 38 due to nstage degradation: 13 > 12
-23:16:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 33 with 37 due to nstage degradation: 13 > 12
-23:16:45 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 33 with 34 due to nstage degradation: 13 > 12
-23:16:49 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 33 with 36 due to nstage degradation: 13 > 12
-23:16:49 [0m[34m[INFO] [0mpart 33: #stages 11
-23:16:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 34 with 39 due to nstage degradation: 13 > 12
-23:16:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 34 with 38 due to nstage degradation: 13 > 12
-23:16:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 34 with 37 due to nstage degradation: 13 > 12
-23:16:53 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 34 with 36 due to nstage degradation: 13 > 12
-23:16:53 [0m[34m[INFO] [0mpart 34: #stages 11
-23:16:58 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 36 with 39 due to nstage degradation: 13 > 12
-23:16:58 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 36 with 38 due to nstage degradation: 13 > 12
-23:16:58 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 36 with 37 due to nstage degradation: 13 > 12
-23:16:58 [0m[34m[INFO] [0mpart 36: #stages 11
-23:17:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 37 with 39 due to nstage degradation: 13 > 12
-23:17:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 37 with 38 due to nstage degradation: 13 > 12
-23:17:02 [0m[34m[INFO] [0mpart 37: #stages 11
-23:17:05 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:700] skipped merging 38 with 39 due to nstage degradation: 13 > 12
-23:17:05 [0m[34m[INFO] [0mpart 38: #stages 11
-23:17:05 [0m[34m[INFO] [0mpart 39: #stages 11
-23:17:06 [0m[34m[INFO] [0mmerged partition 73 with 1185
-23:17:06 [0m[34m[INFO] [0mpart 73: #stages 12
-23:17:06 [0m[34m[INFO] [0mpart 665: #stages 11
-23:17:06 [0m[34m[INFO] [0mpart 902: #stages 10
-23:17:06 [0m[34m[INFO] [0mafter merging: 36 parts.
+21:20:48 [0m[34m[INFO] [0minteractive partition completed: 1396 in total. merging started.
+21:21:13 [0m[34m[INFO] [0mmerged partition 0 with 49
+21:21:15 [0m[34m[INFO] [0mmerged partition 0 with 209
+21:21:18 [0m[34m[INFO] [0mmerged partition 0 with 237
+21:21:20 [0m[34m[INFO] [0mmerged partition 0 with 315
+21:21:23 [0m[34m[INFO] [0mmerged partition 0 with 325
+21:21:26 [0m[34m[INFO] [0mmerged partition 0 with 326
+21:21:29 [0m[34m[INFO] [0mmerged partition 0 with 746
+21:21:32 [0m[34m[INFO] [0mmerged partition 0 with 796
+21:21:35 [0m[34m[INFO] [0mmerged partition 0 with 798
+21:21:37 [0m[34m[INFO] [0mmerged partition 0 with 807
+21:21:40 [0m[34m[INFO] [0mmerged partition 0 with 825
+21:21:42 [0m[34m[INFO] [0mmerged partition 0 with 974
+21:21:45 [0m[34m[INFO] [0mmerged partition 0 with 976
+21:21:47 [0m[34m[INFO] [0mmerged partition 0 with 981
+21:21:50 [0m[34m[INFO] [0mmerged partition 0 with 983
+21:21:52 [0m[34m[INFO] [0mmerged partition 0 with 1014
+21:21:55 [0m[34m[INFO] [0mmerged partition 0 with 1016
+21:21:59 [0m[34m[INFO] [0mmerged partition 0 with 1238
+21:22:01 [0m[34m[INFO] [0mmerged partition 0 with 1239
+21:22:04 [0m[34m[INFO] [0mmerged partition 0 with 1240
+21:22:06 [0m[34m[INFO] [0mmerged partition 0 with 1241
+21:22:09 [0m[34m[INFO] [0mmerged partition 0 with 1242
+21:22:12 [0m[34m[INFO] [0mmerged partition 0 with 1243
+21:22:14 [0m[34m[INFO] [0mmerged partition 0 with 1245
+21:22:17 [0m[34m[INFO] [0mmerged partition 0 with 1246
+21:22:19 [0m[34m[INFO] [0mmerged partition 0 with 1247
+21:22:22 [0m[34m[INFO] [0mmerged partition 0 with 1248
+21:22:24 [0m[34m[INFO] [0mmerged partition 0 with 1249
+21:22:27 [0m[34m[INFO] [0mmerged partition 0 with 1250
+21:22:30 [0m[34m[INFO] [0mmerged partition 0 with 1252
+21:22:33 [0m[34m[INFO] [0mmerged partition 0 with 1253
+21:22:36 [0m[34m[INFO] [0mmerged partition 0 with 1254
+21:22:39 [0m[34m[INFO] [0mmerged partition 0 with 1255
+21:22:42 [0m[34m[INFO] [0mmerged partition 0 with 1262
+21:22:45 [0m[34m[INFO] [0mmerged partition 0 with 1263
+21:22:47 [0m[34m[INFO] [0mmerged partition 0 with 1265
+21:22:50 [0m[34m[INFO] [0mmerged partition 0 with 1266
+21:22:53 [0m[34m[INFO] [0mmerged partition 0 with 1267
+21:22:55 [0m[34m[INFO] [0mmerged partition 0 with 1268
+21:22:58 [0m[34m[INFO] [0mmerged partition 0 with 1275
+21:23:01 [0m[34m[INFO] [0mmerged partition 0 with 1276
+21:23:03 [0m[34m[INFO] [0mmerged partition 0 with 1278
+21:23:08 [0m[34m[INFO] [0mmerged partition 0 with 1279
+21:23:11 [0m[34m[INFO] [0mmerged partition 0 with 1280
+21:23:14 [0m[34m[INFO] [0mmerged partition 0 with 1281
+21:23:17 [0m[34m[INFO] [0mmerged partition 0 with 1282
+21:23:20 [0m[34m[INFO] [0mmerged partition 0 with 1283
+21:23:23 [0m[34m[INFO] [0mmerged partition 0 with 1288
+21:23:26 [0m[34m[INFO] [0mmerged partition 0 with 1289
+21:23:28 [0m[34m[INFO] [0mmerged partition 0 with 1344
+21:23:31 [0m[34m[INFO] [0mmerged partition 0 with 1346
+21:23:35 [0m[34m[INFO] [0mmerged partition 0 with 1351
+21:23:38 [0m[34m[INFO] [0mmerged partition 0 with 1354
+21:23:42 [0m[34m[INFO] [0mmerged partition 0 with 1357
+21:23:45 [0m[34m[INFO] [0mmerged partition 0 with 1359
+21:23:48 [0m[34m[INFO] [0mmerged partition 0 with 1364
+21:23:51 [0m[34m[INFO] [0mmerged partition 0 with 1367
+21:23:54 [0m[34m[INFO] [0mmerged partition 0 with 1370
+21:23:56 [0m[34m[INFO] [0mmerged partition 0 with 1372
+21:23:59 [0m[34m[INFO] [0mmerged partition 0 with 1377
+21:24:02 [0m[34m[INFO] [0mmerged partition 0 with 1380
+21:24:05 [0m[34m[INFO] [0mmerged partition 0 with 50
+21:24:08 [0m[34m[INFO] [0mmerged partition 0 with 51
+21:24:13 [0m[34m[INFO] [0mmerged partition 0 with 52
+21:24:16 [0m[34m[INFO] [0mmerged partition 0 with 725
+21:24:19 [0m[34m[INFO] [0mmerged partition 0 with 734
+21:24:23 [0m[34m[INFO] [0mmerged partition 0 with 747
+21:24:25 [0m[34m[INFO] [0mmerged partition 0 with 751
+21:24:28 [0m[34m[INFO] [0mmerged partition 0 with 756
+21:24:31 [0m[34m[INFO] [0mmerged partition 0 with 866
+21:24:34 [0m[34m[INFO] [0mmerged partition 0 with 869
+21:24:37 [0m[34m[INFO] [0mmerged partition 0 with 874
+21:24:40 [0m[34m[INFO] [0mmerged partition 0 with 883
+21:24:43 [0m[34m[INFO] [0mmerged partition 0 with 887
+21:24:47 [0m[34m[INFO] [0mmerged partition 0 with 898
+21:24:49 [0m[34m[INFO] [0mmerged partition 0 with 729
+21:24:52 [0m[34m[INFO] [0mmerged partition 0 with 742
+21:24:55 [0m[34m[INFO] [0mmerged partition 0 with 870
+21:24:57 [0m[34m[INFO] [0mmerged partition 0 with 880
+21:25:00 [0m[34m[INFO] [0mmerged partition 0 with 885
+21:25:02 [0m[34m[INFO] [0mmerged partition 0 with 896
+21:25:05 [0m[34m[INFO] [0mmerged partition 0 with 988
+21:25:07 [0m[34m[INFO] [0mmerged partition 0 with 1001
+21:25:10 [0m[34m[INFO] [0mmerged partition 0 with 1256
+21:25:13 [0m[34m[INFO] [0mmerged partition 0 with 1259
+21:25:15 [0m[34m[INFO] [0mmerged partition 0 with 1269
+21:25:17 [0m[34m[INFO] [0mmerged partition 0 with 1272
+21:25:21 [0m[34m[INFO] [0mmerged partition 0 with 1285
+21:25:24 [0m[34m[INFO] [0mmerged partition 0 with 1383
+21:25:26 [0m[34m[INFO] [0mmerged partition 0 with 230
+21:25:29 [0m[34m[INFO] [0mmerged partition 0 with 232
+21:25:31 [0m[34m[INFO] [0mmerged partition 0 with 233
+21:25:34 [0m[34m[INFO] [0mmerged partition 0 with 801
+21:25:36 [0m[34m[INFO] [0mmerged partition 0 with 811
+21:25:39 [0m[34m[INFO] [0mmerged partition 0 with 829
+21:25:41 [0m[34m[INFO] [0mmerged partition 0 with 868
+21:25:44 [0m[34m[INFO] [0mmerged partition 0 with 873
+21:25:47 [0m[34m[INFO] [0mmerged partition 0 with 875
+21:25:49 [0m[34m[INFO] [0mmerged partition 0 with 876
+21:25:52 [0m[34m[INFO] [0mmerged partition 0 with 882
+21:25:55 [0m[34m[INFO] [0mmerged partition 0 with 890
+21:25:58 [0m[34m[INFO] [0mmerged partition 0 with 895
+21:26:00 [0m[34m[INFO] [0mmerged partition 0 with 897
+21:26:03 [0m[34m[INFO] [0mmerged partition 0 with 969
+21:26:05 [0m[34m[INFO] [0mmerged partition 0 with 970
+21:26:08 [0m[34m[INFO] [0mmerged partition 0 with 229
+21:26:11 [0m[34m[INFO] [0mmerged partition 0 with 234
+21:26:13 [0m[34m[INFO] [0mmerged partition 0 with 802
+21:26:16 [0m[34m[INFO] [0mmerged partition 0 with 872
+21:26:19 [0m[34m[INFO] [0mmerged partition 0 with 878
+21:26:22 [0m[34m[INFO] [0mmerged partition 0 with 879
+21:26:24 [0m[34m[INFO] [0mmerged partition 0 with 888
+21:26:28 [0m[34m[INFO] [0mmerged partition 0 with 972
+21:26:30 [0m[34m[INFO] [0mmerged partition 0 with 743
+21:26:33 [0m[34m[INFO] [0mmerged partition 0 with 819
+21:26:36 [0m[34m[INFO] [0mmerged partition 0 with 867
+21:26:39 [0m[34m[INFO] [0mmerged partition 0 with 973
+21:26:42 [0m[34m[INFO] [0mmerged partition 0 with 805
+21:26:45 [0m[34m[INFO] [0mmerged partition 0 with 820
+21:26:47 [0m[34m[INFO] [0mmerged partition 0 with 823
+21:26:50 [0m[34m[INFO] [0mmerged partition 0 with 899
+21:26:52 [0m[34m[INFO] [0mmerged partition 0 with 900
+21:26:55 [0m[34m[INFO] [0mmerged partition 0 with 971
+21:26:57 [0m[34m[INFO] [0mmerged partition 0 with 1080
+21:27:00 [0m[34m[INFO] [0mmerged partition 0 with 1081
+21:27:03 [0m[34m[INFO] [0mmerged partition 0 with 1083
+21:27:05 [0m[34m[INFO] [0mmerged partition 0 with 1086
+21:27:08 [0m[34m[INFO] [0mmerged partition 0 with 1088
+21:27:11 [0m[34m[INFO] [0mmerged partition 0 with 1090
+21:27:13 [0m[34m[INFO] [0mmerged partition 0 with 1091
+21:27:16 [0m[34m[INFO] [0mmerged partition 0 with 1092
+21:27:19 [0m[34m[INFO] [0mmerged partition 0 with 1093
+21:27:22 [0m[34m[INFO] [0mmerged partition 0 with 1094
+21:27:24 [0m[34m[INFO] [0mmerged partition 0 with 1095
+21:27:27 [0m[34m[INFO] [0mmerged partition 0 with 1097
+21:27:29 [0m[34m[INFO] [0mmerged partition 0 with 1100
+21:27:32 [0m[34m[INFO] [0mmerged partition 0 with 1102
+21:27:35 [0m[34m[INFO] [0mmerged partition 0 with 1103
+21:27:38 [0m[34m[INFO] [0mmerged partition 0 with 1104
+21:27:41 [0m[34m[INFO] [0mmerged partition 0 with 1105
+21:27:43 [0m[34m[INFO] [0mmerged partition 0 with 1106
+21:27:46 [0m[34m[INFO] [0mmerged partition 0 with 1107
+21:27:49 [0m[34m[INFO] [0mmerged partition 0 with 1108
+21:27:51 [0m[34m[INFO] [0mmerged partition 0 with 1110
+21:27:54 [0m[34m[INFO] [0mmerged partition 0 with 1113
+21:28:02 [0m[34m[INFO] [0mmerged partition 0 with 1115
+21:28:09 [0m[34m[INFO] [0mmerged partition 0 with 1116
+21:28:14 [0m[34m[INFO] [0mmerged partition 0 with 1117
+21:28:17 [0m[34m[INFO] [0mmerged partition 0 with 1118
+21:28:20 [0m[34m[INFO] [0mmerged partition 0 with 1119
+21:28:22 [0m[34m[INFO] [0mmerged partition 0 with 1120
+21:28:25 [0m[34m[INFO] [0mmerged partition 0 with 1121
+21:28:27 [0m[34m[INFO] [0mmerged partition 0 with 1123
+21:28:30 [0m[34m[INFO] [0mmerged partition 0 with 1126
+21:28:32 [0m[34m[INFO] [0mmerged partition 0 with 1128
+21:28:34 [0m[34m[INFO] [0mmerged partition 0 with 1129
+21:28:37 [0m[34m[INFO] [0mmerged partition 0 with 1130
+21:28:39 [0m[34m[INFO] [0mmerged partition 0 with 1131
+21:28:42 [0m[34m[INFO] [0mmerged partition 0 with 1132
+21:28:45 [0m[34m[INFO] [0mmerged partition 0 with 1133
+21:28:47 [0m[34m[INFO] [0mmerged partition 0 with 1134
+21:28:49 [0m[34m[INFO] [0mmerged partition 0 with 1136
+21:28:52 [0m[34m[INFO] [0mmerged partition 0 with 1139
+21:28:54 [0m[34m[INFO] [0mmerged partition 0 with 1141
+21:28:57 [0m[34m[INFO] [0mmerged partition 0 with 1142
+21:28:59 [0m[34m[INFO] [0mmerged partition 0 with 1143
+21:29:01 [0m[34m[INFO] [0mmerged partition 0 with 1144
+21:29:03 [0m[34m[INFO] [0mmerged partition 0 with 1145
+21:29:06 [0m[34m[INFO] [0mmerged partition 0 with 1146
+21:29:08 [0m[34m[INFO] [0mmerged partition 0 with 1147
+21:29:10 [0m[34m[INFO] [0mmerged partition 0 with 1149
+21:29:14 [0m[34m[INFO] [0mmerged partition 0 with 1152
+21:29:16 [0m[34m[INFO] [0mmerged partition 0 with 1154
+21:29:19 [0m[34m[INFO] [0mmerged partition 0 with 1155
+21:29:21 [0m[34m[INFO] [0mmerged partition 0 with 1156
+21:29:23 [0m[34m[INFO] [0mmerged partition 0 with 1157
+21:29:26 [0m[34m[INFO] [0mmerged partition 0 with 1158
+21:29:28 [0m[34m[INFO] [0mmerged partition 0 with 1159
+21:29:30 [0m[34m[INFO] [0mmerged partition 0 with 1160
+21:29:33 [0m[34m[INFO] [0mmerged partition 0 with 1162
+21:29:35 [0m[34m[INFO] [0mmerged partition 0 with 1165
+21:29:37 [0m[34m[INFO] [0mmerged partition 0 with 1167
+21:29:40 [0m[34m[INFO] [0mmerged partition 0 with 1168
+21:29:42 [0m[34m[INFO] [0mmerged partition 0 with 1169
+21:29:44 [0m[34m[INFO] [0mmerged partition 0 with 1170
+21:29:48 [0m[34m[INFO] [0mmerged partition 0 with 1171
+21:29:50 [0m[34m[INFO] [0mmerged partition 0 with 1173
+21:29:52 [0m[34m[INFO] [0mmerged partition 0 with 1175
+21:29:55 [0m[34m[INFO] [0mmerged partition 0 with 1176
+21:29:57 [0m[34m[INFO] [0mmerged partition 0 with 1177
+21:29:59 [0m[34m[INFO] [0mmerged partition 0 with 1178
+21:30:01 [0m[34m[INFO] [0mmerged partition 0 with 1180
+21:30:04 [0m[34m[INFO] [0mmerged partition 0 with 1181
+21:30:06 [0m[34m[INFO] [0mmerged partition 0 with 1182
+21:30:08 [0m[34m[INFO] [0mmerged partition 0 with 1183
+21:30:11 [0m[34m[INFO] [0mmerged partition 0 with 1184
+21:30:13 [0m[34m[INFO] [0mmerged partition 0 with 752
+21:30:15 [0m[34m[INFO] [0mmerged partition 0 with 884
+21:30:17 [0m[34m[INFO] [0mmerged partition 0 with 894
+21:30:21 [0m[34m[INFO] [0mmerged partition 0 with 1082
+21:30:23 [0m[34m[INFO] [0mmerged partition 0 with 1084
+21:30:26 [0m[34m[INFO] [0mmerged partition 0 with 1085
+21:30:28 [0m[34m[INFO] [0mmerged partition 0 with 1087
+21:30:30 [0m[34m[INFO] [0mmerged partition 0 with 1089
+21:30:33 [0m[34m[INFO] [0mmerged partition 0 with 1096
+21:30:35 [0m[34m[INFO] [0mmerged partition 0 with 1098
+21:30:37 [0m[34m[INFO] [0mmerged partition 0 with 1099
+21:30:40 [0m[34m[INFO] [0mmerged partition 0 with 1101
+21:30:42 [0m[34m[INFO] [0mmerged partition 0 with 1109
+21:30:45 [0m[34m[INFO] [0mmerged partition 0 with 1111
+21:30:47 [0m[34m[INFO] [0mmerged partition 0 with 1112
+21:30:49 [0m[34m[INFO] [0mmerged partition 0 with 1114
+21:30:52 [0m[34m[INFO] [0mmerged partition 0 with 1122
+21:30:55 [0m[34m[INFO] [0mmerged partition 0 with 1124
+21:30:58 [0m[34m[INFO] [0mmerged partition 0 with 1125
+21:31:00 [0m[34m[INFO] [0mmerged partition 0 with 1127
+21:31:02 [0m[34m[INFO] [0mmerged partition 0 with 1135
+21:31:04 [0m[34m[INFO] [0mmerged partition 0 with 1137
+21:31:07 [0m[34m[INFO] [0mmerged partition 0 with 1138
+21:31:09 [0m[34m[INFO] [0mmerged partition 0 with 1140
+21:31:12 [0m[34m[INFO] [0mmerged partition 0 with 1148
+21:31:14 [0m[34m[INFO] [0mmerged partition 0 with 1150
+21:31:16 [0m[34m[INFO] [0mmerged partition 0 with 1151
+21:31:18 [0m[34m[INFO] [0mmerged partition 0 with 1153
+21:31:21 [0m[34m[INFO] [0mmerged partition 0 with 1161
+21:31:23 [0m[34m[INFO] [0mmerged partition 0 with 1163
+21:31:25 [0m[34m[INFO] [0mmerged partition 0 with 1164
+21:31:28 [0m[34m[INFO] [0mmerged partition 0 with 1166
+21:31:31 [0m[34m[INFO] [0mmerged partition 0 with 1172
+21:31:33 [0m[34m[INFO] [0mmerged partition 0 with 1174
+21:31:35 [0m[34m[INFO] [0mmerged partition 0 with 1179
+21:31:37 [0m[34m[INFO] [0mmerged partition 0 with 373
+21:31:40 [0m[34m[INFO] [0mmerged partition 0 with 374
+21:31:43 [0m[34m[INFO] [0mmerged partition 0 with 684
+21:31:45 [0m[34m[INFO] [0mmerged partition 0 with 378
+21:31:48 [0m[34m[INFO] [0mmerged partition 0 with 47
+21:31:50 [0m[34m[INFO] [0mmerged partition 0 with 348
+21:31:53 [0m[34m[INFO] [0mmerged partition 0 with 368
+21:31:55 [0m[34m[INFO] [0mmerged partition 0 with 370
+21:31:58 [0m[34m[INFO] [0mmerged partition 0 with 346
+21:32:02 [0m[34m[INFO] [0mmerged partition 0 with 367
+21:32:05 [0m[34m[INFO] [0mmerged partition 0 with 349
+21:32:07 [0m[34m[INFO] [0mmerged partition 0 with 231

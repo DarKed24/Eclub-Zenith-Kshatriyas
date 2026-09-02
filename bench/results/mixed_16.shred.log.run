@@ -1,4 +1,4 @@
-23:00:36 [0m[34m[INFO] [0mSimulator args:
+21:19:07 [0m[34m[INFO] [0mSimulator args:
 SimulatorArgs {
     netlist_verilog: "results/mixed_16.shred.gv",
     top_module: None,
@@ -12,12 +12,12 @@ SimulatorArgs {
     check_with_cpu: false,
     max_cycles: None,
 }
-23:00:36 [0m[34m[INFO] [0minferred clock port clk (posedge)
-23:00:36 [0m[34m[INFO] [0m# of effective partitions in each stage: [9]
-23:00:36 [0m[36m[DEBUG] [0mgem::flatten: [src/flatten.rs:1090] major stage 0: max total boomerang depth (w/ cost) 14
-23:00:36 [0m[34m[INFO] [0mBuilt script for 40 blocks, reg/io state size 1260, sram size 0, script size 605696
+21:19:08 [0m[34m[INFO] [0minferred clock port clk (posedge)
+21:19:08 [0m[34m[INFO] [0m# of effective partitions in each stage: [9]
+21:19:08 [0m[36m[DEBUG] [0mgem::flatten: [src/flatten.rs:1090] major stage 0: max total boomerang depth (w/ cost) 14
+21:19:08 [0m[34m[INFO] [0mBuilt script for 40 blocks, reg/io state size 1260, sram size 0, script size 605696
 Script hash: 11570587640577073184
-23:00:36 [0m[34m[INFO] [0mtotal number of cycles: 20001
-23:00:38 [0m[36m[DEBUG] [0mTimerStarting: [src/bin/cuda_test.rs:419] simulation
-23:00:38 [0m[36m[DEBUG] [0mTimerFinished: [src/bin/cuda_test.rs:419] simulation, Elapsed=243.34547ms
-23:00:38 [0m[34m[INFO] [0mwrite out vcd
+21:19:08 [0m[34m[INFO] [0mtotal number of cycles: 20001
+21:19:09 [0m[36m[DEBUG] [0mTimerStarting: [src/bin/cuda_test.rs:419] simulation
+21:19:09 [0m[36m[DEBUG] [0mTimerFinished: [src/bin/cuda_test.rs:419] simulation, Elapsed=246.950123ms
+21:19:09 [0m[34m[INFO] [0mwrite out vcd

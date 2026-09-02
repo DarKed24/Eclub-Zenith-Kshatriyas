@@ -1,18 +1,16 @@
-21:17:52 [0m[34m[INFO] [0mSimulator args:
+21:19:09 [0m[34m[INFO] [0mSimulator args:
 SimulatorArgs {
     netlist_verilog: "results/mixed_16.shred.gv",
     top_module: None,
     level_split: [],
-    parts_out: "results/mixed_16.shred.gemparts",
+    parts_out: "results/mixed_16.upstream.gemparts",
     max_stage_degrad: 0,
-    no_merge: false,
-    division: 600,
 }
-21:17:52 [0m[34m[INFO] [0minferred clock port clk (posedge)
+21:19:09 [0m[34m[INFO] [0minferred clock port clk (posedge)
 netlist has 278901 pins, 90277 aig pins, 87054 and gates
-21:17:52 [0m[34m[INFO] [0minteractive partitioning stage 0-max
-21:17:52 [0m[34m[INFO] [0mcurrent: 3186 endpoints, try 11 parts
-21:17:52 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 11)
+21:19:09 [0m[34m[INFO] [0minteractive partitioning stage 0-max
+21:19:09 [0m[34m[INFO] [0mcurrent: 3186 endpoints, try 11 parts
+21:19:09 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 11)
 *******************************************************************************
 *                            Partitioning Context                             *
 *******************************************************************************
@@ -188,18 +186,18 @@ Part sizes and weights:
  
 Initial Partitioning Algorithm Summary: 
 Number of Initial Partitioning Calls = 10 
-Average Number of Thread per IP Call = 23.5 
+Average Number of Thread per IP Call = 23.8 
  
 [1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
-greedy_round_robin_fm          7879.28         0.759429        1          10              
-greedy_global_fm               7309.53         0.973261        0          0               
-greedy_sequential_fm           7218.12         0.954482        0          0               
-random                         8319            0.0964056       0          0               
-bfs                            7824.41         0.184454        1          10              
-label_propagation              11977.5         2.7567          0          0               
-greedy_round_robin_max_net     2668.14         0.600427        5          50              
-greedy_global_max_net          1964.36         0.625131        0          0               
-greedy_sequential_max_net      1992.6          0.624991        3          30              
+greedy_round_robin_fm          7879.28         0.79737         1          10              
+greedy_global_fm               7309.53         0.939181        0          0               
+greedy_sequential_fm           7218.12         0.938908        0          0               
+random                         8319            0.0920479       0          0               
+bfs                            7824.41         0.206375        1          10              
+label_propagation              11977.5         2.84372         0          0               
+greedy_round_robin_max_net     2668.14         0.601218        5          50              
+greedy_global_max_net          1964.36         0.587389        0          0               
+greedy_sequential_max_net      1992.6          0.592131        3          30              
 
 ******************************************************************************** 
 *                               Local Search...                                * 
@@ -232,53 +230,53 @@ HE size             HE weight           HN degree           HN weight
 | avg= 22.6223      | avg= 18.8426      | avg= 29.737       | avg= 28.8949     
 | sd = 25.5094      | sd = 41.1879      | sd = 94.9271      | sd = 63.9909     
 -------------------------------------------------------------------------------- 
-21:17:56 [0m[34m[INFO] [0minteractive partition completed: 11 in total. merging started.
-21:18:05 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 0 with 9 due to nstage degradation: 12 > 11
-21:18:05 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 0 with 1 due to nstage degradation: 12 > 11
-21:18:05 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 0 with 4 due to nstage degradation: 12 > 11
-21:18:05 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 0 with 7 due to nstage degradation: 12 > 11
-21:18:13 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 0 with 8 due to nstage degradation: 14 > 11
-21:18:13 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 0 with 2 due to nstage degradation: 13 > 11
-21:18:13 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 0 with 5 due to nstage degradation: 14 > 11
-21:18:13 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 0 with 10 due to nstage degradation: 13 > 11
-21:18:13 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 0 with 3 due to nstage degradation: 13 > 11
-21:18:13 [0m[34m[INFO] [0mpart 0: #stages 11
-21:18:17 [0m[34m[INFO] [0mmerged partition 1 with 9
-21:18:22 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 1 with 4 due to nstage degradation: 12 > 11
-21:18:22 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 1 with 7 due to nstage degradation: 12 > 11
-21:18:22 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 1 with 8 due to nstage degradation: 14 > 11
-21:18:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 1 with 2 due to nstage degradation: 14 > 11
-21:18:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 1 with 5 due to nstage degradation: 14 > 11
-21:18:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 1 with 10 due to nstage degradation: 14 > 11
-21:18:28 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 1 with 3 due to nstage degradation: 14 > 11
-21:18:28 [0m[34m[INFO] [0mpart 1: #stages 11
-21:18:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 2 with 4 due to nstage degradation: 12 > 11
-21:18:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 2 with 7 due to nstage degradation: 12 > 11
-21:18:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 2 with 6 due to nstage degradation: 15 > 11
-21:18:32 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 2 with 3 due to nstage degradation: 13 > 11
-21:18:39 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 2 with 8 due to nstage degradation: 13 > 11
-21:18:39 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 2 with 5 due to nstage degradation: 13 > 11
-21:18:39 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 2 with 10 due to nstage degradation: 13 > 11
-21:18:39 [0m[34m[INFO] [0mpart 2: #stages 11
-21:18:44 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 3 with 4 due to nstage degradation: 12 > 11
-21:18:44 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 3 with 7 due to nstage degradation: 12 > 11
-21:18:44 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 3 with 8 due to nstage degradation: 13 > 11
-21:18:49 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 3 with 5 due to nstage degradation: 14 > 11
-21:18:49 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 3 with 10 due to nstage degradation: 13 > 11
-21:18:49 [0m[34m[INFO] [0mpart 3: #stages 11
-21:18:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 4 with 8 due to nstage degradation: 12 > 11
-21:18:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 4 with 5 due to nstage degradation: 12 > 11
-21:18:54 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 4 with 10 due to nstage degradation: 12 > 11
-21:18:54 [0m[34m[INFO] [0mmerged partition 4 with 7
-21:18:54 [0m[34m[INFO] [0mpart 4: #stages 11
-21:19:00 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 5 with 6 due to nstage degradation: 15 > 11
-21:19:00 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 5 with 8 due to nstage degradation: 13 > 11
-21:19:00 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 5 with 10 due to nstage degradation: 13 > 11
-21:19:00 [0m[34m[INFO] [0mpart 5: #stages 11
-21:19:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 6 with 8 due to nstage degradation: 15 > 11
-21:19:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 6 with 10 due to nstage degradation: 15 > 11
-21:19:02 [0m[34m[INFO] [0mpart 6: #stages 9
-21:19:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:725] skipped merging 8 with 10 due to nstage degradation: 13 > 11
-21:19:07 [0m[34m[INFO] [0mpart 8: #stages 11
-21:19:07 [0m[34m[INFO] [0mpart 10: #stages 11
-21:19:07 [0m[34m[INFO] [0mafter merging: 9 parts.
+21:19:15 [0m[34m[INFO] [0minteractive partition completed: 11 in total. merging started.
+21:19:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 9 due to nstage degradation: 12 > 11
+21:19:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 1 due to nstage degradation: 12 > 11
+21:19:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 4 due to nstage degradation: 12 > 11
+21:19:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 7 due to nstage degradation: 12 > 11
+21:19:30 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 8 due to nstage degradation: 14 > 11
+21:19:30 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 2 due to nstage degradation: 13 > 11
+21:19:30 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 5 due to nstage degradation: 14 > 11
+21:19:30 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 10 due to nstage degradation: 13 > 11
+21:19:30 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 3 due to nstage degradation: 13 > 11
+21:19:30 [0m[34m[INFO] [0mpart 0: #stages 11
+21:19:34 [0m[34m[INFO] [0mmerged partition 1 with 9
+21:19:39 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 1 with 4 due to nstage degradation: 12 > 11
+21:19:39 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 1 with 7 due to nstage degradation: 12 > 11
+21:19:39 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 1 with 8 due to nstage degradation: 14 > 11
+21:19:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 1 with 2 due to nstage degradation: 14 > 11
+21:19:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 1 with 5 due to nstage degradation: 14 > 11
+21:19:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 1 with 10 due to nstage degradation: 14 > 11
+21:19:46 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 1 with 3 due to nstage degradation: 14 > 11
+21:19:46 [0m[34m[INFO] [0mpart 1: #stages 11
+21:19:51 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 4 due to nstage degradation: 12 > 11
+21:19:51 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 7 due to nstage degradation: 12 > 11
+21:19:51 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 6 due to nstage degradation: 15 > 11
+21:19:51 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 3 due to nstage degradation: 13 > 11
+21:19:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 8 due to nstage degradation: 13 > 11
+21:19:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 5 due to nstage degradation: 13 > 11
+21:19:57 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 10 due to nstage degradation: 13 > 11
+21:19:57 [0m[34m[INFO] [0mpart 2: #stages 11
+21:20:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 4 due to nstage degradation: 12 > 11
+21:20:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 7 due to nstage degradation: 12 > 11
+21:20:02 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 8 due to nstage degradation: 13 > 11
+21:20:06 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 5 due to nstage degradation: 14 > 11
+21:20:06 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 10 due to nstage degradation: 13 > 11
+21:20:06 [0m[34m[INFO] [0mpart 3: #stages 11
+21:20:11 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 8 due to nstage degradation: 12 > 11
+21:20:11 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 5 due to nstage degradation: 12 > 11
+21:20:11 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 10 due to nstage degradation: 12 > 11
+21:20:11 [0m[34m[INFO] [0mmerged partition 4 with 7
+21:20:11 [0m[34m[INFO] [0mpart 4: #stages 11
+21:20:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 5 with 6 due to nstage degradation: 15 > 11
+21:20:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 5 with 8 due to nstage degradation: 13 > 11
+21:20:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 5 with 10 due to nstage degradation: 13 > 11
+21:20:16 [0m[34m[INFO] [0mpart 5: #stages 11
+21:20:20 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 6 with 8 due to nstage degradation: 15 > 11
+21:20:20 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 6 with 10 due to nstage degradation: 15 > 11
+21:20:20 [0m[34m[INFO] [0mpart 6: #stages 9
+21:20:24 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 8 with 10 due to nstage degradation: 13 > 11
+21:20:24 [0m[34m[INFO] [0mpart 8: #stages 11
+21:20:24 [0m[34m[INFO] [0mpart 10: #stages 11
+21:20:24 [0m[34m[INFO] [0mafter merging: 9 parts.

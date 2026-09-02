@@ -1,0 +1,25 @@
+21:17:51 [0m[34m[INFO] [0mSimulator args:
+SimulatorArgs {
+    netlist_verilog: "results/srl_lines_32.shred.gv",
+    top_module: None,
+    level_split: [],
+    gemparts: "results/srl_lines_32.upstream.gemparts",
+    input_vcd: "results/srl_lines_32.stim.vcd",
+    input_vcd_scope: None,
+    output_vcd: "results/srl_lines_32.upstream.out.vcd",
+    output_vcd_scope: None,
+    num_blocks: 40,
+    check_with_cpu: false,
+    max_cycles: None,
+}
+21:17:51 [0m[33m[WARN] [0m(NL_SV_LIT) X literal unsupported, treating as 0
+21:17:51 [0m[33m[WARN] [0mFurther warn (NL_SV_LIT) will be suppressed.
+21:17:51 [0m[34m[INFO] [0minferred clock port clk (posedge)
+21:17:51 [0m[34m[INFO] [0m# of effective partitions in each stage: [1]
+21:17:51 [0m[36m[DEBUG] [0mgem::flatten: [src/flatten.rs:754] major stage 0: max total boomerang depth (w/ cost) 6
+21:17:51 [0m[34m[INFO] [0mBuilt script for 40 blocks, reg/io state size 176, sram size 0, script size 38400
+Script hash: 5081054579970316301
+21:17:51 [0m[34m[INFO] [0mtotal number of cycles: 20001
+21:17:51 [0m[36m[DEBUG] [0mTimerStarting: [src/bin/cuda_test.rs:677] simulation
+21:17:51 [0m[36m[DEBUG] [0mTimerFinished: [src/bin/cuda_test.rs:677] simulation, Elapsed=117.487188ms
+21:17:51 [0m[34m[INFO] [0mwrite out vcd
