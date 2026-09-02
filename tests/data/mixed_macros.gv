@@ -1,0 +1,74 @@
+// Part B coexistence test: a Class R macro (GEM_DSP48E2) and a Class C macro
+// (CARRY4) plus DFF and AIG glue in one design.
+//   - a_in / b_in are registered
+//   - the DSP computes P <= a * b   (multiply-only, OPMODE_S = 1)
+//   - a CARRY4 adds the low nibble of the previous-cycle P to a
+//   - primary outputs read the CARRY4 sum (combinational) and one P bit
+// The DSP is a clean cycle-boundary cut (no split); the CARRY4 forces one
+// major-stage split, so the pipeline has TWO major stages.
+
+module mixed_macros (clk, a_in, b_in, p_bit, sum_lo, cout);
+  input clk;
+  input [7:0] a_in;
+  input [7:0] b_in;
+  output p_bit;
+  output [3:0] sum_lo;
+  output cout;
+
+  wire [7:0] a;
+  wire [7:0] b;
+  wire [47:0] p;
+  wire [3:0] s;
+  wire [3:0] nab, oab;
+  wire [3:0] o, co;
+
+  DFF ra0 (.CLK(clk), .D(a_in[0]), .Q(a[0]));
+  DFF ra1 (.CLK(clk), .D(a_in[1]), .Q(a[1]));
+  DFF ra2 (.CLK(clk), .D(a_in[2]), .Q(a[2]));
+  DFF ra3 (.CLK(clk), .D(a_in[3]), .Q(a[3]));
+  DFF ra4 (.CLK(clk), .D(a_in[4]), .Q(a[4]));
+  DFF ra5 (.CLK(clk), .D(a_in[5]), .Q(a[5]));
+  DFF ra6 (.CLK(clk), .D(a_in[6]), .Q(a[6]));
+  DFF ra7 (.CLK(clk), .D(a_in[7]), .Q(a[7]));
+  DFF rb0 (.CLK(clk), .D(b_in[0]), .Q(b[0]));
+  DFF rb1 (.CLK(clk), .D(b_in[1]), .Q(b[1]));
+  DFF rb2 (.CLK(clk), .D(b_in[2]), .Q(b[2]));
+  DFF rb3 (.CLK(clk), .D(b_in[3]), .Q(b[3]));
+  DFF rb4 (.CLK(clk), .D(b_in[4]), .Q(b[4]));
+  DFF rb5 (.CLK(clk), .D(b_in[5]), .Q(b[5]));
+  DFF rb6 (.CLK(clk), .D(b_in[6]), .Q(b[6]));
+  DFF rb7 (.CLK(clk), .D(b_in[7]), .Q(b[7]));
+
+  GEM_DSP48E2 dsp (
+    .CLK(clk),
+    .CEP(1'b1),
+    .RSTP(1'b0),
+    .USE_D(1'b0),
+    .A({19'b0, a[7:0]}),
+    .D(27'b0),
+    .B({10'b0, b[7:0]}),
+    .C(48'b0),
+    .OPMODE_S(2'b01),
+    .P(p)
+  );
+
+  // s = p[3:0] ^ a[3:0]
+  AND2_11_0 xn0 (.A(p[0]), .B(a[0]), .Y(nab[0]));
+  AND2_11_1 xo0 (.A(p[0]), .B(a[0]), .Y(oab[0]));
+  AND2_00_0 xs0 (.A(nab[0]), .B(oab[0]), .Y(s[0]));
+  AND2_11_0 xn1 (.A(p[1]), .B(a[1]), .Y(nab[1]));
+  AND2_11_1 xo1 (.A(p[1]), .B(a[1]), .Y(oab[1]));
+  AND2_00_0 xs1 (.A(nab[1]), .B(oab[1]), .Y(s[1]));
+  AND2_11_0 xn2 (.A(p[2]), .B(a[2]), .Y(nab[2]));
+  AND2_11_1 xo2 (.A(p[2]), .B(a[2]), .Y(oab[2]));
+  AND2_00_0 xs2 (.A(nab[2]), .B(oab[2]), .Y(s[2]));
+  AND2_11_0 xn3 (.A(p[3]), .B(a[3]), .Y(nab[3]));
+  AND2_11_1 xo3 (.A(p[3]), .B(a[3]), .Y(oab[3]));
+  AND2_00_0 xs3 (.A(nab[3]), .B(oab[3]), .Y(s[3]));
+
+  CARRY4 cc (.S(s), .DI(a[3:0]), .CYINIT(1'b0), .CI(1'b0), .O(o), .CO(co));
+
+  assign sum_lo = o;
+  assign cout = co[3];
+  INV pb (.A(p[7]), .Y(p_bit));
+endmodule

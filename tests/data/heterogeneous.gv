@@ -1,0 +1,90 @@
+// The headline all-three-primitives test: GEM_DSP48E2 (Part A, Class R),
+// CARRY4 (Part B, Class C), SRLC32E (Part C, Class R *and* Class C) plus DFFs
+// and 1-bit AIG glue, all in one design and all scheduled by one boomerang.
+// ---------------------------------------------------------------------
+// Dataflow:
+//   a, b        registered inputs
+//   DSP         P <= a * b                      (Class R, no split)
+//   s = p ^ a   1-bit AIG glue                  (2 AIG levels)
+//   CARRY4      O/CO = s + a  with CI = 0       (Class C, macro_level 2)
+//   SRLC32E     D  = a[0], CE = b[0]            (Class R shift)
+//               A  = {1'b0, O[3:0]}             (Class C read, macro_level 3)
+//               Q  -> q_out, Q31 -> q31_out
+// ---------------------------------------------------------------------
+// The SRL's read address is driven by the CARRY4's output, so this also pins
+// down the macro -> macro case of the levelized-DAG fixpoint: two DISTINCT
+// Class C macro levels, hence two forced splits and THREE major stages, with
+// the CARRY4's outputs travelling to the read macro through staged IO.
+
+module heterogeneous (clk, a_in, b_in, p_bit, sum_lo, cout, q_out, q31_out);
+  input clk;
+  input [7:0] a_in;
+  input [7:0] b_in;
+  output p_bit;
+  output [3:0] sum_lo;
+  output cout;
+  output q_out;
+  output q31_out;
+
+  wire [7:0] a;
+  wire [7:0] b;
+  wire [47:0] p;
+  wire [3:0] s;
+  wire [3:0] nab, oab;
+  wire [3:0] o, co;
+
+  DFF ra0 (.CLK(clk), .D(a_in[0]), .Q(a[0]));
+  DFF ra1 (.CLK(clk), .D(a_in[1]), .Q(a[1]));
+  DFF ra2 (.CLK(clk), .D(a_in[2]), .Q(a[2]));
+  DFF ra3 (.CLK(clk), .D(a_in[3]), .Q(a[3]));
+  DFF ra4 (.CLK(clk), .D(a_in[4]), .Q(a[4]));
+  DFF ra5 (.CLK(clk), .D(a_in[5]), .Q(a[5]));
+  DFF ra6 (.CLK(clk), .D(a_in[6]), .Q(a[6]));
+  DFF ra7 (.CLK(clk), .D(a_in[7]), .Q(a[7]));
+  DFF rb0 (.CLK(clk), .D(b_in[0]), .Q(b[0]));
+  DFF rb1 (.CLK(clk), .D(b_in[1]), .Q(b[1]));
+  DFF rb2 (.CLK(clk), .D(b_in[2]), .Q(b[2]));
+  DFF rb3 (.CLK(clk), .D(b_in[3]), .Q(b[3]));
+  DFF rb4 (.CLK(clk), .D(b_in[4]), .Q(b[4]));
+  DFF rb5 (.CLK(clk), .D(b_in[5]), .Q(b[5]));
+  DFF rb6 (.CLK(clk), .D(b_in[6]), .Q(b[6]));
+  DFF rb7 (.CLK(clk), .D(b_in[7]), .Q(b[7]));
+
+  GEM_DSP48E2 dsp (
+    .CLK(clk),
+    .CEP(1'b1),
+    .RSTP(1'b0),
+    .USE_D(1'b0),
+    .A({19'b0, a[7:0]}),
+    .D(27'b0),
+    .B({10'b0, b[7:0]}),
+    .C(48'b0),
+    .OPMODE_S(2'b01),
+    .P(p)
+  );
+
+  // s = p[3:0] ^ a[3:0]
+  AND2_11_0 xn0 (.A(p[0]), .B(a[0]), .Y(nab[0]));
+  AND2_11_1 xo0 (.A(p[0]), .B(a[0]), .Y(oab[0]));
+  AND2_00_0 xs0 (.A(nab[0]), .B(oab[0]), .Y(s[0]));
+  AND2_11_0 xn1 (.A(p[1]), .B(a[1]), .Y(nab[1]));
+  AND2_11_1 xo1 (.A(p[1]), .B(a[1]), .Y(oab[1]));
+  AND2_00_0 xs1 (.A(nab[1]), .B(oab[1]), .Y(s[1]));
+  AND2_11_0 xn2 (.A(p[2]), .B(a[2]), .Y(nab[2]));
+  AND2_11_1 xo2 (.A(p[2]), .B(a[2]), .Y(oab[2]));
+  AND2_00_0 xs2 (.A(nab[2]), .B(oab[2]), .Y(s[2]));
+  AND2_11_0 xn3 (.A(p[3]), .B(a[3]), .Y(nab[3]));
+  AND2_11_1 xo3 (.A(p[3]), .B(a[3]), .Y(oab[3]));
+  AND2_00_0 xs3 (.A(nab[3]), .B(oab[3]), .Y(s[3]));
+
+  CARRY4 cc (.S(s), .DI(a[3:0]), .CYINIT(1'b0), .CI(1'b0), .O(o), .CO(co));
+
+  SRLC32E sr (
+    .CLK(clk), .CE(b[0]), .D(a[0]), .A({1'b0, o[3:0]}),
+    .Q(q_out), .Q31(q31_out)
+  );
+
+  assign sum_lo = o;
+  assign cout = co[3];
+  INV pb (.A(p[7]), .Y(p_bit));
+endmodule

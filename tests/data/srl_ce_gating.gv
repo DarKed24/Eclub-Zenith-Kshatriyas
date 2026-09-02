@@ -1,0 +1,24 @@
+// Part C: clock-enable gating. `CE` comes from a random primary input, so the
+// 32-bit state must HOLD on every cycle where CE == 0 and shift only when it
+// is 1.
+// ---------------------------------------------------------------------
+// GEM models this exactly like a disabled DFF: `CE` is folded into the Class R
+// macro's `en_iv = CLK & CE`, which drives the write-out clock enable, so the
+// datapath itself stays unconditional (`state' = (state << 1) | D`) and the
+// hold happens in the commit. No branch, no divergence.
+// ---------------------------------------------------------------------
+//   - TWO major stages (A is constant, so the read macro sits at level 0)
+//   - the differential harness compares all 32 state bits every cycle
+
+module srl_ce_gating (clk, d_in, ce_in, q_out, q31_out);
+  input clk;
+  input d_in;
+  input ce_in;
+  output q_out;
+  output q31_out;
+
+  SRLC32E sr (
+    .CLK(clk), .CE(ce_in), .D(d_in), .A(5'b00011),
+    .Q(q_out), .Q31(q31_out)
+  );
+endmodule

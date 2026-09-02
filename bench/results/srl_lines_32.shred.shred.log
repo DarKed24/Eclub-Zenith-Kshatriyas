@@ -1,0 +1,1451 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+136 (git sha1 c30457480-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Running command `
+plugin -i slang
+read_slang --top srl_lines_32 designs/srl_lines_32.sv /home/darsh/gem/bench/flow/dsp48e2_bb.v /home/darsh/gem/bench/flow/gemcarry_shred.v /home/darsh/gem/bench/flow/gemsrl_shred.v
+hierarchy -check -top srl_lines_32
+proc;;
+opt_expr; opt_dff; opt_clean
+memory -nomap
+memory_libmap -lib /home/darsh/gem/aigpdk/memlib_yosys.txt -logic-cost-rom 100 -logic-cost-ram 100
+techmap -map /home/darsh/gem/aigpdk/gemmacro_map.v
+read_verilog /home/darsh/gem/aigpdk/gemmacro_shred.v
+proc
+hierarchy -check -top srl_lines_32
+opt_expr -fine; opt_clean
+synth -flatten
+delete t:$print
+dfflibmap -liberty /home/darsh/gem/aigpdk/aigpdk_nomem.lib
+opt_clean -purge
+abc -liberty /home/darsh/gem/aigpdk/aigpdk_nomem.lib
+opt_clean -purge
+techmap
+abc -liberty /home/darsh/gem/aigpdk/aigpdk_nomem.lib
+opt_clean -purge
+setparam -unset INIT -unset IS_CLK_INVERTED t:SRLC32E
+rename -hide w:*.*
+stat
+write_verilog -noattr results/srl_lines_32.shred.gv
+' --
+
+1. Executing SLANG frontend.
+Top level design units:
+    srl_lines_32
+
+
+Build succeeded: 0 errors, 0 warnings
+
+1.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `srl_lines_32.$627'.
+Removing empty process `srl_lines_32.$529'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$519'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$508'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$496'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$486'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$475'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$463'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$453'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$442'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$430'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$420'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$409'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$397'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$387'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$376'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$364'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$354'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$343'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$331'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$321'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$310'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$298'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$288'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$277'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$265'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$255'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$244'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$232'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$222'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$211'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$199'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$189'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$178'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$166'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$156'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$145'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$133'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$123'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$112'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$100'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$90'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$79'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$67'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$57'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$46'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$34'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$24'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$13'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$1'.
+Removing empty process `srl_lines_32.$0'.
+Cleaned up 48 empty switches.
+
+1.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+1.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+1.4. Executing PROC_INIT pass (extract init attributes).
+
+1.5. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~48 debug messages>
+
+1.6. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\srl_lines_32.$508'.
+     1/1: $line[31].casc.u0.sh$509
+Creating decoders for process `\srl_lines_32.$496'.
+     1/1: $line[30].dyn.u.sh$497
+Creating decoders for process `\srl_lines_32.$486'.
+     1/1: $line[29].casc.u1.sh$487
+Creating decoders for process `\srl_lines_32.$475'.
+     1/1: $line[29].casc.u0.sh$476
+Creating decoders for process `\srl_lines_32.$463'.
+     1/1: $line[28].dyn.u.sh$464
+Creating decoders for process `\srl_lines_32.$453'.
+     1/1: $line[27].casc.u1.sh$454
+Creating decoders for process `\srl_lines_32.$442'.
+     1/1: $line[27].casc.u0.sh$443
+Creating decoders for process `\srl_lines_32.$430'.
+     1/1: $line[26].dyn.u.sh$431
+Creating decoders for process `\srl_lines_32.$420'.
+     1/1: $line[25].casc.u1.sh$421
+Creating decoders for process `\srl_lines_32.$409'.
+     1/1: $line[25].casc.u0.sh$410
+Creating decoders for process `\srl_lines_32.$397'.
+     1/1: $line[24].dyn.u.sh$398
+Creating decoders for process `\srl_lines_32.$387'.
+     1/1: $line[23].casc.u1.sh$388
+Creating decoders for process `\srl_lines_32.$376'.
+     1/1: $line[23].casc.u0.sh$377
+Creating decoders for process `\srl_lines_32.$364'.
+     1/1: $line[22].dyn.u.sh$365
+Creating decoders for process `\srl_lines_32.$354'.
+     1/1: $line[21].casc.u1.sh$355
+Creating decoders for process `\srl_lines_32.$343'.
+     1/1: $line[21].casc.u0.sh$344
+Creating decoders for process `\srl_lines_32.$331'.
+     1/1: $line[20].dyn.u.sh$332
+Creating decoders for process `\srl_lines_32.$321'.
+     1/1: $line[19].casc.u1.sh$322
+Creating decoders for process `\srl_lines_32.$310'.
+     1/1: $line[19].casc.u0.sh$311
+Creating decoders for process `\srl_lines_32.$298'.
+     1/1: $line[18].dyn.u.sh$299
+Creating decoders for process `\srl_lines_32.$288'.
+     1/1: $line[17].casc.u1.sh$289
+Creating decoders for process `\srl_lines_32.$277'.
+     1/1: $line[17].casc.u0.sh$278
+Creating decoders for process `\srl_lines_32.$265'.
+     1/1: $line[16].dyn.u.sh$266
+Creating decoders for process `\srl_lines_32.$255'.
+     1/1: $line[15].casc.u1.sh$256
+Creating decoders for process `\srl_lines_32.$244'.
+     1/1: $line[15].casc.u0.sh$245
+Creating decoders for process `\srl_lines_32.$232'.
+     1/1: $line[14].dyn.u.sh$233
+Creating decoders for process `\srl_lines_32.$222'.
+     1/1: $line[13].casc.u1.sh$223
+Creating decoders for process `\srl_lines_32.$211'.
+     1/1: $line[13].casc.u0.sh$212
+Creating decoders for process `\srl_lines_32.$199'.
+     1/1: $line[12].dyn.u.sh$200
+Creating decoders for process `\srl_lines_32.$189'.
+     1/1: $line[11].casc.u1.sh$190
+Creating decoders for process `\srl_lines_32.$178'.
+     1/1: $line[11].casc.u0.sh$179
+Creating decoders for process `\srl_lines_32.$166'.
+     1/1: $line[10].dyn.u.sh$167
+Creating decoders for process `\srl_lines_32.$156'.
+     1/1: $line[9].casc.u1.sh$157
+Creating decoders for process `\srl_lines_32.$145'.
+     1/1: $line[9].casc.u0.sh$146
+Creating decoders for process `\srl_lines_32.$133'.
+     1/1: $line[8].dyn.u.sh$134
+Creating decoders for process `\srl_lines_32.$123'.
+     1/1: $line[7].casc.u1.sh$124
+Creating decoders for process `\srl_lines_32.$112'.
+     1/1: $line[7].casc.u0.sh$113
+Creating decoders for process `\srl_lines_32.$100'.
+     1/1: $line[6].dyn.u.sh$101
+Creating decoders for process `\srl_lines_32.$90'.
+     1/1: $line[5].casc.u1.sh$91
+Creating decoders for process `\srl_lines_32.$79'.
+     1/1: $line[5].casc.u0.sh$80
+Creating decoders for process `\srl_lines_32.$67'.
+     1/1: $line[4].dyn.u.sh$68
+Creating decoders for process `\srl_lines_32.$57'.
+     1/1: $line[3].casc.u1.sh$58
+Creating decoders for process `\srl_lines_32.$46'.
+     1/1: $line[3].casc.u0.sh$47
+Creating decoders for process `\srl_lines_32.$34'.
+     1/1: $line[2].dyn.u.sh$35
+Creating decoders for process `\srl_lines_32.$24'.
+     1/1: $line[1].casc.u1.sh$25
+Creating decoders for process `\srl_lines_32.$13'.
+     1/1: $line[1].casc.u0.sh$14
+Creating decoders for process `\srl_lines_32.$1'.
+     1/1: $line[0].dyn.u.sh$2
+Creating decoders for process `\srl_lines_32.$519'.
+     1/1: $line[31].casc.u1.sh$520
+
+1.7. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\srl_lines_32.$508'.
+Removing empty process `srl_lines_32.$508'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$496'.
+Removing empty process `srl_lines_32.$496'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$486'.
+Removing empty process `srl_lines_32.$486'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$475'.
+Removing empty process `srl_lines_32.$475'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$463'.
+Removing empty process `srl_lines_32.$463'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$453'.
+Removing empty process `srl_lines_32.$453'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$442'.
+Removing empty process `srl_lines_32.$442'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$430'.
+Removing empty process `srl_lines_32.$430'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$420'.
+Removing empty process `srl_lines_32.$420'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$409'.
+Removing empty process `srl_lines_32.$409'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$397'.
+Removing empty process `srl_lines_32.$397'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$387'.
+Removing empty process `srl_lines_32.$387'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$376'.
+Removing empty process `srl_lines_32.$376'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$364'.
+Removing empty process `srl_lines_32.$364'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$354'.
+Removing empty process `srl_lines_32.$354'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$343'.
+Removing empty process `srl_lines_32.$343'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$331'.
+Removing empty process `srl_lines_32.$331'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$321'.
+Removing empty process `srl_lines_32.$321'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$310'.
+Removing empty process `srl_lines_32.$310'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$298'.
+Removing empty process `srl_lines_32.$298'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$288'.
+Removing empty process `srl_lines_32.$288'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$277'.
+Removing empty process `srl_lines_32.$277'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$265'.
+Removing empty process `srl_lines_32.$265'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$255'.
+Removing empty process `srl_lines_32.$255'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$244'.
+Removing empty process `srl_lines_32.$244'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$232'.
+Removing empty process `srl_lines_32.$232'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$222'.
+Removing empty process `srl_lines_32.$222'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$211'.
+Removing empty process `srl_lines_32.$211'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$199'.
+Removing empty process `srl_lines_32.$199'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$189'.
+Removing empty process `srl_lines_32.$189'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$178'.
+Removing empty process `srl_lines_32.$178'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$166'.
+Removing empty process `srl_lines_32.$166'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$156'.
+Removing empty process `srl_lines_32.$156'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$145'.
+Removing empty process `srl_lines_32.$145'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$133'.
+Removing empty process `srl_lines_32.$133'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$123'.
+Removing empty process `srl_lines_32.$123'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$112'.
+Removing empty process `srl_lines_32.$112'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$100'.
+Removing empty process `srl_lines_32.$100'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$90'.
+Removing empty process `srl_lines_32.$90'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$79'.
+Removing empty process `srl_lines_32.$79'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$67'.
+Removing empty process `srl_lines_32.$67'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$57'.
+Removing empty process `srl_lines_32.$57'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$46'.
+Removing empty process `srl_lines_32.$46'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$34'.
+Removing empty process `srl_lines_32.$34'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$24'.
+Removing empty process `srl_lines_32.$24'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$13'.
+Removing empty process `srl_lines_32.$13'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$1'.
+Removing empty process `srl_lines_32.$1'.
+Found and cleaned up 1 empty switch in `\srl_lines_32.$519'.
+Removing empty process `srl_lines_32.$519'.
+Cleaned up 48 empty switches.
+
+1.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+<suppressed ~2 debug messages>
+
+2. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1. Analyzing design hierarchy..
+Top module:  \srl_lines_32
+
+2.2. Analyzing design hierarchy..
+Top module:  \srl_lines_32
+Removed 0 unused modules.
+
+3. Executing PROC pass (convert processes to netlists).
+
+3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+3.4. Executing PROC_INIT pass (extract init attributes).
+
+3.5. Executing PROC_ARST pass (detect async resets in processes).
+
+3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+Removed 0 unused cells and 148 unused wires.
+
+4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+<suppressed ~16 debug messages>
+
+5. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $driver$line[0].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[0].dyn.u.sh [30:0] \d_pipe [0] }, Q = \line[0].dyn.u.sh).
+Adding EN signal on $driver$line[29].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[29].casc.u1.sh [30:0] \line[29].casc.u0.sh [31] }, Q = \line[29].casc.u1.sh).
+Adding EN signal on $driver$line[1].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[1].casc.u0.sh [30:0] \d_pipe [1] }, Q = \line[1].casc.u0.sh).
+Adding EN signal on $driver$line[17].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[17].casc.u0.sh [30:0] \d_pipe [17] }, Q = \line[17].casc.u0.sh).
+Adding EN signal on $driver$line[1].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[1].casc.u1.sh [30:0] \line[1].casc.u0.sh [31] }, Q = \line[1].casc.u1.sh).
+Adding EN signal on $driver$line[30].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[30].dyn.u.sh [30:0] \d_pipe [30] }, Q = \line[30].dyn.u.sh).
+Adding EN signal on $driver$line[17].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[17].casc.u1.sh [30:0] \line[17].casc.u0.sh [31] }, Q = \line[17].casc.u1.sh).
+Adding EN signal on $driver$line[2].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[2].dyn.u.sh [30:0] \d_pipe [2] }, Q = \line[2].dyn.u.sh).
+Adding EN signal on $driver$line[18].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[18].dyn.u.sh [30:0] \d_pipe [18] }, Q = \line[18].dyn.u.sh).
+Adding EN signal on $driver$line[3].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[3].casc.u0.sh [30:0] \d_pipe [3] }, Q = \line[3].casc.u0.sh).
+Adding EN signal on $driver$line[31].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[31].casc.u0.sh [30:0] \d_pipe [31] }, Q = \line[31].casc.u0.sh).
+Adding EN signal on $driver$line[19].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[19].casc.u0.sh [30:0] \d_pipe [19] }, Q = \line[19].casc.u0.sh).
+Adding EN signal on $driver$line[3].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[3].casc.u1.sh [30:0] \line[3].casc.u0.sh [31] }, Q = \line[3].casc.u1.sh).
+Adding EN signal on $driver$line[31].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[31].casc.u1.sh [30:0] \line[31].casc.u0.sh [31] }, Q = \line[31].casc.u1.sh).
+Adding EN signal on $driver$line[4].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[4].dyn.u.sh [30:0] \d_pipe [4] }, Q = \line[4].dyn.u.sh).
+Adding EN signal on $driver$line[19].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[19].casc.u1.sh [30:0] \line[19].casc.u0.sh [31] }, Q = \line[19].casc.u1.sh).
+Adding EN signal on $driver$line[5].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[5].casc.u0.sh [30:0] \d_pipe [5] }, Q = \line[5].casc.u0.sh).
+Adding EN signal on $driver$line[20].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[20].dyn.u.sh [30:0] \d_pipe [20] }, Q = \line[20].dyn.u.sh).
+Adding EN signal on $driver$line[16].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[16].dyn.u.sh [30:0] \d_pipe [16] }, Q = \line[16].dyn.u.sh).
+Adding EN signal on $driver$line[5].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[5].casc.u1.sh [30:0] \line[5].casc.u0.sh [31] }, Q = \line[5].casc.u1.sh).
+Adding EN signal on $driver$line[21].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[21].casc.u0.sh [30:0] \d_pipe [21] }, Q = \line[21].casc.u0.sh).
+Adding EN signal on $driver$line[6].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[6].dyn.u.sh [30:0] \d_pipe [6] }, Q = \line[6].dyn.u.sh).
+Adding EN signal on $driver$line[21].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[21].casc.u1.sh [30:0] \line[21].casc.u0.sh [31] }, Q = \line[21].casc.u1.sh).
+Adding EN signal on $driver$line[7].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[7].casc.u0.sh [30:0] \d_pipe [7] }, Q = \line[7].casc.u0.sh).
+Adding EN signal on $driver$line[29].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[29].casc.u0.sh [30:0] \d_pipe [29] }, Q = \line[29].casc.u0.sh).
+Adding EN signal on $driver$line[22].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[22].dyn.u.sh [30:0] \d_pipe [22] }, Q = \line[22].dyn.u.sh).
+Adding EN signal on $driver$line[7].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[7].casc.u1.sh [30:0] \line[7].casc.u0.sh [31] }, Q = \line[7].casc.u1.sh).
+Adding EN signal on $driver$line[8].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[8].dyn.u.sh [30:0] \d_pipe [8] }, Q = \line[8].dyn.u.sh).
+Adding EN signal on $driver$line[23].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[23].casc.u0.sh [30:0] \d_pipe [23] }, Q = \line[23].casc.u0.sh).
+Adding EN signal on $driver$line[9].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[9].casc.u0.sh [30:0] \d_pipe [9] }, Q = \line[9].casc.u0.sh).
+Adding EN signal on $driver$line[23].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[23].casc.u1.sh [30:0] \line[23].casc.u0.sh [31] }, Q = \line[23].casc.u1.sh).
+Adding EN signal on $driver$line[9].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[9].casc.u1.sh [30:0] \line[9].casc.u0.sh [31] }, Q = \line[9].casc.u1.sh).
+Adding EN signal on $driver$line[24].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[24].dyn.u.sh [30:0] \d_pipe [24] }, Q = \line[24].dyn.u.sh).
+Adding EN signal on $driver$line[10].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[10].dyn.u.sh [30:0] \d_pipe [10] }, Q = \line[10].dyn.u.sh).
+Adding EN signal on $driver$line[11].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[11].casc.u0.sh [30:0] \d_pipe [11] }, Q = \line[11].casc.u0.sh).
+Adding EN signal on $driver$line[25].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[25].casc.u0.sh [30:0] \d_pipe [25] }, Q = \line[25].casc.u0.sh).
+Adding EN signal on $driver$line[15].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[15].casc.u1.sh [30:0] \line[15].casc.u0.sh [31] }, Q = \line[15].casc.u1.sh).
+Adding EN signal on $driver$line[11].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[11].casc.u1.sh [30:0] \line[11].casc.u0.sh [31] }, Q = \line[11].casc.u1.sh).
+Adding EN signal on $driver$line[25].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[25].casc.u1.sh [30:0] \line[25].casc.u0.sh [31] }, Q = \line[25].casc.u1.sh).
+Adding EN signal on $driver$line[12].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[12].dyn.u.sh [30:0] \d_pipe [12] }, Q = \line[12].dyn.u.sh).
+Adding EN signal on $driver$line[26].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[26].dyn.u.sh [30:0] \d_pipe [26] }, Q = \line[26].dyn.u.sh).
+Adding EN signal on $driver$line[13].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[13].casc.u0.sh [30:0] \d_pipe [13] }, Q = \line[13].casc.u0.sh).
+Adding SRST signal on $driver$q31_xor ($dff) from module srl_lines_32 (D = \q31a, Q = \q31_xor, rval = 1'0).
+Adding EN signal on $driver$line[27].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[27].casc.u0.sh [30:0] \d_pipe [27] }, Q = \line[27].casc.u0.sh).
+Adding EN signal on $driver$line[13].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[13].casc.u1.sh [30:0] \line[13].casc.u0.sh [31] }, Q = \line[13].casc.u1.sh).
+Adding SRST signal on $driver$q_xor ($dff) from module srl_lines_32 (D = \qa, Q = \q_xor, rval = 1'0).
+Adding EN signal on $driver$line[14].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[14].dyn.u.sh [30:0] \d_pipe [14] }, Q = \line[14].dyn.u.sh).
+Adding EN signal on $driver$line[27].casc.u1.sh ($dff) from module srl_lines_32 (D = { \line[27].casc.u1.sh [30:0] \line[27].casc.u0.sh [31] }, Q = \line[27].casc.u1.sh).
+Adding EN signal on $driver$line[15].casc.u0.sh ($dff) from module srl_lines_32 (D = { \line[15].casc.u0.sh [30:0] \d_pipe [15] }, Q = \line[15].casc.u0.sh).
+Adding EN signal on $driver$line[28].dyn.u.sh ($dff) from module srl_lines_32 (D = { \line[28].dyn.u.sh [30:0] \d_pipe [28] }, Q = \line[28].dyn.u.sh).
+
+6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+Removed 50 unused cells and 66 unused wires.
+<suppressed ~51 debug messages>
+
+7. Executing MEMORY pass.
+
+7.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+7.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+7.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+7.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+7.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+7.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+7.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+7.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+7.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+8. Executing MEMORY_LIBMAP pass (mapping memories to cells).
+
+9. Executing TECHMAP pass (map to technology primitives).
+
+9.1. Executing Verilog-2005 frontend: /home/darsh/gem/aigpdk/gemmacro_map.v
+Parsing Verilog input from `/home/darsh/gem/aigpdk/gemmacro_map.v' to AST representation.
+Generating RTLIL representation for module `\DSP48E2'.
+Successfully finished Verilog frontend.
+
+9.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+10. Executing Verilog-2005 frontend: /home/darsh/gem/aigpdk/gemmacro_shred.v
+Parsing Verilog input from `/home/darsh/gem/aigpdk/gemmacro_shred.v' to AST representation.
+Generating RTLIL representation for module `\GEM_DSP48E2'.
+Successfully finished Verilog frontend.
+
+11. Executing PROC pass (convert processes to netlists).
+
+11.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+11.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$/home/darsh/gem/aigpdk/gemmacro_shred.v:40$161 in module GEM_DSP48E2.
+Removed a total of 0 dead cases.
+
+11.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 1 assignment to connection.
+
+11.4. Executing PROC_INIT pass (extract init attributes).
+
+11.5. Executing PROC_ARST pass (detect async resets in processes).
+
+11.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~3 debug messages>
+
+11.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\GEM_DSP48E2.$proc$/home/darsh/gem/aigpdk/gemmacro_shred.v:50$163'.
+     1/1: $0\P[47:0]
+Creating decoders for process `\GEM_DSP48E2.$proc$/home/darsh/gem/aigpdk/gemmacro_shred.v:40$161'.
+     1/2: $2\p_next[47:0]
+     2/2: $1\p_next[47:0]
+
+11.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\GEM_DSP48E2.\p_next' from process `\GEM_DSP48E2.$proc$/home/darsh/gem/aigpdk/gemmacro_shred.v:40$161'.
+
+11.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\GEM_DSP48E2.\P' using process `\GEM_DSP48E2.$proc$/home/darsh/gem/aigpdk/gemmacro_shred.v:50$163'.
+  created $dff cell `$procdff$174' with positive edge clock.
+
+11.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+11.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\GEM_DSP48E2.$proc$/home/darsh/gem/aigpdk/gemmacro_shred.v:50$163'.
+Removing empty process `GEM_DSP48E2.$proc$/home/darsh/gem/aigpdk/gemmacro_shred.v:50$163'.
+Found and cleaned up 2 empty switches in `\GEM_DSP48E2.$proc$/home/darsh/gem/aigpdk/gemmacro_shred.v:40$161'.
+Removing empty process `GEM_DSP48E2.$proc$/home/darsh/gem/aigpdk/gemmacro_shred.v:40$161'.
+Cleaned up 3 empty switches.
+
+11.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module GEM_DSP48E2.
+Optimizing module srl_lines_32.
+
+12. Executing HIERARCHY pass (managing design hierarchy).
+
+12.1. Analyzing design hierarchy..
+Top module:  \srl_lines_32
+
+12.2. Analyzing design hierarchy..
+Top module:  \srl_lines_32
+Removing unused module `\GEM_DSP48E2'.
+Removed 1 unused modules.
+
+13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15. Executing SYNTH pass.
+
+15.1. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `srl_lines_32'. Setting top module to srl_lines_32.
+
+15.1.1. Analyzing design hierarchy..
+Top module:  \srl_lines_32
+
+15.1.2. Analyzing design hierarchy..
+Top module:  \srl_lines_32
+Removed 0 unused modules.
+
+15.2. Executing PROC pass (convert processes to netlists).
+
+15.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+15.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+15.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+15.2.4. Executing PROC_INIT pass (extract init attributes).
+
+15.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+15.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+15.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+15.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+15.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+15.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+15.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+15.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.3. Executing CHECK pass (checking for obvious problems).
+Checking module srl_lines_32...
+Found and reported 0 problems.
+
+15.4. Executing FLATTEN pass (flatten design).
+
+15.5. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.7. Executing CHECK pass (checking for obvious problems).
+Checking module srl_lines_32...
+Found and reported 0 problems.
+
+15.8. Executing OPT pass (performing simple optimizations).
+
+15.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 177 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \srl_lines_32..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \srl_lines_32.
+  Optimizing cells in module \srl_lines_32.
+Performed a total of 32 changes.
+
+15.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 145 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.8.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.8.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.8.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.8.9. Rerunning OPT passes. (Maybe there is more to do..)
+
+15.8.10. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \srl_lines_32..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.8.11. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \srl_lines_32.
+Performed a total of 0 changes.
+
+15.8.12. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 145 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.8.13. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.8.14. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.8.15. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.8.16. Finished fast OPT passes. (There is nothing left to do.)
+
+15.9. Executing FSM pass (extract and optimize FSM).
+
+15.9.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+15.9.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+15.9.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+15.9.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.9.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+15.9.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+15.9.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+15.9.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+15.10. Executing OPT pass (performing simple optimizations).
+
+15.10.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.10.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 145 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \srl_lines_32..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \srl_lines_32.
+Performed a total of 0 changes.
+
+15.10.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 145 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.10.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.10.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.10.9. Finished fast OPT passes. (There is nothing left to do.)
+
+15.11. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$128 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$123 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$116 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$109 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$101 ($dffe).
+Removed top 1 bits (of 32) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$128 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$123 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$116 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$109 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 31) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$128 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$123 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$116 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$109 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 30) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$128 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$123 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$116 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 29) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$128 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$123 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$116 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 28) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$128 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$123 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 27) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$128 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$123 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 26) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$128 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 25) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$128 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 24) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 23) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$134 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 22) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 21) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 21) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 21) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 21) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 21) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 21) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 21) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 21) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 21) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 21) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 20) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 20) from FF cell srl_lines_32.$auto$ff.cc:337:slice$141 ($dffe).
+Removed top 1 bits (of 20) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 20) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 20) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 20) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 20) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 20) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 20) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 20) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 19) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 19) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 19) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 19) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 19) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 19) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 19) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 19) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 19) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 18) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 18) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 18) from FF cell srl_lines_32.$auto$ff.cc:337:slice$133 ($dffe).
+Removed top 1 bits (of 18) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 18) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 18) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 18) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 18) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 18) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 17) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 17) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 17) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 17) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 17) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 17) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 17) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 17) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 16) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 16) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 16) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 16) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 16) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 16) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 16) from FF cell srl_lines_32.$auto$ff.cc:337:slice$103 ($dffe).
+Removed top 1 bits (of 16) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 15) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 15) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 15) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 15) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 15) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 15) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 15) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 14) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 14) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 14) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 14) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 14) from FF cell srl_lines_32.$auto$ff.cc:337:slice$112 ($dffe).
+Removed top 1 bits (of 14) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 14) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 13) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 13) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 13) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 13) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 13) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 13) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 12) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 12) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 12) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 12) from FF cell srl_lines_32.$auto$ff.cc:337:slice$119 ($dffe).
+Removed top 1 bits (of 12) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 12) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 11) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 11) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 11) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 11) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 11) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 10) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 10) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 10) from FF cell srl_lines_32.$auto$ff.cc:337:slice$127 ($dffe).
+Removed top 1 bits (of 10) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 10) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 9) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 9) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 9) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 9) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 8) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 8) from FF cell srl_lines_32.$auto$ff.cc:337:slice$135 ($dffe).
+Removed top 1 bits (of 8) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 8) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 7) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 7) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 7) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 6) from FF cell srl_lines_32.$auto$ff.cc:337:slice$144 ($dffe).
+Removed top 1 bits (of 6) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 6) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 5) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 5) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 4) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 4) from FF cell srl_lines_32.$auto$ff.cc:337:slice$98 ($dffe).
+Removed top 1 bits (of 3) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+Removed top 1 bits (of 2) from FF cell srl_lines_32.$auto$ff.cc:337:slice$110 ($dffe).
+
+15.12. Executing PEEPOPT pass (run peephole optimizers).
+
+15.13. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.14. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module srl_lines_32:
+  created 0 $alu and 0 $macc cells.
+
+15.15. Executing SHARE pass (SAT-based resource sharing).
+
+15.16. Executing OPT pass (performing simple optimizations).
+
+15.16.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.16.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 145 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.16.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \srl_lines_32..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.16.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \srl_lines_32.
+Performed a total of 0 changes.
+
+15.16.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 145 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.16.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.16.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.16.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.16.9. Finished fast OPT passes. (There is nothing left to do.)
+
+15.17. Executing MEMORY pass.
+
+15.17.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+15.17.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+15.17.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+15.17.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+15.17.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+15.17.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.17.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+15.17.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+15.17.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.17.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+15.18. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.19. Executing OPT pass (performing simple optimizations).
+
+15.19.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+<suppressed ~121 debug messages>
+
+15.19.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 145 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.19.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.19.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.19.5. Finished fast OPT passes.
+
+15.20. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+15.21. Executing OPT pass (performing simple optimizations).
+
+15.21.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.21.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 145 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.21.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \srl_lines_32..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+15.21.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \srl_lines_32.
+Performed a total of 0 changes.
+
+15.21.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 145 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.21.6. Executing OPT_SHARE pass.
+
+15.21.7. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.21.8. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+15.21.9. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.21.10. Finished fast OPT passes. (There is nothing left to do.)
+
+15.22. Executing TECHMAP pass (map to technology primitives).
+
+15.22.1. Executing Verilog-2005 frontend: /home/darsh/oss-cad-suite/lib/../share/yosys/techmap.v
+Parsing Verilog input from `/home/darsh/oss-cad-suite/lib/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+15.22.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $dff.
+Using extmapper simplemap for cells of type $bmux.
+Using extmapper simplemap for cells of type $xor.
+No more expansions possible.
+<suppressed ~222 debug messages>
+
+15.23. Executing OPT pass (performing simple optimizations).
+
+15.23.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+
+15.23.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 1888 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.23.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.23.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+Removed 0 unused cells and 16 unused wires.
+<suppressed ~1 debug messages>
+
+15.23.5. Finished fast OPT passes.
+
+15.24. Executing ABC pass (technology mapping using ABC).
+
+15.24.1. Extracting gate netlist of module `\srl_lines_32' to `<abc-temp-dir>/input.blif'..
+
+15.24.1.1. Executed ABC.
+Extracted 574 gates and 1138 wires to a netlist network with 564 inputs and 2 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Aug 28 2026 12:09:00)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+15.24.1.2. Re-integrating ABC results.
+ABC RESULTS:               AND cells:      157
+ABC RESULTS:            ANDNOT cells:       38
+ABC RESULTS:               MUX cells:      233
+ABC RESULTS:              NAND cells:      269
+ABC RESULTS:               NOR cells:       63
+ABC RESULTS:               NOT cells:        1
+ABC RESULTS:                OR cells:      117
+ABC RESULTS:             ORNOT cells:      145
+ABC RESULTS:              XNOR cells:       61
+ABC RESULTS:               XOR cells:       17
+ABC RESULTS:        internal signals:      572
+ABC RESULTS:           input signals:      564
+ABC RESULTS:          output signals:        2
+Removing temp directory.
+Removing global temp directory.
+
+15.25. Executing OPT pass (performing simple optimizations).
+
+15.25.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module srl_lines_32.
+<suppressed ~4 debug messages>
+
+15.25.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\srl_lines_32'.
+Computing hashes of 2415 cells of `\srl_lines_32'.
+Finding duplicate cells in `\srl_lines_32'.
+Removed a total of 0 cells.
+
+15.25.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+15.25.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+Removed 0 unused cells and 722 unused wires.
+<suppressed ~17 debug messages>
+
+15.25.5. Finished fast OPT passes.
+
+15.26. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `srl_lines_32'. Setting top module to srl_lines_32.
+
+15.26.1. Analyzing design hierarchy..
+Top module:  \srl_lines_32
+
+15.26.2. Analyzing design hierarchy..
+Top module:  \srl_lines_32
+Removed 0 unused modules.
+
+15.27. Printing statistics.
+
+=== srl_lines_32 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     1432 wires
+     3240 wire bits
+      333 public wires
+     2141 public wire bits
+        7 ports
+       11 port bits
+     2415 cells
+       38   $_ANDNOT_
+      157   $_AND_
+     1280   $_DFFE_PP_
+       32   $_DFF_P_
+      233   $_MUX_
+      269   $_NAND_
+       63   $_NOR_
+        1   $_NOT_
+      145   $_ORNOT_
+      117   $_OR_
+        2   $_SDFF_PP0_
+       61   $_XNOR_
+       17   $_XOR_
+
+15.28. Executing CHECK pass (checking for obvious problems).
+Checking module srl_lines_32...
+Found and reported 0 problems.
+
+16. Executing DFFLIBMAP pass (mapping DFF/DLATCH cells to sequential cells from liberty file).
+  cell DFF (noninv, pins=3, area=100.00) is a direct match for cell type $_DFF_P_.
+  cell DFFSR (noninv, pins=5, area=176.00) is a direct match for cell type $_DFFSR_PNN_.
+  final dff/dlatch cell mappings:
+    unmapped dff/dlatch cell: $_DFF_N_
+    \DFF _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    unmapped dff/dlatch cell: $_DFF_NN0_
+    unmapped dff/dlatch cell: $_DFF_NN1_
+    unmapped dff/dlatch cell: $_DFF_NP0_
+    unmapped dff/dlatch cell: $_DFF_NP1_
+    unmapped dff/dlatch cell: $_DFF_PN0_
+    unmapped dff/dlatch cell: $_DFF_PN1_
+    unmapped dff/dlatch cell: $_DFF_PP0_
+    unmapped dff/dlatch cell: $_DFF_PP1_
+    unmapped dff/dlatch cell: $_DFFE_NN_
+    unmapped dff/dlatch cell: $_DFFE_NP_
+    unmapped dff/dlatch cell: $_DFFE_PN_
+    unmapped dff/dlatch cell: $_DFFE_PP_
+    unmapped dff/dlatch cell: $_DFFSR_NNN_
+    unmapped dff/dlatch cell: $_DFFSR_NNP_
+    unmapped dff/dlatch cell: $_DFFSR_NPN_
+    unmapped dff/dlatch cell: $_DFFSR_NPP_
+    \DFFSR _DFFSR_PNN_ (.CLK( C), .D( D), .Q( Q), .R( R), .S( S));
+    unmapped dff/dlatch cell: $_DFFSR_PNP_
+    unmapped dff/dlatch cell: $_DFFSR_PPN_
+    unmapped dff/dlatch cell: $_DFFSR_PPP_
+    unmapped dff/dlatch cell: $_DLATCH_N_
+    unmapped dff/dlatch cell: $_DLATCH_P_
+    unmapped dff/dlatch cell: $_DLATCH_NN0_
+    unmapped dff/dlatch cell: $_DLATCH_NN1_
+    unmapped dff/dlatch cell: $_DLATCH_NP0_
+    unmapped dff/dlatch cell: $_DLATCH_NP1_
+    unmapped dff/dlatch cell: $_DLATCH_PN0_
+    unmapped dff/dlatch cell: $_DLATCH_PN1_
+    unmapped dff/dlatch cell: $_DLATCH_PP0_
+    unmapped dff/dlatch cell: $_DLATCH_PP1_
+    unmapped dff/dlatch cell: $_DLATCHSR_NNN_
+    unmapped dff/dlatch cell: $_DLATCHSR_NNP_
+    unmapped dff/dlatch cell: $_DLATCHSR_NPN_
+    unmapped dff/dlatch cell: $_DLATCHSR_NPP_
+    unmapped dff/dlatch cell: $_DLATCHSR_PNN_
+    unmapped dff/dlatch cell: $_DLATCHSR_PNP_
+    unmapped dff/dlatch cell: $_DLATCHSR_PPN_
+    unmapped dff/dlatch cell: $_DLATCHSR_PPP_
+
+16.1. Executing DFFLEGALIZE pass (convert FFs and LATCHes to types supported by the target).
+Mapping DFF/DLATCH cells in module `\srl_lines_32':
+  mapped 1314 $_DFF_P_ cells to \DFF cells.
+
+17. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+Removed 0 unused cells and 275 unused wires.
+<suppressed ~275 debug messages>
+
+18. Executing ABC pass (technology mapping using ABC).
+
+18.1. Extracting gate netlist of module `\srl_lines_32' to `<abc-temp-dir>/input.blif'..
+ABC: using cached merged SCL: /tmp/yosys-liberty-scl-cache/yosys_merged_e4e0a21d.scl (1 files)
+
+18.1.1. Executed ABC.
+Extracted 2383 gates and 3703 wires to a netlist network with 1319 inputs and 1282 outputs.
+Running ABC script: <abc-temp-dir>/abc.script
+ABC: UC Berkeley, ABC 1.01 (compiled Aug 28 2026 12:09:00)
+ABC: abc 01> empty
+ABC: abc 01> source <abc-temp-dir>/abc.script
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_scl /tmp/yosys-liberty-scl-cache/yosys_merged_e4e0a21d.scl 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &fraig -x 
+ABC: + &put 
+ABC: + scorr 
+ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: + dc2 
+ABC: + dretime 
+ABC: + strash 
+ABC: + &get -n 
+ABC: + &dch -f 
+ABC: + &nf 
+ABC: + &put 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+ABC: 
+ABC: YOSYS_ABC_DONE 
+
+18.1.2. Re-integrating ABC results.
+ABC RESULTS:         AND2_00_0 cells:     1824
+ABC RESULTS:         AND2_01_0 cells:     1645
+ABC RESULTS:         AND2_10_0 cells:        2
+ABC RESULTS:         AND2_11_0 cells:      174
+ABC RESULTS:         AND2_11_1 cells:     1919
+ABC RESULTS:               INV cells:       11
+ABC RESULTS:        internal signals:     1102
+ABC RESULTS:           input signals:     1319
+ABC RESULTS:          output signals:     1282
+Removing temp directory.
+Removing global temp directory.
+
+19. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+Removed 0 unused cells and 3702 unused wires.
+<suppressed ~3 debug messages>
+
+20. Executing TECHMAP pass (map to technology primitives).
+
+20.1. Executing Verilog-2005 frontend: /home/darsh/oss-cad-suite/lib/../share/yosys/techmap.v
+Parsing Verilog input from `/home/darsh/oss-cad-suite/lib/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
+Successfully finished Verilog frontend.
+
+20.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~77 debug messages>
+
+21. Executing ABC pass (technology mapping using ABC).
+
+21.1. Extracting gate netlist of module `\srl_lines_32' to `<abc-temp-dir>/input.blif'..
+ABC: using cached merged SCL: /tmp/yosys-liberty-scl-cache/yosys_merged_e4e0a21d.scl (1 files)
+
+21.1.1. Executed ABC.
+Extracted 0 gates and 0 wires to a netlist network with 0 inputs and 0 outputs.
+Don't call ABC as there is nothing to map.
+Removing temp directory.
+Removing global temp directory.
+
+22. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \srl_lines_32..
+
+23. Printing statistics.
+
+=== srl_lines_32 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     5631 wires
+     7154 wire bits
+        8 public wires
+       43 public wire bits
+        7 ports
+       11 port bits
+     6889 cells
+     1824   AND2_00_0
+     1645   AND2_01_0
+        2   AND2_10_0
+      174   AND2_11_0
+     1919   AND2_11_1
+     1314   DFF
+       11   INV
+
+24. Executing Verilog backend.
+
+24.1. Executing BMUXMAP pass.
+
+24.2. Executing DEMUXMAP pass.
+Dumping module `\srl_lines_32'.
+
+End of script. Logfile hash: a1952f7dee, time: 0.84s, user: 0.28s, system: 0.05s, MEM: 47.31 MB peak
+Yosys 0.68+136 (git sha1 c30457480-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+Time spent: 68% 3x abc (0 sec), 9% 21x opt_clean (0 sec), ...

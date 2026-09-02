@@ -1,0 +1,634 @@
+23:38:11 [0m[34m[INFO] [0mSimulator args:
+SimulatorArgs {
+    netlist_verilog: "results/mixed_16.macro.gv",
+    top_module: None,
+    level_split: [],
+    parts_out: "results/mixed_16.macro.gemparts",
+    max_stage_degrad: 0,
+    no_merge: true,
+    division: 128,
+}
+23:38:11 [0m[34m[INFO] [0minferred clock port clk (posedge)
+netlist has 27703 pins, 9766 aig pins, 5503 and gates
+23:38:11 [0m[34m[INFO] [0minteractive partitioning stage 0-2
+23:38:11 [0m[34m[INFO] [0mcurrent: 2296 endpoints, try 36 parts
+23:38:11 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 36)
+*******************************************************************************
+*                            Partitioning Context                             *
+*******************************************************************************
+Partitioning Parameters:
+  Hypergraph:                         
+  Mode:                               direct_kway
+  Objective:                          soed
+  Gain Policy:                        soed
+  Input File Format:                  hMetis
+  Instance Type:                      hypergraph
+  Preset Type:                        deterministic
+  Partition Type:                     multilevel_hypergraph_partitioning
+  k:                                  36
+  epsilon:                            0.2
+  seed:                               0
+  Number of V-Cycles:                 0
+  Ignore HE Size Threshold:           1000
+  Large HE Size Threshold:            100
+-------------------------------------------------------------------------------
+Preprocessing Parameters:
+  Use Community Detection:            true
+  Disable C. D. for Mesh Graphs:      true
+
+  Community Detection Parameters:
+    Edge Weight Function:                degree
+    Maximum Louvain-Pass Iterations:     5
+    Minimum Vertex Move Fraction:        0.01
+    Vertex Degree Sampling Threshold:    200000
+    Number of subrounds (deterministic): 16
+-------------------------------------------------------------------------------
+Coarsening Parameters:
+  Algorithm:                          deterministic_multilevel_coarsener
+  Use Adaptive Edge Size:             true
+  Max Allowed Weight Multiplier:      1
+  Maximum Allowed Hypernode Weight:   2
+  Contraction Limit Multiplier:       160
+  Deep ML Contraction Limit Multi.:   4294967295
+  Contraction Limit:                  5760
+  Minimum Shrink Factor:              1.01
+  Maximum Shrink Factor:              2.5
+  Vertex Degree Sampling Threshold:   200000
+  Number of subrounds (deterministic):3
+
+  Rating Parameters:
+    Rating Function:                  heavy_edge
+    Heavy Node Penalty:               no_penalty
+    Acceptance Policy:                best_prefer_unmatched
+-------------------------------------------------------------------------------
+Initial Partitioning Parameters:
+  Initial Partitioning Mode:          recursive_bipartitioning
+  Number of Runs:                     20
+  Use Adaptive IP Runs:               false
+  Perform Refinement On Best:         false
+  Fm Refinement Rounds:               3
+  Remove Degree-Zero HNs Before IP:   true
+  Maximum Iterations of LP IP:        20
+  Initial Block Size of LP IP:        5
+
+Initial Partitioning Refinement Parameters:
+  Rebalancing Algorithm:              do_nothing
+  Refine Until No Improvement:        false
+  Relative Improvement Threshold:     0
+  Maximum Batch Size:                 1000
+  Min Border Vertices Per Thread:     0
+
+  Label Propagation Parameters:
+    Algorithm:                        deterministic
+    Maximum Iterations:               5
+    Unconstrained:                    false
+    Rebalancing:                      true
+    HE Size Activation Threshold:     100
+    Relative Improvement Threshold:   -1
+
+  FM Parameters: 
+    Algorithm:                        fm_do_nothing
+
+  Flow Parameters: 
+    Algorithm:                        do_nothing
+
+-------------------------------------------------------------------------------
+Refinement Parameters:
+  Rebalancing Algorithm:              advanced_rebalancer
+  Refine Until No Improvement:        false
+  Relative Improvement Threshold:     0
+  Maximum Batch Size:                 1000
+  Min Border Vertices Per Thread:     0
+
+  Label Propagation Parameters:
+    Algorithm:                        deterministic
+    Maximum Iterations:               5
+    Unconstrained:                    false
+    Rebalancing:                      true
+    HE Size Activation Threshold:     100
+    Relative Improvement Threshold:   -1
+
+  FM Parameters: 
+    Algorithm:                        fm_do_nothing
+
+  Flow Parameters: 
+    Algorithm:                        do_nothing
+-------------------------------------------------------------------------------
+Shared Memory Parameters:             
+  Number of Threads:                  24
+  Use Localized Random Shuffle:       false
+  Random Shuffle Block Size:          2
+------------------------------------------------------------------------------- 
+
+******************************************************************************** 
+*                                    Input                                     * 
+******************************************************************************** 
+Hypergraph Information 
+Name :  
+# HNs : 2296 # HEs : 1637 # pins: 4287 # graph edges: 1635 
+HE size             HE weight           HN degree           HN weight 
+| min= 2            | min= 1            | min= 0            | min= 0           
+| Q1 = 2            | Q1 = 1            | Q1 = 1            | Q1 = 1           
+| med= 2            | med= 1            | med= 1            | med= 1           
+| Q3 = 2            | Q3 = 1            | Q3 = 2            | Q3 = 1           
+| max= 1000         | max= 1            | max= 64           | max= 192         
+| avg= 2.61881      | avg= 1            | avg= 1.86716      | avg= 2.97648     
+| sd = 24.669       | sd = 0            | sd = 6.28261      | sd = 14.7821     
+
+******************************************************************************** 
+*                              Preprocessing...                                * 
+******************************************************************************** 
+# Communities : 596 
+# HNs Per Community # Internal Pins     Internal Degree Sum 
+| min= 1            | min= 0            | min= 0           
+| Q1 = 1            | Q1 = 0            | Q1 = 0           
+| med= 1            | med= 0            | med= 0           
+| Q3 = 1            | Q3 = 0            | Q3 = 0           
+| max= 109          | max= 190          | max= 190         
+| avg= 3.85235      | avg= 7.19295      | avg= 7.19295     
+| sd = 12.7542      | sd = 31.7524      | sd = 31.7524     
+******************************************************************************** 
+*                                Coarsening...                                 * 
+******************************************************************************** 
+Hypergraph Information 
+Name : Coarsened Hypergraph 
+# HNs : 2296 # HEs : 1637 # pins: 4287 # graph edges: 1635 
+HE size             HE weight           HN degree           HN weight 
+| min= 2            | min= 1            | min= 0            | min= 0           
+| Q1 = 2            | Q1 = 1            | Q1 = 1            | Q1 = 1           
+| med= 2            | med= 1            | med= 1            | med= 1           
+| Q3 = 2            | Q3 = 1            | Q3 = 2            | Q3 = 1           
+| max= 1000         | max= 1            | max= 64           | max= 192         
+| avg= 2.61881      | avg= 1            | avg= 1.86716      | avg= 2.97648     
+| sd = 24.669       | sd = 0            | sd = 6.28261      | sd = 14.7821     
+
+******************************************************************************** 
+*                           Initial Partitioning...                            * 
+******************************************************************************** 
+Initial Partitioning Results: 
+soed       = 595 
+imbalance = 0.2 
+Part sizes and weights: 
+Avg Block Weight = 189
+Min Block Weight = 113 <= 228 (Block 8)
+Max Block Weight = 228 <= 228 (Block 0)
+ 
+Initial Partitioning Algorithm Summary: 
+Number of Initial Partitioning Calls = 35 
+Average Number of Thread per IP Call = 22.9714 
+ 
+[1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
+greedy_round_robin_fm          24.4686         0.10615         5          14.2857         
+greedy_global_fm               38.3843         0.0787514       5          14.2857         
+greedy_sequential_fm           37.7071         0.083122        4          11.4286         
+random                         47.8114         0.0170083       5          14.2857         
+bfs                            21.7386         0.0406225       4          11.4286         
+label_propagation              43.5357         0.0896407       0          0               
+greedy_round_robin_max_net     17.2743         0.081267        7          20              
+greedy_global_max_net          38.0186         0.0612953       3          8.57143         
+greedy_sequential_max_net      38.0114         0.0617954       2          5.71429         
+
+******************************************************************************** 
+*                               Local Search...                                * 
+******************************************************************************** 
+Local Search Results: 
+soed       = 392 
+imbalance = 0.2 
+Part sizes and weights: 
+Avg Block Weight = 189
+Min Block Weight = 72 <= 228 (Block 8)
+Max Block Weight = 228 <= 228 (Block 0)
+ 
+Hypergraph Information 
+Name : Uncoarsened Hypergraph 
+# HNs : 2296 # HEs : 1637 # pins: 4287 # graph edges: 1635 
+HE size             HE weight           HN degree           HN weight 
+| min= 2            | min= 1            | min= 0            | min= 0           
+| Q1 = 2            | Q1 = 1            | Q1 = 1            | Q1 = 1           
+| med= 2            | med= 1            | med= 1            | med= 1           
+| Q3 = 2            | Q3 = 1            | Q3 = 2            | Q3 = 1           
+| max= 1000         | max= 1            | max= 64           | max= 192         
+| avg= 2.61881      | avg= 1            | avg= 1.86716      | avg= 2.97648     
+| sd = 24.669       | sd = 0            | sd = 6.28261      | sd = 14.7821     
+-------------------------------------------------------------------------------- 
+23:38:11 [0m[34m[INFO] [0minteractive partition completed: 36 in total. merging started.
+23:38:11 [0m[34m[INFO] [0m--no-merge: keeping the 36 initial parts as-is.
+23:38:11 [0m[34m[INFO] [0mafter merging: 36 parts.
+23:38:11 [0m[34m[INFO] [0minteractive partitioning stage 2-5
+23:38:11 [0m[34m[INFO] [0mcurrent: 517 endpoints, try 9 parts
+23:38:11 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 9)
+*******************************************************************************
+*                            Partitioning Context                             *
+*******************************************************************************
+Partitioning Parameters:
+  Hypergraph:                         
+  Mode:                               direct_kway
+  Objective:                          soed
+  Gain Policy:                        soed
+  Input File Format:                  hMetis
+  Instance Type:                      hypergraph
+  Preset Type:                        deterministic
+  Partition Type:                     multilevel_hypergraph_partitioning
+  k:                                  9
+  epsilon:                            0.2
+  seed:                               0
+  Number of V-Cycles:                 0
+  Ignore HE Size Threshold:           1000
+  Large HE Size Threshold:            100
+-------------------------------------------------------------------------------
+Preprocessing Parameters:
+  Use Community Detection:            true
+  Disable C. D. for Mesh Graphs:      true
+
+  Community Detection Parameters:
+    Edge Weight Function:                degree
+    Maximum Louvain-Pass Iterations:     5
+    Minimum Vertex Move Fraction:        0.01
+    Vertex Degree Sampling Threshold:    200000
+    Number of subrounds (deterministic): 16
+-------------------------------------------------------------------------------
+Coarsening Parameters:
+  Algorithm:                          deterministic_multilevel_coarsener
+  Use Adaptive Edge Size:             true
+  Max Allowed Weight Multiplier:      1
+  Maximum Allowed Hypernode Weight:   2
+  Contraction Limit Multiplier:       160
+  Deep ML Contraction Limit Multi.:   4294967295
+  Contraction Limit:                  1440
+  Minimum Shrink Factor:              1.01
+  Maximum Shrink Factor:              2.5
+  Vertex Degree Sampling Threshold:   200000
+  Number of subrounds (deterministic):3
+
+  Rating Parameters:
+    Rating Function:                  heavy_edge
+    Heavy Node Penalty:               no_penalty
+    Acceptance Policy:                best_prefer_unmatched
+-------------------------------------------------------------------------------
+Initial Partitioning Parameters:
+  Initial Partitioning Mode:          recursive_bipartitioning
+  Number of Runs:                     20
+  Use Adaptive IP Runs:               false
+  Perform Refinement On Best:         false
+  Fm Refinement Rounds:               3
+  Remove Degree-Zero HNs Before IP:   true
+  Maximum Iterations of LP IP:        20
+  Initial Block Size of LP IP:        5
+
+Initial Partitioning Refinement Parameters:
+  Rebalancing Algorithm:              do_nothing
+  Refine Until No Improvement:        false
+  Relative Improvement Threshold:     0
+  Maximum Batch Size:                 1000
+  Min Border Vertices Per Thread:     0
+
+  Label Propagation Parameters:
+    Algorithm:                        deterministic
+    Maximum Iterations:               5
+    Unconstrained:                    false
+    Rebalancing:                      true
+    HE Size Activation Threshold:     100
+    Relative Improvement Threshold:   -1
+
+  FM Parameters: 
+    Algorithm:                        fm_do_nothing
+
+  Flow Parameters: 
+    Algorithm:                        do_nothing
+
+-------------------------------------------------------------------------------
+Refinement Parameters:
+  Rebalancing Algorithm:              advanced_rebalancer
+  Refine Until No Improvement:        false
+  Relative Improvement Threshold:     0
+  Maximum Batch Size:                 1000
+  Min Border Vertices Per Thread:     0
+
+  Label Propagation Parameters:
+    Algorithm:                        deterministic
+    Maximum Iterations:               5
+    Unconstrained:                    false
+    Rebalancing:                      true
+    HE Size Activation Threshold:     100
+    Relative Improvement Threshold:   -1
+
+  FM Parameters: 
+    Algorithm:                        fm_do_nothing
+
+  Flow Parameters: 
+    Algorithm:                        do_nothing
+-------------------------------------------------------------------------------
+Shared Memory Parameters:             
+  Number of Threads:                  24
+  Use Localized Random Shuffle:       false
+  Random Shuffle Block Size:          2
+------------------------------------------------------------------------------- 
+
+******************************************************************************** 
+*                                    Input                                     * 
+******************************************************************************** 
+Hypergraph Information 
+Name :  
+# HNs : 517 # HEs : 303 # pins: 698 # graph edges: 224 
+HE size             HE weight           HN degree           HN weight 
+| min= 2            | min= 1            | min= 0            | min= 1           
+| Q1 = 2            | Q1 = 1            | Q1 = 1            | Q1 = 4           
+| med= 2            | med= 6            | med= 1            | med= 6           
+| Q3 = 3            | Q3 = 10           | Q3 = 1            | Q3 = 6           
+| max= 16           | max= 10           | max= 6            | max= 18          
+| avg= 2.30363      | avg= 6.46535      | avg= 1.3501       | avg= 5.53965     
+| sd = 0.902656     | sd = 3.70492      | sd = 1.39603      | sd = 2.50211     
+
+******************************************************************************** 
+*                              Preprocessing...                                * 
+******************************************************************************** 
+# Communities : 266 
+# HNs Per Community # Internal Pins     Internal Degree Sum 
+| min= 1            | min= 0            | min= 0           
+| Q1 = 2            | Q1 = 2            | Q1 = 2           
+| med= 2            | med= 2            | med= 2           
+| Q3 = 2            | Q3 = 2            | Q3 = 2           
+| max= 14           | max= 74           | max= 74          
+| avg= 1.94361      | avg= 2.62406      | avg= 2.62406     
+| sd = 1.20087      | sd = 7.02245      | sd = 7.02245     
+******************************************************************************** 
+*                                Coarsening...                                 * 
+******************************************************************************** 
+Hypergraph Information 
+Name : Coarsened Hypergraph 
+# HNs : 517 # HEs : 303 # pins: 698 # graph edges: 224 
+HE size             HE weight           HN degree           HN weight 
+| min= 2            | min= 1            | min= 0            | min= 1           
+| Q1 = 2            | Q1 = 1            | Q1 = 1            | Q1 = 4           
+| med= 2            | med= 6            | med= 1            | med= 6           
+| Q3 = 3            | Q3 = 10           | Q3 = 1            | Q3 = 6           
+| max= 16           | max= 10           | max= 6            | max= 18          
+| avg= 2.30363      | avg= 6.46535      | avg= 1.3501       | avg= 5.53965     
+| sd = 0.902656     | sd = 3.70492      | sd = 1.39603      | sd = 2.50211     
+
+******************************************************************************** 
+*                           Initial Partitioning...                            * 
+******************************************************************************** 
+Initial Partitioning Results: 
+soed       = 10 
+imbalance = 0.134796 
+Part sizes and weights: 
+|block 0| =  43  w( 0 ) = 362  max( 0 ) = 382
+|block 1| =  44  w( 1 ) = 278  max( 1 ) = 382
+|block 2| =  60  w( 2 ) = 320  max( 2 ) = 382
+|block 3| =  64  w( 3 ) = 320  max( 3 ) = 382
+|block 4| =  67  w( 4 ) = 319  max( 4 ) = 382
+|block 5| =  58  w( 5 ) = 316  max( 5 ) = 382
+|block 6| =  60  w( 6 ) = 316  max( 6 ) = 382
+|block 7| =  62  w( 7 ) = 316  max( 7 ) = 382
+|block 8| =  59  w( 8 ) = 317  max( 8 ) = 382
+ 
+Initial Partitioning Algorithm Summary: 
+Number of Initial Partitioning Calls = 8 
+Average Number of Thread per IP Call = 23.875 
+ 
+[1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
+greedy_round_robin_fm          16.2875         0.0142004       1          12.5            
+greedy_global_fm               3.5875          0.0116931       2          25              
+greedy_sequential_fm           3.4625          0.0116586       0          0               
+random                         21.9125         0.00230958      1          12.5            
+bfs                            15.725          0.00571565      0          0               
+label_propagation              10.375          0.0124298       0          0               
+greedy_round_robin_max_net     15.4375         0.0120995       1          12.5            
+greedy_global_max_net          3.825           0.00916377      0          0               
+greedy_sequential_max_net      3.6375          0.00896156      3          37.5            
+
+******************************************************************************** 
+*                               Local Search...                                * 
+******************************************************************************** 
+Local Search Results: 
+soed       = 10 
+imbalance = 0.134796 
+Part sizes and weights: 
+|block 0| =  43  w( 0 ) = 362  max( 0 ) = 382
+|block 1| =  44  w( 1 ) = 278  max( 1 ) = 382
+|block 2| =  60  w( 2 ) = 320  max( 2 ) = 382
+|block 3| =  64  w( 3 ) = 320  max( 3 ) = 382
+|block 4| =  67  w( 4 ) = 319  max( 4 ) = 382
+|block 5| =  58  w( 5 ) = 316  max( 5 ) = 382
+|block 6| =  60  w( 6 ) = 316  max( 6 ) = 382
+|block 7| =  62  w( 7 ) = 316  max( 7 ) = 382
+|block 8| =  59  w( 8 ) = 317  max( 8 ) = 382
+ 
+Hypergraph Information 
+Name : Uncoarsened Hypergraph 
+# HNs : 517 # HEs : 303 # pins: 698 # graph edges: 224 
+HE size             HE weight           HN degree           HN weight 
+| min= 2            | min= 1            | min= 0            | min= 1           
+| Q1 = 2            | Q1 = 1            | Q1 = 1            | Q1 = 4           
+| med= 2            | med= 6            | med= 1            | med= 6           
+| Q3 = 3            | Q3 = 10           | Q3 = 1            | Q3 = 6           
+| max= 16           | max= 10           | max= 6            | max= 18          
+| avg= 2.30363      | avg= 6.46535      | avg= 1.3501       | avg= 5.53965     
+| sd = 0.902656     | sd = 3.70492      | sd = 1.39603      | sd = 2.50211     
+-------------------------------------------------------------------------------- 
+23:38:11 [0m[34m[INFO] [0minteractive partition completed: 9 in total. merging started.
+23:38:11 [0m[34m[INFO] [0m--no-merge: keeping the 9 initial parts as-is.
+23:38:11 [0m[34m[INFO] [0mafter merging: 9 parts.
+23:38:11 [0m[34m[INFO] [0minteractive partitioning stage 5-max
+23:38:11 [0m[34m[INFO] [0mcurrent: 81 endpoints, try 2 parts
+23:38:11 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 2)
+*******************************************************************************
+*                            Partitioning Context                             *
+*******************************************************************************
+Partitioning Parameters:
+  Hypergraph:                         
+  Mode:                               direct_kway
+  Objective:                          soed
+  Gain Policy:                        soed
+  Input File Format:                  hMetis
+  Instance Type:                      hypergraph
+  Preset Type:                        deterministic
+  Partition Type:                     multilevel_hypergraph_partitioning
+  k:                                  2
+  epsilon:                            0.2
+  seed:                               0
+  Number of V-Cycles:                 0
+  Ignore HE Size Threshold:           1000
+  Large HE Size Threshold:            100
+-------------------------------------------------------------------------------
+Preprocessing Parameters:
+  Use Community Detection:            true
+  Disable C. D. for Mesh Graphs:      true
+
+  Community Detection Parameters:
+    Edge Weight Function:                degree
+    Maximum Louvain-Pass Iterations:     5
+    Minimum Vertex Move Fraction:        0.01
+    Vertex Degree Sampling Threshold:    200000
+    Number of subrounds (deterministic): 16
+-------------------------------------------------------------------------------
+Coarsening Parameters:
+  Algorithm:                          deterministic_multilevel_coarsener
+  Use Adaptive Edge Size:             true
+  Max Allowed Weight Multiplier:      1
+  Maximum Allowed Hypernode Weight:   5
+  Contraction Limit Multiplier:       160
+  Deep ML Contraction Limit Multi.:   4294967295
+  Contraction Limit:                  320
+  Minimum Shrink Factor:              1.01
+  Maximum Shrink Factor:              2.5
+  Vertex Degree Sampling Threshold:   200000
+  Number of subrounds (deterministic):3
+
+  Rating Parameters:
+    Rating Function:                  heavy_edge
+    Heavy Node Penalty:               no_penalty
+    Acceptance Policy:                best_prefer_unmatched
+-------------------------------------------------------------------------------
+Initial Partitioning Parameters:
+  Initial Partitioning Mode:          recursive_bipartitioning
+  Number of Runs:                     20
+  Use Adaptive IP Runs:               false
+  Perform Refinement On Best:         false
+  Fm Refinement Rounds:               3
+  Remove Degree-Zero HNs Before IP:   true
+  Maximum Iterations of LP IP:        20
+  Initial Block Size of LP IP:        5
+
+Initial Partitioning Refinement Parameters:
+  Rebalancing Algorithm:              do_nothing
+  Refine Until No Improvement:        false
+  Relative Improvement Threshold:     0
+  Maximum Batch Size:                 1000
+  Min Border Vertices Per Thread:     0
+
+  Label Propagation Parameters:
+    Algorithm:                        deterministic
+    Maximum Iterations:               5
+    Unconstrained:                    false
+    Rebalancing:                      true
+    HE Size Activation Threshold:     100
+    Relative Improvement Threshold:   -1
+
+  FM Parameters: 
+    Algorithm:                        fm_do_nothing
+
+  Flow Parameters: 
+    Algorithm:                        do_nothing
+
+-------------------------------------------------------------------------------
+Refinement Parameters:
+  Rebalancing Algorithm:              advanced_rebalancer
+  Refine Until No Improvement:        false
+  Relative Improvement Threshold:     0
+  Maximum Batch Size:                 1000
+  Min Border Vertices Per Thread:     0
+
+  Label Propagation Parameters:
+    Algorithm:                        deterministic
+    Maximum Iterations:               5
+    Unconstrained:                    false
+    Rebalancing:                      true
+    HE Size Activation Threshold:     100
+    Relative Improvement Threshold:   -1
+
+  FM Parameters: 
+    Algorithm:                        fm_do_nothing
+
+  Flow Parameters: 
+    Algorithm:                        do_nothing
+-------------------------------------------------------------------------------
+Shared Memory Parameters:             
+  Number of Threads:                  24
+  Use Localized Random Shuffle:       false
+  Random Shuffle Block Size:          2
+------------------------------------------------------------------------------- 
+
+******************************************************************************** 
+*                                    Input                                     * 
+******************************************************************************** 
+Hypergraph Information 
+Name :  
+# HNs : 81 # HEs : 1 # pins: 81 # graph edges: 0 
+HE size             HE weight           HN degree           HN weight 
+| min= 81           | min= 2            | min= 1            | min= 14          
+| Q1 = 0            | Q1 = 0            | Q1 = 1            | Q1 = 14          
+| med= 81           | med= 2            | med= 1            | med= 14          
+| Q3 = 0            | Q3 = 0            | Q3 = 1            | Q3 = 26          
+| max= 81           | max= 2            | max= 1            | max= 62          
+| avg= 81           | avg= 2            | avg= 1            | avg= 19.2346     
+| sd = -nan         | sd = -nan         | sd = 0            | sd = 7.52707     
+
+******************************************************************************** 
+*                              Preprocessing...                                * 
+******************************************************************************** 
+# Communities : 1 
+# HNs Per Community # Internal Pins     Internal Degree Sum 
+| min= 81           | min= 81           | min= 81          
+| Q1 = 0            | Q1 = 0            | Q1 = 0           
+| med= 81           | med= 81           | med= 81          
+| Q3 = 0            | Q3 = 0            | Q3 = 0           
+| max= 81           | max= 81           | max= 81          
+| avg= 81           | avg= 81           | avg= 81          
+| sd = -nan         | sd = -nan         | sd = -nan        
+******************************************************************************** 
+*                                Coarsening...                                 * 
+******************************************************************************** 
+Hypergraph Information 
+Name : Coarsened Hypergraph 
+# HNs : 81 # HEs : 1 # pins: 81 # graph edges: 0 
+HE size             HE weight           HN degree           HN weight 
+| min= 81           | min= 2            | min= 1            | min= 14          
+| Q1 = 0            | Q1 = 0            | Q1 = 1            | Q1 = 14          
+| med= 81           | med= 2            | med= 1            | med= 14          
+| Q3 = 0            | Q3 = 0            | Q3 = 1            | Q3 = 26          
+| max= 81           | max= 2            | max= 1            | max= 62          
+| avg= 81           | avg= 2            | avg= 1            | avg= 19.2346     
+| sd = -nan         | sd = -nan         | sd = 0            | sd = 7.52707     
+
+******************************************************************************** 
+*                           Initial Partitioning...                            * 
+******************************************************************************** 
+Initial Partitioning Results: 
+soed       = 4 
+imbalance = 0.0012837 
+Part sizes and weights: 
+|block 0| =  41  w( 0 ) = 780  max( 0 ) = 934
+|block 1| =  40  w( 1 ) = 778  max( 1 ) = 934
+ 
+Initial Partitioning Algorithm Summary: 
+Number of Initial Partitioning Calls = 1 
+Average Number of Thread per IP Call = 24 
+ 
+[1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
+greedy_round_robin_fm          4               0.000659992     0          0               
+greedy_global_fm               4               0.000458039     0          0               
+greedy_sequential_fm           4               0.00045116      0          0               
+random                         4               0.000118412     1          100             
+bfs                            4               0.000270478     0          0               
+label_propagation              4               0.000531897     0          0               
+greedy_round_robin_max_net     4               0.00052624      0          0               
+greedy_global_max_net          4               0.000428741     0          0               
+greedy_sequential_max_net      4               0.000408089     0          0               
+
+******************************************************************************** 
+*                               Local Search...                                * 
+******************************************************************************** 
+Local Search Results: 
+soed       = 4 
+imbalance = 0.0012837 
+Part sizes and weights: 
+|block 0| =  41  w( 0 ) = 780  max( 0 ) = 934
+|block 1| =  40  w( 1 ) = 778  max( 1 ) = 934
+ 
+Hypergraph Information 
+Name : Uncoarsened Hypergraph 
+# HNs : 81 # HEs : 1 # pins: 81 # graph edges: 0 
+HE size             HE weight           HN degree           HN weight 
+| min= 81           | min= 2            | min= 1            | min= 14          
+| Q1 = 0            | Q1 = 0            | Q1 = 1            | Q1 = 14          
+| med= 81           | med= 2            | med= 1            | med= 14          
+| Q3 = 0            | Q3 = 0            | Q3 = 1            | Q3 = 26          
+| max= 81           | max= 2            | max= 1            | max= 62          
+| avg= 81           | avg= 2            | avg= 1            | avg= 19.2346     
+| sd = -nan         | sd = -nan         | sd = 0            | sd = 7.52707     
+-------------------------------------------------------------------------------- 
+23:38:11 [0m[34m[INFO] [0minteractive partition completed: 2 in total. merging started.
+23:38:11 [0m[34m[INFO] [0m--no-merge: keeping the 2 initial parts as-is.
+23:38:11 [0m[34m[INFO] [0mafter merging: 2 parts.

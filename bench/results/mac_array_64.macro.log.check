@@ -1,0 +1,25 @@
+23:38:48 [0m[34m[INFO] [0mSimulator args:
+SimulatorArgs {
+    netlist_verilog: "results/mac_array_64.macro.gv",
+    top_module: None,
+    level_split: [],
+    gemparts: "results/mac_array_64.macro.gemparts",
+    input_vcd: "results/mac_array_64.check.vcd",
+    input_vcd_scope: None,
+    output_vcd: "results/mac_array_64.macro.check_out.vcd",
+    output_vcd_scope: None,
+    num_blocks: 40,
+    check_with_cpu: true,
+    max_cycles: None,
+}
+23:38:48 [0m[34m[INFO] [0minferred clock port clk (posedge)
+23:38:48 [0m[34m[INFO] [0m# of effective partitions in each stage: [47]
+23:38:48 [0m[36m[DEBUG] [0mgem::flatten: [src/flatten.rs:1090] major stage 0: max total boomerang depth (w/ cost) 10
+23:38:48 [0m[34m[INFO] [0mBuilt script for 40 blocks, reg/io state size 6226, sram size 0, script size 959744
+Script hash: 4800554468284843667
+23:38:48 [0m[34m[INFO] [0mtotal number of cycles: 301
+23:38:49 [0m[36m[DEBUG] [0mTimerStarting: [src/bin/cuda_test.rs:419] simulation
+23:38:49 [0m[36m[DEBUG] [0mTimerFinished: [src/bin/cuda_test.rs:419] simulation, Elapsed=9.967191ms
+23:38:49 [0m[34m[INFO] [0mrunning sanity test
+23:38:49 [0m[34m[INFO] [0msanity test passed!
+23:38:49 [0m[34m[INFO] [0mwrite out vcd

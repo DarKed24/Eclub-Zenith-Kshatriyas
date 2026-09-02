@@ -1,0 +1,31 @@
+23:01:09 [0m[34m[INFO] [0mSimulator args:
+SimulatorArgs {
+    netlist_verilog: "results/mac_array_64.shred.gv",
+    top_module: None,
+    level_split: [],
+    gemparts: "results/mac_array_64.shred.gemparts",
+    input_vcd: "results/mac_array_64.stim.vcd",
+    input_vcd_scope: None,
+    output_vcd: "results/mac_array_64.shred.ncu_out.vcd",
+    output_vcd_scope: None,
+    num_blocks: 40,
+    check_with_cpu: false,
+    max_cycles: None,
+}
+23:01:11 [0m[34m[INFO] [0minferred clock port clk (posedge)
+23:01:11 [0m[34m[INFO] [0m# of effective partitions in each stage: [20]
+23:01:11 [0m[36m[DEBUG] [0mgem::flatten: [src/flatten.rs:1090] major stage 0: max total boomerang depth (w/ cost) 16
+23:01:11 [0m[34m[INFO] [0mBuilt script for 40 blocks, reg/io state size 2790, sram size 0, script size 1425408
+Script hash: 6812267106479136679
+23:01:11 [0m[34m[INFO] [0mtotal number of cycles: 20001
+==PROF== Connected to process 10448 (/home/darsh/gem/target/release/cuda_test)
+23:01:13 [0m[36m[DEBUG] [0mTimerStarting: [src/bin/cuda_test.rs:419] simulation
+23:01:17 [0m[36m[DEBUG] [0mTimerFinished: [src/bin/cuda_test.rs:419] simulation, Elapsed=4.482187225s
+23:01:17 [0m[34m[INFO] [0mwrite out vcd
+==PROF== Disconnected from process 10448
+"ID","Process ID","Process Name","Host Name","Kernel Name","Context","Stream","Block Size","Grid Size","Device","CC","Section Name","Metric Name","Metric Unit","Metric Value"
+"0","10448","cuda_test","127.0.0.1","simulate_v1_noninteractive_simple_scan(unsigned long, unsigned long, const unsigned long *, const unsigned int *, unsigned int *, unsigned long, unsigned long, unsigned int *)","1","7","(256, 1, 1)","(40, 1, 1)","0","12.0","Command line profiler metrics","dram__throughput.avg.pct_of_peak_sustained_elapsed","%","0.17"
+"0","10448","cuda_test","127.0.0.1","simulate_v1_noninteractive_simple_scan(unsigned long, unsigned long, const unsigned long *, const unsigned int *, unsigned int *, unsigned long, unsigned long, unsigned int *)","1","7","(256, 1, 1)","(40, 1, 1)","0","12.0","Command line profiler metrics","l1tex__throughput.avg.pct_of_peak_sustained_elapsed","%","34.64"
+"0","10448","cuda_test","127.0.0.1","simulate_v1_noninteractive_simple_scan(unsigned long, unsigned long, const unsigned long *, const unsigned int *, unsigned int *, unsigned long, unsigned long, unsigned int *)","1","7","(256, 1, 1)","(40, 1, 1)","0","12.0","Command line profiler metrics","sm__warps_active.avg.pct_of_peak_sustained_active","%","33.34"
+"0","10448","cuda_test","127.0.0.1","simulate_v1_noninteractive_simple_scan(unsigned long, unsigned long, const unsigned long *, const unsigned int *, unsigned int *, unsigned long, unsigned long, unsigned int *)","1","7","(256, 1, 1)","(40, 1, 1)","0","12.0","Command line profiler metrics","smsp__sass_average_branch_targets_threads_uniform.pct","%","93.91"
+"0","10448","cuda_test","127.0.0.1","simulate_v1_noninteractive_simple_scan(unsigned long, unsigned long, const unsigned long *, const unsigned int *, unsigned int *, unsigned long, unsigned long, unsigned int *)","1","7","(256, 1, 1)","(40, 1, 1)","0","12.0","Command line profiler metrics","smsp__thread_inst_executed_per_inst_executed.ratio","","30.76"

@@ -1,0 +1,27 @@
+// Hand-written gate-level netlist for the Part C SRLC32E differential test.
+// The simplest complete SRL: a registered data stream shifted into a 32-bit
+// SRLC32E, read back at a CONSTANT address, with the cascade port also
+// exposed.
+//   - d_in is registered, so the design has a clock and cross-cycle state
+//   - A is the constant 5 -> the read macro's inputs are all level-0 sources,
+//     so macro_level == 0 and the forced Class C split lands at level 0
+//   - q_out is a combinational read of the Class C macro (staged IO), so the
+//     pipeline must produce TWO major stages
+//   - q31_out is state[31] itself: an ordinary Class R source pin, realized in
+//     stage 0 with no split and no extra grid sync
+
+module srl_static_addr (clk, d_in, q_out, q31_out);
+  input clk;
+  input d_in;
+  output q_out;
+  output q31_out;
+
+  wire d;
+
+  DFF rd (.CLK(clk), .D(d_in), .Q(d));
+
+  SRLC32E sr (
+    .CLK(clk), .CE(1'b1), .D(d), .A(5'b00101),
+    .Q(q_out), .Q31(q31_out)
+  );
+endmodule

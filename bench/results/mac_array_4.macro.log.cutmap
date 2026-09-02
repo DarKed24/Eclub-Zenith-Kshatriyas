@@ -1,0 +1,16 @@
+22:52:12 [0m[34m[INFO] [0mSimulator args:
+SimulatorArgs {
+    netlist_verilog: "results/mac_array_4.macro.gv",
+    top_module: None,
+    level_split: [],
+    parts_out: "results/mac_array_4.macro.gemparts",
+    max_stage_degrad: 0,
+}
+22:52:12 [0m[34m[INFO] [0minferred clock port clk (posedge)
+netlist has 2627 pins, 852 aig pins, 432 and gates
+22:52:12 [0m[34m[INFO] [0minteractive partitioning stage 0-max
+22:52:12 [0m[34m[INFO] [0mcurrent: 232 endpoints, try 1 parts
+22:52:12 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 1)
+22:52:12 [0m[34m[INFO] [0minteractive partition completed: 1 in total. merging started.
+22:52:12 [0m[34m[INFO] [0mpart 0: #stages 1
+22:52:12 [0m[34m[INFO] [0mafter merging: 1 parts.

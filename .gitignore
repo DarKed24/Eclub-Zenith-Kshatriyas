@@ -1,0 +1,9 @@
+/target
+**/*.vcd
+**/*.gemparts
+bench/results/*.gv
+bench/results/*.check_out.*
+bench/results/*.ncu_out.*
+*.before_fix
+*.before_classc_fix
+regress-*/

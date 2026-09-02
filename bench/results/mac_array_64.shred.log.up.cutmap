@@ -1,0 +1,308 @@
+21:13:13 [0m[34m[INFO] [0mSimulator args:
+SimulatorArgs {
+    netlist_verilog: "results/mac_array_64.shred.gv",
+    top_module: None,
+    level_split: [],
+    parts_out: "results/mac_array_64.upstream.gemparts",
+    max_stage_degrad: 0,
+}
+21:13:15 [0m[34m[INFO] [0minferred clock port clk (posedge)
+netlist has 989868 pins, 320030 aig pins, 314030 and gates
+21:13:15 [0m[34m[INFO] [0minteractive partitioning stage 0-max
+21:13:15 [0m[34m[INFO] [0mcurrent: 6000 endpoints, try 20 parts
+21:13:15 [0m[36m[DEBUG] [0mcut_map_interactive: [src/bin/cut_map_interactive.rs:20] invoking partitioner (#parts 20)
+*******************************************************************************
+*                            Partitioning Context                             *
+*******************************************************************************
+Partitioning Parameters:
+  Hypergraph:                         
+  Mode:                               direct_kway
+  Objective:                          soed
+  Gain Policy:                        soed
+  Input File Format:                  hMetis
+  Instance Type:                      hypergraph
+  Preset Type:                        deterministic
+  Partition Type:                     multilevel_hypergraph_partitioning
+  k:                                  20
+  epsilon:                            0.2
+  seed:                               0
+  Number of V-Cycles:                 0
+  Ignore HE Size Threshold:           1000
+  Large HE Size Threshold:            100
+-------------------------------------------------------------------------------
+Preprocessing Parameters:
+  Use Community Detection:            true
+  Disable C. D. for Mesh Graphs:      true
+
+  Community Detection Parameters:
+    Edge Weight Function:                uniform
+    Maximum Louvain-Pass Iterations:     5
+    Minimum Vertex Move Fraction:        0.01
+    Vertex Degree Sampling Threshold:    200000
+    Number of subrounds (deterministic): 16
+-------------------------------------------------------------------------------
+Coarsening Parameters:
+  Algorithm:                          deterministic_multilevel_coarsener
+  Use Adaptive Edge Size:             true
+  Max Allowed Weight Multiplier:      1
+  Maximum Allowed Hypernode Weight:   101
+  Contraction Limit Multiplier:       160
+  Deep ML Contraction Limit Multi.:   4294967295
+  Contraction Limit:                  3200
+  Minimum Shrink Factor:              1.01
+  Maximum Shrink Factor:              2.5
+  Vertex Degree Sampling Threshold:   200000
+  Number of subrounds (deterministic):3
+
+  Rating Parameters:
+    Rating Function:                  heavy_edge
+    Heavy Node Penalty:               no_penalty
+    Acceptance Policy:                best_prefer_unmatched
+-------------------------------------------------------------------------------
+Initial Partitioning Parameters:
+  Initial Partitioning Mode:          recursive_bipartitioning
+  Number of Runs:                     20
+  Use Adaptive IP Runs:               false
+  Perform Refinement On Best:         false
+  Fm Refinement Rounds:               3
+  Remove Degree-Zero HNs Before IP:   true
+  Maximum Iterations of LP IP:        20
+  Initial Block Size of LP IP:        5
+
+Initial Partitioning Refinement Parameters:
+  Rebalancing Algorithm:              do_nothing
+  Refine Until No Improvement:        false
+  Relative Improvement Threshold:     0
+  Maximum Batch Size:                 1000
+  Min Border Vertices Per Thread:     0
+
+  Label Propagation Parameters:
+    Algorithm:                        deterministic
+    Maximum Iterations:               5
+    Unconstrained:                    false
+    Rebalancing:                      true
+    HE Size Activation Threshold:     100
+    Relative Improvement Threshold:   -1
+
+  FM Parameters: 
+    Algorithm:                        fm_do_nothing
+
+  Flow Parameters: 
+    Algorithm:                        do_nothing
+
+-------------------------------------------------------------------------------
+Refinement Parameters:
+  Rebalancing Algorithm:              advanced_rebalancer
+  Refine Until No Improvement:        false
+  Relative Improvement Threshold:     0
+  Maximum Batch Size:                 1000
+  Min Border Vertices Per Thread:     0
+
+  Label Propagation Parameters:
+    Algorithm:                        deterministic
+    Maximum Iterations:               5
+    Unconstrained:                    false
+    Rebalancing:                      true
+    HE Size Activation Threshold:     100
+    Relative Improvement Threshold:   -1
+
+  FM Parameters: 
+    Algorithm:                        fm_do_nothing
+
+  Flow Parameters: 
+    Algorithm:                        do_nothing
+-------------------------------------------------------------------------------
+Shared Memory Parameters:             
+  Number of Threads:                  24
+  Use Localized Random Shuffle:       false
+  Random Shuffle Block Size:          2
+------------------------------------------------------------------------------- 
+
+******************************************************************************** 
+*                                    Input                                     * 
+******************************************************************************** 
+Hypergraph Information 
+Name :  
+# HNs : 6000 # HEs : 8930 # pins: 262725 # graph edges: 141 
+HE size             HE weight           HN degree           HN weight 
+| min= 2            | min= 1            | min= 0            | min= 1           
+| Q1 = 19           | Q1 = 1            | Q1 = 1            | Q1 = 1           
+| med= 32           | med= 1            | med= 9            | med= 8           
+| Q3 = 40           | Q3 = 71           | Q3 = 93           | Q3 = 113         
+| max= 1000         | max= 147          | max= 142          | max= 221         
+| avg= 29.4205      | avg= 33.5604      | avg= 43.7875      | avg= 53.8043     
+| sd = 19.7686      | sd = 52.0277      | sd = 50.1718      | sd = 60.8667     
+
+******************************************************************************** 
+*                              Preprocessing...                                * 
+******************************************************************************** 
+# Communities : 101 
+# HNs Per Community # Internal Pins     Internal Degree Sum 
+| min= 1            | min= 0            | min= 0           
+| Q1 = 1            | Q1 = 0            | Q1 = 0           
+| med= 84           | med= 4065         | med= 4065        
+| Q3 = 87           | Q3 = 4070         | Q3 = 4070        
+| max= 481          | max= 4838         | max= 4838        
+| avg= 59.4059      | avg= 2601.24      | avg= 2601.24     
+| sd = 58.8857      | sd = 1979.76      | sd = 1979.76     
+Performed single-node/large HE removal and degree-zero HN contractions: 
+[1m[31m  # removed 0 single-pin hyperedges during hypergraph file parsing [0m 
+[1m[31m  # removed 0 large hyperedges with |e| > 50000 [0m 
+[1m[31m  # contracted 35 hypernodes with d(v) = 0 and w(v) = 1 [0m 
+-------------------------------------------------------------------------------- 
+******************************************************************************** 
+*                                Coarsening...                                 * 
+******************************************************************************** 
+Hypergraph Information 
+Name : Coarsened Hypergraph 
+# HNs : 3177 # HEs : 6288 # pins: 157640 # graph edges: 130 
+HE size             HE weight           HN degree           HN weight 
+| min= 2            | min= 1            | min= 1            | min= 1           
+| Q1 = 14           | Q1 = 1            | Q1 = 23           | Q1 = 84          
+| med= 26           | med= 1            | med= 52           | med= 107         
+| Q3 = 36           | Q3 = 106          | Q3 = 76           | Q3 = 142         
+| max= 938          | max= 292          | max= 105          | max= 221         
+| avg= 25.07        | avg= 47.6566      | avg= 49.6191      | avg= 101.602     
+| sd = 20.1539      | sd = 61.2097      | sd = 30.8654      | sd = 50.6783     
+
+******************************************************************************** 
+*                           Initial Partitioning...                            * 
+******************************************************************************** 
+Initial Partitioning Results: 
+soed       = 8622 
+imbalance = 0.199604 
+Part sizes and weights: 
+|block 0 | =   186  w(  0 ) = 19301  max(  0 ) = 19370
+|block 1 | =   161  w(  1 ) = 17254  max(  1 ) = 19370
+|block 2 | =   144  w(  2 ) = 15295  max(  2 ) = 19370
+|block 3 | =   137  w(  3 ) = 15029  max(  3 ) = 19370
+|block 4 | =   143  w(  4 ) = 14875  max(  4 ) = 19370
+|block 5 | =   186  w(  5 ) = 19328  max(  5 ) = 19370
+|block 6 | =   166  w(  6 ) = 17235  max(  6 ) = 19370
+|block 7 | =   146  w(  7 ) = 15289  max(  7 ) = 19370
+|block 8 | =   138  w(  8 ) = 15067  max(  8 ) = 19370
+|block 9 | =   145  w(  9 ) = 14868  max(  9 ) = 19370
+|block 10| =   198  w( 10 ) = 16376  max( 10 ) = 19370
+|block 11| =   173  w( 11 ) = 19353  max( 11 ) = 19370
+|block 12| =   150  w( 12 ) = 14639  max( 12 ) = 19370
+|block 13| =   140  w( 13 ) = 14639  max( 13 ) = 19370
+|block 14| =   146  w( 14 ) = 14641  max( 14 ) = 19370
+|block 15| =   182  w( 15 ) = 16328  max( 15 ) = 19370
+|block 16| =   191  w( 16 ) = 19364  max( 16 ) = 19370
+|block 17| =   150  w( 17 ) = 14637  max( 17 ) = 19370
+|block 18| =   148  w( 18 ) = 14636  max( 18 ) = 19370
+|block 19| =   147  w( 19 ) = 14637  max( 19 ) = 19370
+ 
+Initial Partitioning Algorithm Summary: 
+Number of Initial Partitioning Calls = 19 
+Average Number of Thread per IP Call = 24 
+ 
+[1mAlgorithm                      Avg. Quality    Total Time (s)  Total Best Total Best (%)[0m
+greedy_round_robin_fm          5109.67         1.13637         2          10.5263         
+greedy_global_fm               1668.31         1.44501         0          0               
+greedy_sequential_fm           1667.14         1.4484          1          5.26316         
+random                         13443.4         0.150032        1          5.26316         
+bfs                            10421.2         0.300967        1          5.26316         
+label_propagation              17904.2         6.9179          0          0               
+greedy_round_robin_max_net     2242.67         0.925348        4          21.0526         
+greedy_global_max_net          576.882         0.859918        5          26.3158         
+greedy_sequential_max_net      568.955         0.866505        5          26.3158         
+
+******************************************************************************** 
+*                               Local Search...                                * 
+******************************************************************************** 
+Local Search Results: 
+soed       = 8432 
+imbalance = 0.199046 
+Part sizes and weights: 
+|block 0 | =   353  w(  0 ) = 19303  max(  0 ) = 19370
+|block 1 | =   307  w(  1 ) = 17252  max(  1 ) = 19370
+|block 2 | =   284  w(  2 ) = 15299  max(  2 ) = 19370
+|block 3 | =   236  w(  3 ) = 15033  max(  3 ) = 19370
+|block 4 | =   282  w(  4 ) = 14878  max(  4 ) = 19370
+|block 5 | =   357  w(  5 ) = 19325  max(  5 ) = 19370
+|block 6 | =   303  w(  6 ) = 17235  max(  6 ) = 19370
+|block 7 | =   285  w(  7 ) = 15294  max(  7 ) = 19370
+|block 8 | =   282  w(  8 ) = 15075  max(  8 ) = 19370
+|block 9 | =   280  w(  9 ) = 14868  max(  9 ) = 19370
+|block 10| =   328  w( 10 ) = 16359  max( 10 ) = 19370
+|block 11| =   331  w( 11 ) = 19354  max( 11 ) = 19370
+|block 12| =   279  w( 12 ) = 14636  max( 12 ) = 19370
+|block 13| =   279  w( 13 ) = 14644  max( 13 ) = 19370
+|block 14| =   279  w( 14 ) = 14652  max( 14 ) = 19370
+|block 15| =   308  w( 15 ) = 16324  max( 15 ) = 19370
+|block 16| =   353  w( 16 ) = 19355  max( 16 ) = 19370
+|block 17| =   280  w( 17 ) = 14633  max( 17 ) = 19370
+|block 18| =   280  w( 18 ) = 14632  max( 18 ) = 19370
+|block 19| =   279  w( 19 ) = 14640  max( 19 ) = 19370
+ 
+Hypergraph Information 
+Name : Uncoarsened Hypergraph 
+# HNs : 6000 # HEs : 8930 # pins: 262725 # graph edges: 141 
+HE size             HE weight           HN degree           HN weight 
+| min= 2            | min= 1            | min= 0            | min= 1           
+| Q1 = 19           | Q1 = 1            | Q1 = 1            | Q1 = 1           
+| med= 32           | med= 1            | med= 9            | med= 8           
+| Q3 = 40           | Q3 = 71           | Q3 = 93           | Q3 = 113         
+| max= 1000         | max= 147          | max= 142          | max= 221         
+| avg= 29.4205      | avg= 33.5604      | avg= 43.7875      | avg= 53.8043     
+| sd = 19.7686      | sd = 52.0277      | sd = 50.1718      | sd = 60.8667     
+-------------------------------------------------------------------------------- 
+21:13:32 [0m[34m[INFO] [0minteractive partition completed: 20 in total. merging started.
+21:13:55 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 18 due to nstage degradation: 18 > 13
+21:13:55 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 19 due to nstage degradation: 18 > 13
+21:13:55 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 12 due to nstage degradation: 18 > 13
+21:13:55 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 17 due to nstage degradation: 18 > 13
+21:14:00 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 13 due to nstage degradation: 18 > 13
+21:14:00 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 0 with 14 due to nstage degradation: 18 > 13
+21:14:00 [0m[34m[INFO] [0mpart 0: #stages 13
+21:14:01 [0m[34m[INFO] [0mpart 1: #stages 12
+21:14:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 18 due to nstage degradation: 17 > 13
+21:14:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 19 due to nstage degradation: 17 > 13
+21:14:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 12 due to nstage degradation: 17 > 13
+21:14:07 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 17 due to nstage degradation: 17 > 13
+21:14:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 13 due to nstage degradation: 17 > 13
+21:14:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 14 due to nstage degradation: 17 > 13
+21:14:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 9 due to nstage degradation: 17 > 13
+21:14:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 4 due to nstage degradation: 17 > 13
+21:14:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 8 due to nstage degradation: 17 > 13
+21:14:16 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 3 due to nstage degradation: 17 > 13
+21:14:21 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 2 with 7 due to nstage degradation: 17 > 13
+21:14:21 [0m[34m[INFO] [0mpart 2: #stages 11
+21:14:27 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 18 due to nstage degradation: 17 > 13
+21:14:27 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 19 due to nstage degradation: 17 > 13
+21:14:27 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 12 due to nstage degradation: 17 > 13
+21:14:27 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 17 due to nstage degradation: 17 > 13
+21:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 13 due to nstage degradation: 17 > 13
+21:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 14 due to nstage degradation: 17 > 13
+21:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 9 due to nstage degradation: 17 > 13
+21:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 4 due to nstage degradation: 17 > 13
+21:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 15 due to nstage degradation: 17 > 13
+21:14:35 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 7 due to nstage degradation: 17 > 13
+21:14:40 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 3 with 8 due to nstage degradation: 17 > 13
+21:14:40 [0m[34m[INFO] [0mpart 3: #stages 11
+21:14:47 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 18 due to nstage degradation: 17 > 13
+21:14:47 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 19 due to nstage degradation: 17 > 13
+21:14:47 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 12 due to nstage degradation: 17 > 13
+21:14:47 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 17 due to nstage degradation: 17 > 13
+21:14:56 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 13 due to nstage degradation: 17 > 13
+21:14:56 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 14 due to nstage degradation: 17 > 13
+21:14:56 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 15 due to nstage degradation: 17 > 13
+21:14:56 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 10 due to nstage degradation: 17 > 13
+21:14:56 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 7 due to nstage degradation: 17 > 13
+21:14:56 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 9 due to nstage degradation: 17 > 13
+21:14:56 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 8 due to nstage degradation: 17 > 13
+21:15:01 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 4 with 11 due to nstage degradation: 18 > 13
+21:15:01 [0m[34m[INFO] [0mpart 4: #stages 11
+21:15:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 5 with 18 due to nstage degradation: 18 > 13
+21:15:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 5 with 19 due to nstage degradation: 18 > 13
+21:15:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 5 with 12 due to nstage degradation: 19 > 13
+21:15:09 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 5 with 17 due to nstage degradation: 18 > 13
+21:15:15 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 5 with 13 due to nstage degradation: 18 > 13
+21:15:15 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 5 with 14 due to nstage degradation: 18 > 13
+21:15:15 [0m[34m[INFO] [0mpart 5: #stages 13
+21:15:15 [0m[34m[INFO] [0mpart 6: #stages 12
+21:15:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 18 due to nstage degradation: 17 > 13
+21:15:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 19 due to nstage degradation: 17 > 13
+21:15:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 12 due to nstage degradation: 17 > 13
+21:15:23 [0m[36m[DEBUG] [0mgem::pe: [src/pe.rs:677] skipped merging 7 with 17 due to nstage degradation: 17 > 13

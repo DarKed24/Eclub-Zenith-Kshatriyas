@@ -1,0 +1,82 @@
+// Hand-written gate-level netlist for the Part B CARRY4 differential test.
+// An 8-bit ripple-carry adder built from two CARRY4 slices whose CO[3]->CI
+// cascade fuses into a single Carry4 { chain_len: 2 } macro.
+//   - a_in / b_in are registered (gives a clock + cross-cycle state)
+//   - s = a ^ b is 1-bit boolean AIG glue scheduled alongside the macro
+//   - DI = a (the ripple-adder mapping: carry := a where a == b)
+//   - sum_out / cout are combinational reads of the macro O / CO outputs,
+//     so the pipeline must produce TWO major stages: stage 0 computes s and
+//     evaluates the fused CARRY4 into staged-IO scratch, stage 1 reads the
+//     scratch back and drives the primary outputs.
+
+module ripple_adder (clk, a_in, b_in, cin, sum_out, cout);
+  input clk;
+  input [7:0] a_in;
+  input [7:0] b_in;
+  input cin;
+  output [7:0] sum_out;
+  output cout;
+
+  wire [7:0] a;
+  wire [7:0] b;
+  wire [7:0] s;
+  wire [7:0] nand_ab;
+  wire [7:0] or_ab;
+  wire [3:0] o_lo, o_hi, co_lo, co_hi;
+
+  DFF ra0 (.CLK(clk), .D(a_in[0]), .Q(a[0]));
+  DFF ra1 (.CLK(clk), .D(a_in[1]), .Q(a[1]));
+  DFF ra2 (.CLK(clk), .D(a_in[2]), .Q(a[2]));
+  DFF ra3 (.CLK(clk), .D(a_in[3]), .Q(a[3]));
+  DFF ra4 (.CLK(clk), .D(a_in[4]), .Q(a[4]));
+  DFF ra5 (.CLK(clk), .D(a_in[5]), .Q(a[5]));
+  DFF ra6 (.CLK(clk), .D(a_in[6]), .Q(a[6]));
+  DFF ra7 (.CLK(clk), .D(a_in[7]), .Q(a[7]));
+
+  DFF rb0 (.CLK(clk), .D(b_in[0]), .Q(b[0]));
+  DFF rb1 (.CLK(clk), .D(b_in[1]), .Q(b[1]));
+  DFF rb2 (.CLK(clk), .D(b_in[2]), .Q(b[2]));
+  DFF rb3 (.CLK(clk), .D(b_in[3]), .Q(b[3]));
+  DFF rb4 (.CLK(clk), .D(b_in[4]), .Q(b[4]));
+  DFF rb5 (.CLK(clk), .D(b_in[5]), .Q(b[5]));
+  DFF rb6 (.CLK(clk), .D(b_in[6]), .Q(b[6]));
+  DFF rb7 (.CLK(clk), .D(b_in[7]), .Q(b[7]));
+
+  // s[i] = a[i] ^ b[i] = ~(a & b) & (a | b)
+  AND2_11_0 xn0 (.A(a[0]), .B(b[0]), .Y(nand_ab[0]));
+  AND2_11_1 xo0 (.A(a[0]), .B(b[0]), .Y(or_ab[0]));
+  AND2_00_0 xs0 (.A(nand_ab[0]), .B(or_ab[0]), .Y(s[0]));
+  AND2_11_0 xn1 (.A(a[1]), .B(b[1]), .Y(nand_ab[1]));
+  AND2_11_1 xo1 (.A(a[1]), .B(b[1]), .Y(or_ab[1]));
+  AND2_00_0 xs1 (.A(nand_ab[1]), .B(or_ab[1]), .Y(s[1]));
+  AND2_11_0 xn2 (.A(a[2]), .B(b[2]), .Y(nand_ab[2]));
+  AND2_11_1 xo2 (.A(a[2]), .B(b[2]), .Y(or_ab[2]));
+  AND2_00_0 xs2 (.A(nand_ab[2]), .B(or_ab[2]), .Y(s[2]));
+  AND2_11_0 xn3 (.A(a[3]), .B(b[3]), .Y(nand_ab[3]));
+  AND2_11_1 xo3 (.A(a[3]), .B(b[3]), .Y(or_ab[3]));
+  AND2_00_0 xs3 (.A(nand_ab[3]), .B(or_ab[3]), .Y(s[3]));
+  AND2_11_0 xn4 (.A(a[4]), .B(b[4]), .Y(nand_ab[4]));
+  AND2_11_1 xo4 (.A(a[4]), .B(b[4]), .Y(or_ab[4]));
+  AND2_00_0 xs4 (.A(nand_ab[4]), .B(or_ab[4]), .Y(s[4]));
+  AND2_11_0 xn5 (.A(a[5]), .B(b[5]), .Y(nand_ab[5]));
+  AND2_11_1 xo5 (.A(a[5]), .B(b[5]), .Y(or_ab[5]));
+  AND2_00_0 xs5 (.A(nand_ab[5]), .B(or_ab[5]), .Y(s[5]));
+  AND2_11_0 xn6 (.A(a[6]), .B(b[6]), .Y(nand_ab[6]));
+  AND2_11_1 xo6 (.A(a[6]), .B(b[6]), .Y(or_ab[6]));
+  AND2_00_0 xs6 (.A(nand_ab[6]), .B(or_ab[6]), .Y(s[6]));
+  AND2_11_0 xn7 (.A(a[7]), .B(b[7]), .Y(nand_ab[7]));
+  AND2_11_1 xo7 (.A(a[7]), .B(b[7]), .Y(or_ab[7]));
+  AND2_00_0 xs7 (.A(nand_ab[7]), .B(or_ab[7]), .Y(s[7]));
+
+  CARRY4 c_lo (
+    .S(s[3:0]), .DI(a[3:0]), .CYINIT(1'b0), .CI(cin),
+    .O(o_lo), .CO(co_lo)
+  );
+  CARRY4 c_hi (
+    .S(s[7:4]), .DI(a[7:4]), .CYINIT(1'b0), .CI(co_lo[3]),
+    .O(o_hi), .CO(co_hi)
+  );
+
+  assign sum_out = {o_hi, o_lo};
+  assign cout = co_hi[3];
+endmodule

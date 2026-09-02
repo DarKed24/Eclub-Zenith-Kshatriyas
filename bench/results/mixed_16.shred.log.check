@@ -1,0 +1,25 @@
+23:00:34 [0m[34m[INFO] [0mSimulator args:
+SimulatorArgs {
+    netlist_verilog: "results/mixed_16.shred.gv",
+    top_module: None,
+    level_split: [],
+    gemparts: "results/mixed_16.shred.gemparts",
+    input_vcd: "results/mixed_16.check.vcd",
+    input_vcd_scope: None,
+    output_vcd: "results/mixed_16.shred.check_out.vcd",
+    output_vcd_scope: None,
+    num_blocks: 40,
+    check_with_cpu: true,
+    max_cycles: None,
+}
+23:00:35 [0m[34m[INFO] [0minferred clock port clk (posedge)
+23:00:35 [0m[34m[INFO] [0m# of effective partitions in each stage: [9]
+23:00:35 [0m[36m[DEBUG] [0mgem::flatten: [src/flatten.rs:1090] major stage 0: max total boomerang depth (w/ cost) 14
+23:00:35 [0m[34m[INFO] [0mBuilt script for 40 blocks, reg/io state size 1260, sram size 0, script size 605696
+Script hash: 11570587640577073184
+23:00:35 [0m[34m[INFO] [0mtotal number of cycles: 301
+23:00:36 [0m[36m[DEBUG] [0mTimerStarting: [src/bin/cuda_test.rs:419] simulation
+23:00:36 [0m[36m[DEBUG] [0mTimerFinished: [src/bin/cuda_test.rs:419] simulation, Elapsed=10.372669ms
+23:00:36 [0m[34m[INFO] [0mrunning sanity test
+23:00:36 [0m[34m[INFO] [0msanity test passed!
+23:00:36 [0m[34m[INFO] [0mwrite out vcd

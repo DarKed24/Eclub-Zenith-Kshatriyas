@@ -1,0 +1,60 @@
+// Part C: the SRLC32E read port at a DYNAMIC address.
+// The 5-bit address is `ra ^ rb` off two registered inputs, so it is two AIG
+// levels deep. That makes the read macro's `macro_level` non-zero, exercising
+// the forced Class C split at a real level (not the degenerate level 0) and
+// the branchless 32:1 dynamic mux the native datapath replaces.
+//   - macro_level[Srl32Read] == 2 (nand -> or -> and)
+//   - TWO major stages: stage 0 computes the address, evaluates the read into
+//     staged-IO scratch and commits the shift; stage 1 reads the scratch back
+
+module srl_dynamic_addr (clk, d_in, a_in, b_in, q_out, q31_out);
+  input clk;
+  input d_in;
+  input [4:0] a_in;
+  input [4:0] b_in;
+  output q_out;
+  output q31_out;
+
+  wire d;
+  wire [4:0] ra;
+  wire [4:0] rb;
+  wire [4:0] addr;
+  wire [4:0] nab;
+  wire [4:0] oab;
+
+  DFF rd (.CLK(clk), .D(d_in), .Q(d));
+
+  DFF ra0 (.CLK(clk), .D(a_in[0]), .Q(ra[0]));
+  DFF ra1 (.CLK(clk), .D(a_in[1]), .Q(ra[1]));
+  DFF ra2 (.CLK(clk), .D(a_in[2]), .Q(ra[2]));
+  DFF ra3 (.CLK(clk), .D(a_in[3]), .Q(ra[3]));
+  DFF ra4 (.CLK(clk), .D(a_in[4]), .Q(ra[4]));
+
+  DFF rb0 (.CLK(clk), .D(b_in[0]), .Q(rb[0]));
+  DFF rb1 (.CLK(clk), .D(b_in[1]), .Q(rb[1]));
+  DFF rb2 (.CLK(clk), .D(b_in[2]), .Q(rb[2]));
+  DFF rb3 (.CLK(clk), .D(b_in[3]), .Q(rb[3]));
+  DFF rb4 (.CLK(clk), .D(b_in[4]), .Q(rb[4]));
+
+  // addr[i] = ra[i] ^ rb[i] = ~(ra & rb) & (ra | rb)
+  AND2_11_0 xn0 (.A(ra[0]), .B(rb[0]), .Y(nab[0]));
+  AND2_11_1 xo0 (.A(ra[0]), .B(rb[0]), .Y(oab[0]));
+  AND2_00_0 xs0 (.A(nab[0]), .B(oab[0]), .Y(addr[0]));
+  AND2_11_0 xn1 (.A(ra[1]), .B(rb[1]), .Y(nab[1]));
+  AND2_11_1 xo1 (.A(ra[1]), .B(rb[1]), .Y(oab[1]));
+  AND2_00_0 xs1 (.A(nab[1]), .B(oab[1]), .Y(addr[1]));
+  AND2_11_0 xn2 (.A(ra[2]), .B(rb[2]), .Y(nab[2]));
+  AND2_11_1 xo2 (.A(ra[2]), .B(rb[2]), .Y(oab[2]));
+  AND2_00_0 xs2 (.A(nab[2]), .B(oab[2]), .Y(addr[2]));
+  AND2_11_0 xn3 (.A(ra[3]), .B(rb[3]), .Y(nab[3]));
+  AND2_11_1 xo3 (.A(ra[3]), .B(rb[3]), .Y(oab[3]));
+  AND2_00_0 xs3 (.A(nab[3]), .B(oab[3]), .Y(addr[3]));
+  AND2_11_0 xn4 (.A(ra[4]), .B(rb[4]), .Y(nab[4]));
+  AND2_11_1 xo4 (.A(ra[4]), .B(rb[4]), .Y(oab[4]));
+  AND2_00_0 xs4 (.A(nab[4]), .B(oab[4]), .Y(addr[4]));
+
+  SRLC32E sr (
+    .CLK(clk), .CE(1'b1), .D(d), .A(addr),
+    .Q(q_out), .Q31(q31_out)
+  );
+endmodule

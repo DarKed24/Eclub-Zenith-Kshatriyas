@@ -1,0 +1,31 @@
+// Part C decision-7 fast path: a pure 64-deep delay line built by chaining
+// two SRLC32Es through the cascade port, `Q31 -> D`, with `Q` UNCONNECTED on
+// both instances.
+// ---------------------------------------------------------------------
+// Because no `Q` is read, GEM creates NO Class C macro at all: both SRLs are
+// pure Class R, `Q31` is literally `state[31]` (an ordinary AIG source pin),
+// and the design costs ZERO forced major-stage splits and ZERO extra grid
+// syncs. This is the common FPGA usage of the primitive and the headline
+// scheduling result of Part C - asserted in `structural_checks`.
+// ---------------------------------------------------------------------
+//   - ONE major stage
+//   - zero Class C macros, two Class R (Srl32Shift) macros
+//   - q_out is state[31] of the second SRL, i.e. d_in delayed 64 CE-cycles
+
+module srl_cascade_q31 (clk, d_in, ce_in, q_out);
+  input clk;
+  input d_in;
+  input ce_in;
+  output q_out;
+
+  wire mid;
+
+  SRLC32E s0 (
+    .CLK(clk), .CE(ce_in), .D(d_in), .A(5'b00000),
+    .Q31(mid)
+  );
+  SRLC32E s1 (
+    .CLK(clk), .CE(ce_in), .D(mid), .A(5'b00000),
+    .Q31(q_out)
+  );
+endmodule

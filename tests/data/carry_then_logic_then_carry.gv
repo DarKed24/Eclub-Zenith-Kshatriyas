@@ -1,0 +1,66 @@
+// Part B scheduler test: a CARRY4 whose O outputs feed 1-bit AIG logic that
+// then feeds a SECOND, unrelated CARRY4. The two slices do NOT fuse (the
+// second's CI is tied low), so they sit at different macro levels and the
+// pipeline must produce THREE major stages:
+//   stage 0  realize the input DFFs + evaluate CARRY4 #1 -> staged-IO scratch
+//   stage 1  read #1's O back, compute s2, evaluate CARRY4 #2 -> scratch
+//   stage 2  read #2's O back and drive the primary outputs
+// CARRY4 #1's outputs must appear in stage 1's primary_inputs / staged_io_map.
+
+module carry_then_logic_then_carry (clk, a_in, b_in, cin, out);
+  input clk;
+  input [3:0] a_in;
+  input [3:0] b_in;
+  input cin;
+  output [3:0] out;
+
+  wire [3:0] a;
+  wire [3:0] b;
+  wire [3:0] s1;
+  wire [3:0] s2;
+  wire [3:0] nab1, oab1, nab2, oab2;
+  wire [3:0] o1, co1, o2, co2;
+
+  DFF ra0 (.CLK(clk), .D(a_in[0]), .Q(a[0]));
+  DFF ra1 (.CLK(clk), .D(a_in[1]), .Q(a[1]));
+  DFF ra2 (.CLK(clk), .D(a_in[2]), .Q(a[2]));
+  DFF ra3 (.CLK(clk), .D(a_in[3]), .Q(a[3]));
+  DFF rb0 (.CLK(clk), .D(b_in[0]), .Q(b[0]));
+  DFF rb1 (.CLK(clk), .D(b_in[1]), .Q(b[1]));
+  DFF rb2 (.CLK(clk), .D(b_in[2]), .Q(b[2]));
+  DFF rb3 (.CLK(clk), .D(b_in[3]), .Q(b[3]));
+
+  // s1 = a ^ b
+  AND2_11_0 n10 (.A(a[0]), .B(b[0]), .Y(nab1[0]));
+  AND2_11_1 o10 (.A(a[0]), .B(b[0]), .Y(oab1[0]));
+  AND2_00_0 s10 (.A(nab1[0]), .B(oab1[0]), .Y(s1[0]));
+  AND2_11_0 n11 (.A(a[1]), .B(b[1]), .Y(nab1[1]));
+  AND2_11_1 o11 (.A(a[1]), .B(b[1]), .Y(oab1[1]));
+  AND2_00_0 s11 (.A(nab1[1]), .B(oab1[1]), .Y(s1[1]));
+  AND2_11_0 n12 (.A(a[2]), .B(b[2]), .Y(nab1[2]));
+  AND2_11_1 o12 (.A(a[2]), .B(b[2]), .Y(oab1[2]));
+  AND2_00_0 s12 (.A(nab1[2]), .B(oab1[2]), .Y(s1[2]));
+  AND2_11_0 n13 (.A(a[3]), .B(b[3]), .Y(nab1[3]));
+  AND2_11_1 o13 (.A(a[3]), .B(b[3]), .Y(oab1[3]));
+  AND2_00_0 s13 (.A(nab1[3]), .B(oab1[3]), .Y(s1[3]));
+
+  CARRY4 c1 (.S(s1), .DI(a), .CYINIT(1'b0), .CI(cin), .O(o1), .CO(co1));
+
+  // s2 = o1 ^ a  (logic strictly between the two CARRY4s)
+  AND2_11_0 n20 (.A(o1[0]), .B(a[0]), .Y(nab2[0]));
+  AND2_11_1 o20 (.A(o1[0]), .B(a[0]), .Y(oab2[0]));
+  AND2_00_0 s20 (.A(nab2[0]), .B(oab2[0]), .Y(s2[0]));
+  AND2_11_0 n21 (.A(o1[1]), .B(a[1]), .Y(nab2[1]));
+  AND2_11_1 o21 (.A(o1[1]), .B(a[1]), .Y(oab2[1]));
+  AND2_00_0 s21 (.A(nab2[1]), .B(oab2[1]), .Y(s2[1]));
+  AND2_11_0 n22 (.A(o1[2]), .B(a[2]), .Y(nab2[2]));
+  AND2_11_1 o22 (.A(o1[2]), .B(a[2]), .Y(oab2[2]));
+  AND2_00_0 s22 (.A(nab2[2]), .B(oab2[2]), .Y(s2[2]));
+  AND2_11_0 n23 (.A(o1[3]), .B(a[3]), .Y(nab2[3]));
+  AND2_11_1 o23 (.A(o1[3]), .B(a[3]), .Y(oab2[3]));
+  AND2_00_0 s23 (.A(nab2[3]), .B(oab2[3]), .Y(s2[3]));
+
+  CARRY4 c2 (.S(s2), .DI(o1), .CYINIT(1'b0), .CI(1'b0), .O(o2), .CO(co2));
+
+  assign out = o2;
+endmodule

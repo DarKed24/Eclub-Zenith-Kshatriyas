@@ -1,0 +1,24 @@
+// Macro-free companion netlist for the Part A differential test. Proves the
+// `simulate_block_v1` move into `src/emulate.rs` (and the flatten.rs / pe.rs
+// changes gated on `num_macros`) are behaviour-preserving: a shift register
+// with a little AND/INV glue, no GEM_DSP48E2.
+
+module simple_dff (clk, rst, d_in, q_out, x_out);
+  input clk;
+  input rst;
+  input d_in;
+  output [3:0] q_out;
+  output x_out;
+
+  wire [3:0] q;
+  wire d0g, d1, d2, d3;
+
+  AND2_01_0 g0 (.A(d_in), .B(rst), .Y(d0g));   // d_in & ~rst
+  DFF r0 (.CLK(clk), .D(d0g), .Q(q[0]));
+  DFF r1 (.CLK(clk), .D(q[0]), .Q(q[1]));
+  DFF r2 (.CLK(clk), .D(q[1]), .Q(q[2]));
+  DFF r3 (.CLK(clk), .D(q[2]), .Q(q[3]));
+
+  INV ix (.A(q[3]), .Y(x_out));
+  assign q_out = q;
+endmodule

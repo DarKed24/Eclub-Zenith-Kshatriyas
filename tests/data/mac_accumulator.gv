@@ -1,0 +1,83 @@
+// Hand-written gate-level netlist for the Part A macro differential test.
+// A multiply-accumulate around one GEM_DSP48E2, with surrounding
+// AND2 / INV / DFF glue so the boomerang has real 1-bit logic to schedule
+// alongside the 48-bit macro:
+//   - a_in is registered through DFFs, gated by ~rst (AND2_01_0)
+//   - b_in is registered straight through DFFs
+//   - OPMODE_S is computed combinationally from load:
+//       load=1 gives state 1 (multiply-only,   P = A*B)
+//       load=0 gives state 2 (multiply-accum,  P = P + A*B)
+//   - RSTP = rst  (synchronous clear of P inside the macro)
+//   - CEP  = 1'b1 (always enabled; rides the commit-gating path)
+//   - A / B are zero-extended; D and C are tied to zero; USE_D = 0
+// P is never exposed as a primary output directly (the differential test
+// reads the macro state slot for that). The outputs here are purely
+// combinational functions of P and of the input registers, so the boomerang
+// evaluates them from the previous cycle's registered P, which exercises the
+// macro-output to AIG-source plumbing.
+
+module mac_accumulator (clk, rst, load, a_in, b_in, and_out, or_out, inv_out, areg_out);
+  input clk;
+  input rst;
+  input load;
+  input [7:0] a_in;
+  input [7:0] b_in;
+  output and_out;
+  output or_out;
+  output inv_out;
+  output areg_out;
+
+  wire [7:0] a_gated;
+  wire [7:0] a_reg;
+  wire [7:0] b_reg;
+  wire n_load;
+  wire [47:0] p_int;
+
+  // a_in gated by ~rst, then registered
+  AND2_01_0 ag0 (.A(a_in[0]), .B(rst), .Y(a_gated[0]));
+  AND2_01_0 ag1 (.A(a_in[1]), .B(rst), .Y(a_gated[1]));
+  AND2_01_0 ag2 (.A(a_in[2]), .B(rst), .Y(a_gated[2]));
+  AND2_01_0 ag3 (.A(a_in[3]), .B(rst), .Y(a_gated[3]));
+  AND2_01_0 ag4 (.A(a_in[4]), .B(rst), .Y(a_gated[4]));
+  AND2_01_0 ag5 (.A(a_in[5]), .B(rst), .Y(a_gated[5]));
+  AND2_01_0 ag6 (.A(a_in[6]), .B(rst), .Y(a_gated[6]));
+  AND2_01_0 ag7 (.A(a_in[7]), .B(rst), .Y(a_gated[7]));
+
+  DFF ar0 (.CLK(clk), .D(a_gated[0]), .Q(a_reg[0]));
+  DFF ar1 (.CLK(clk), .D(a_gated[1]), .Q(a_reg[1]));
+  DFF ar2 (.CLK(clk), .D(a_gated[2]), .Q(a_reg[2]));
+  DFF ar3 (.CLK(clk), .D(a_gated[3]), .Q(a_reg[3]));
+  DFF ar4 (.CLK(clk), .D(a_gated[4]), .Q(a_reg[4]));
+  DFF ar5 (.CLK(clk), .D(a_gated[5]), .Q(a_reg[5]));
+  DFF ar6 (.CLK(clk), .D(a_gated[6]), .Q(a_reg[6]));
+  DFF ar7 (.CLK(clk), .D(a_gated[7]), .Q(a_reg[7]));
+
+  DFF br0 (.CLK(clk), .D(b_in[0]), .Q(b_reg[0]));
+  DFF br1 (.CLK(clk), .D(b_in[1]), .Q(b_reg[1]));
+  DFF br2 (.CLK(clk), .D(b_in[2]), .Q(b_reg[2]));
+  DFF br3 (.CLK(clk), .D(b_in[3]), .Q(b_reg[3]));
+  DFF br4 (.CLK(clk), .D(b_in[4]), .Q(b_reg[4]));
+  DFF br5 (.CLK(clk), .D(b_in[5]), .Q(b_reg[5]));
+  DFF br6 (.CLK(clk), .D(b_in[6]), .Q(b_reg[6]));
+  DFF br7 (.CLK(clk), .D(b_in[7]), .Q(b_reg[7]));
+
+  INV il (.A(load), .Y(n_load));
+
+  GEM_DSP48E2 dsp (
+    .CLK(clk),
+    .CEP(1'b1),
+    .RSTP(rst),
+    .USE_D(1'b0),
+    .A({19'b0, a_reg[7:0]}),
+    .D(27'b0),
+    .B({10'b0, b_reg[7:0]}),
+    .C(48'b0),
+    .OPMODE_S({n_load, load}),
+    .P(p_int)
+  );
+
+  AND2_00_0 gand (.A(p_int[0]),  .B(p_int[5]),  .Y(and_out));
+  AND2_11_1 gor  (.A(p_int[3]),  .B(p_int[9]),  .Y(or_out));
+  INV       ginv (.A(p_int[12]),                .Y(inv_out));
+  AND2_00_0 garg (.A(a_reg[3]),  .B(b_reg[2]),  .Y(areg_out));
+endmodule
