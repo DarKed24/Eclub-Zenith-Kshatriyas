@@ -57,7 +57,7 @@ pub fn cl_cpp_openmp() -> Build {
         .cpp(true)
         .flag("-Wall")
         .flag("-fopenmp")
-        .flag("-std=c++14")
+        .flag("-std=c++17")
         .out_dir(env::var_os("OUT_DIR").map(|v| {
             let mut v = PathBuf::from(v);
             v.push("ucc_cpp");
@@ -81,7 +81,7 @@ pub fn cl_cuda_arch(gencode: Option<&[u32]>, ptx_arch: Option<u32>) -> Build {
     builder_cuda
         .cuda(true)
         .flag("-Xcompiler").flag("-Wall")
-        .flag("-std=c++14");
+        .flag("-std=c++17");
     for arch in gencode.unwrap_or(&[]) {
         builder_cuda.flag("-gencode")
             .flag(&format!("arch=compute_{arch},code=sm_{arch}"));
