@@ -81,7 +81,7 @@ pub fn cl_cuda_arch(gencode: Option<&[u32]>, ptx_arch: Option<u32>) -> Build {
     builder_cuda
         .cuda(true)
         .flag("-Xcompiler").flag("-Wall")
-        .flag("-std=c++17");
+        .flag("-std=c++14");
     for arch in gencode.unwrap_or(&[]) {
         builder_cuda.flag("-gencode")
             .flag(&format!("arch=compute_{arch},code=sm_{arch}"));
@@ -111,18 +111,46 @@ pub fn cl_cuda_arch(gencode: Option<&[u32]>, ptx_arch: Option<u32>) -> Build {
 /// separated).
 ///
 /// if you want direct control, see [`cl_cuda_arch`].
+/// Parse the local `nvcc --version` ("release X.Y"), used to pick portable
+/// SASS defaults. Returns None if nvcc is missing or unparsable.
+fn nvcc_release_version() -> Option<(u32, u32)> {
+    let nvcc = env::var("NVCC").unwrap_or_else(|_| "nvcc".into());
+    let out = std::process::Command::new(nvcc).arg("--version").output().ok()?;
+    let text = String::from_utf8_lossy(&out.stdout).into_owned();
+    let idx = text.find("release ")?;
+    let ver: String = text[idx + 8..].chars()
+        .take_while(|c| c.is_ascii_digit() || *c == '.').collect();
+    let mut it = ver.split('.');
+    Some((it.next()?.parse().ok()?, it.next()?.parse().ok()?))
+}
+
 pub fn cl_cuda() -> Build {
     println!("cargo:rerun-if-env-changed=UCC_CUDA_PTX");
     println!("cargo:rerun-if-env-changed=UCC_CUDA_GENCODE");
     let ptx_arch = match env::var("UCC_CUDA_PTX") {
         Ok(v) => if v.is_empty() { None } else { Some(v.parse().unwrap()) },
-        Err(_) => Some(75)  // portable default: PTX 75 JITs on all newer GPUs (CUDA 13 dropped <75)
+        Err(_) => Some(75)  // embedded PTX helps only when driver >= toolkit;
+                            // SASS coverage below is the real portability story
     };
     let gencode = match env::var("UCC_CUDA_GENCODE") {
         Ok(v) => if v.is_empty() { None } else { Some(
             v.split(',').map(|i| i.parse().unwrap()).collect::<Vec<_>>()
         ) },
-        Err(_) => Some(vec![75, 80, 86, 89, 90])  // SASS for Turing..Hopper; others JIT from PTX
+        Err(_) => Some({
+            // Portable default: native SASS for every mainstream architecture
+            // the LOCAL nvcc can target. Turing..Hopper always (CUDA 12 and 13
+            // both support them); Blackwell (sm_100 / sm_120) when the toolkit
+            // knows it (>= 12.8). PTX JIT is NOT a reliable fallback: a driver
+            // older than the toolkit rejects its PTX with "unsupported
+            // toolchain" (observed with nvcc 13.3 on a 13.2 driver), so the
+            // running GPU must be covered by SASS. Override with
+            // UCC_CUDA_GENCODE / UCC_CUDA_PTX for a fast single-arch build.
+            let mut g = vec![75, 80, 86, 89, 90];
+            if let Some(v) = nvcc_release_version() {
+                if v >= (12, 8) { g.push(100); g.push(120); }
+            }
+            g
+        })
     };
     cl_cuda_arch(gencode.as_deref(), ptx_arch)
 }
